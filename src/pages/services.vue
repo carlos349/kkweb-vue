@@ -16,14 +16,14 @@
                 <div class="col-md-4">
                     <div class="card-service-cat">
                         <center>
-                            <img style="width:40%;height:20vh;" class="rounded-circle img-raised" src="img/manicure.jpeg" alt="">
+                            <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised" src="img/manicure.jpeg" alt="">
                         </center>
                         <h5 class="mt-3 text-center">Manicure</h5>
                         <p class="text-center" style="font-size:12px;">Cuidado y salud de tus manos.</p>
                     </div>
                     <div class="card-service-cat mt-2">
                         <center>
-                            <img style="width:40%;height:20vh;" class="rounded-circle img-raised mx-auto" src="img/esmalte.jpeg" alt="">
+                            <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised mx-auto" src="img/esmalte.jpeg" alt="">
                         </center>
                         <h5 class="mt-3 text-center">Esculpidos en gel</h5>
                         <p class="text-center" style="font-size:12px;">Además de embellecer tus manos, es un tratamiento para evitar onicofagia.</p>
@@ -179,14 +179,14 @@
                 <div class="col-md-4">
                     <div class="card-service-cat">
                         <center>
-                            <img style="width:40%;height:20vh;" class="rounded-circle img-raised mx-auto" src="img/pedicure.jpeg" alt="">
+                            <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised mx-auto" src="img/pedicure.jpeg" alt="">
                         </center>
                         <h5 class="mt-3 text-center">Pedicure</h5>
                         <p class="text-center" style="font-size:12px;">Embellecimiento de tus pies.</p>
                     </div>
                     <div class="card-service-cat mt-2">
                         <center>
-                            <img style="width:40%;height:20vh;" class="rounded-circle img-raised mx-auto" src="img/ibx.jpeg" alt="">
+                            <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised mx-auto" src="img/ibx.jpeg" alt="">
                         </center>
                         <h5 class="mt-3 text-center">IBX</h5>
                         <p class="text-center" style="font-size:12px;">Tratamiento para endurecer tus uñas.</p>

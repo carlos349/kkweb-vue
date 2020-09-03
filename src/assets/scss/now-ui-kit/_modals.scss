@@ -141,9 +141,10 @@
 
     &.modal-danger{
         .modal-content{
-            background: #ED213A;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #93291E, #ED213A);
+            background: #e43a15;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #e65245, #e43a15);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #e65245, #e43a15); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
             color: $white-color;
         }
     
@@ -158,9 +159,10 @@
 
     &.modal-success{
         .modal-content{
-            background: #11998e;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #38ef7d, #11998e);
+            background: #1D976C;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #93F9B9, #1D976C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
             color: $white-color;
         }
     

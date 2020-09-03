@@ -7,7 +7,7 @@
     :transparent="transparent"
     :color-on-scroll="colorOnScroll"
     menu-classes="ml-auto mr-2"
-    style="height:70px;"
+    id="heightResponsive"
   >
     <template>
       <router-link class="navbar-brand" to="/"> 
@@ -17,7 +17,7 @@
           target="_blank"
           >
           <img style="width:85px;display:inline-block;margin-right:10px;" src="img/logokk.png" alt="">
-          <p style="display:inline-block;color:#605b56;font-family: 'Prata', serif;font-weight:400;font-size:15px;letter-spacing: .23em;">K&K PRETTY NAILS</p>
+          <p class="responsiveLetterHeader">K&K PRETTY NAILS</p>
         </a>
       </router-link>
     </template>
@@ -58,7 +58,7 @@
       </li>
       <li class="nav-item" v-if="auth">
         <drop-down tag="li" class="nav-item" :title="userName">
-          <b class="dropdown-item" v-on:click="modals.modal2 = true">Panel de control</b>
+          <b class="dropdown-item" v-on:click="modals.modal2 = true, emitMethod(true)">Panel de control</b>
           <b class="dropdown-item" v-on:click="closeSession">Cerrar sesión</b>
         </drop-down>
       </li>
@@ -77,8 +77,8 @@
     type="notice">
     <login data-aos="zoom-in-up" data-aos-duration="1000" v-if="showForm == 'login'">
       <template v-slot:register>
-        <div class="pull-left">
-            <h6>
+        <div class="col-md-6">
+            <h6 class="alignText">
                 <span class="link footer-link span-register" v-on:click="showForm = 'register'">¿No estás registrado?</span>
             </h6>
         </div>
@@ -86,8 +86,8 @@
     </login>
     <register data-aos="zoom-in-up" data-aos-duration="1000" v-else>
       <template v-slot:login>
-        <div class="pull-left">
-            <h6>
+        <div class="col-md-6">
+            <h6 class="alignText">
                 <span class="link footer-link span-register" v-on:click="showForm = 'login'">¿ya tienes una cuenta?</span>
             </h6>
         </div>
@@ -132,8 +132,7 @@ export default {
     login,
     Modal,
     register,
-    panelUser,
-    [Button.name]: Button
+    panelUser
   },
   data(){
     return{
@@ -167,14 +166,18 @@ export default {
     closeSession(){
       localStorage.removeItem('userToken')
       this.getToken()
+    },
+    emitMethod(status) {
+      EventBus.$emit('panShow', status)
     }
   },
   mounted() {
-      EventBus.$on('loggedin', status => {
-        this.getToken()
-        this.modals.modal1 = false
-      })
-    }
+    EventBus.$on('loggedin', status => {
+      this.getToken()
+      this.showForm = 'login'
+      this.modals.modal1 = false
+    })
+  }
 };
 </script>
 

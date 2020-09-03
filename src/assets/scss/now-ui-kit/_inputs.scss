@@ -107,7 +107,7 @@
     }
 }
 
-@include input-lg-padding($padding-large-vertical, $padding-input-horizontal);
+@include input-lg-padding($padding-large-vertical, $padding-input-horizontal-small);
 @include input-base-padding($padding-input-vertical, $padding-input-horizontal);
 
 .form-group.no-border,

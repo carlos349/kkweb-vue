@@ -16,9 +16,9 @@
       </div>
     </div>
     <div class="page-header page-header-small">
-        <parallax class="page-header-image" style="background-image: url('img/bg_3.jpg');margin-top:-170px;background-position: 90% center;"></parallax>
+        <parallax class="page-header-image" style="background-image: url('img/bg_3.jpg');margin-top:-260px;background-position: 90% center;"></parallax>
         <div class="container">
-          <div class="row mt-5">
+          <div class="row mt-4">
             <div class="col-md-5">
               <div data-aos="fade-up">
                 <span class="span-numbers">1</span><span class="span-text">Año</span><span class="span-numbers">3</span><span class="span-text">Meses</span><span class="span-numbers">10</span><span class="span-text">Días</span><br>
@@ -46,14 +46,14 @@
         <div class="row">
           <div class="col-md-3" data-aos="fade-up">
               <center>
-                <img style="width:40%;height:20vh;" class="rounded-circle img-raised" src="img/manicure.jpeg" alt="">
+                <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised" src="img/manicure.jpeg" alt="">
               </center>
               <h5 class="mt-3 text-center">Manicure</h5>
               <p class="text-center" style="font-size:12px;">Cuidado y salud de tus manos.</p>
           </div>
           <div class="col-md-3" data-aos="fade-up">
               <center>
-                <img style="width:40%;height:20vh;" class="rounded-circle img-raised mx-auto" src="img/esmalte.jpeg" alt="">
+                <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised mx-auto" src="img/esmalte.jpeg" alt="">
               </center>
               <h5 class="mt-3 text-center">Esculpidos en gel</h5>
               <center>
@@ -62,14 +62,14 @@
           </div>
           <div class="col-md-3" data-aos="fade-up">
               <center>
-                <img style="width:40%;height:20vh;" class="rounded-circle img-raised mx-auto" src="img/pedicure.jpeg" alt="">
+                <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised mx-auto" src="img/pedicure.jpeg" alt="">
               </center>
               <h5 class="mt-3 text-center">Pedicure</h5>
               <p class="text-center" style="font-size:12px;">Embellecimiento de tus pies.</p>
           </div>
           <div class="col-md-3" data-aos="fade-up">
               <center>
-                <img style="width:40%;height:20vh;" class="rounded-circle img-raised mx-auto" src="img/ibx.jpeg" alt="">
+                <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised mx-auto" src="img/ibx.jpeg" alt="">
               </center>
               <h5 class="mt-3 text-center">IBX</h5>
               <p class="text-center" style="font-size:12px;">Tratamiento para endurecer tus uñas.</p>

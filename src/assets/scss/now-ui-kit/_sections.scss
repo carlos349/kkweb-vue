@@ -675,7 +675,20 @@
   .hideReferMobile{
       display: none;
   }
-
+  .alignText{
+        margin-top:20%;
+    }
+.responsiveLetterHeader{
+    display:inline-block;
+    color:#605b56;
+    font-family: 'Prata', serif;
+    font-weight:400;
+    font-size:15px !important;
+    letter-spacing: .23em;
+}
+#heightResponsive{
+    height:80px;
+}
 @media screen and (max-width: 768px){
     .nav-tabs {
         display: inline-block !important;
@@ -709,6 +722,19 @@
     .proccessGift{
         margin-left: 57% !important;
       }
+      .alignText{
+          margin-top:0px
+      }
+      .responsiveLetterHeader{
+        font-size:10px !important;
+        letter-spacing: .13em;
+    }
+    #heightResponsive{
+        height:110px ;
+    }
+    .page-header.page-header-small {
+        max-height: 550px;
+    }
 }
 // .modal-dialog{
 //     max-width: 400px !important;
@@ -721,4 +747,13 @@
 }
 .dropdown-item{
     cursor:pointer;
+}
+.cell{
+    color:#fff !important;
+}
+.sidebar-collapse .navbar .navbar-toggler-bar {
+    background-color: $primary-color !important;
+}
+.navbar .navbar-toggler{
+    margin-right:5px !important;
 }

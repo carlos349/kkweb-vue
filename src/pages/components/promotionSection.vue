@@ -6,7 +6,7 @@
           <div class="col-md-4">
             <div class="w-75 mx-auto pb-4">
               <center>
-                <img style="width:80%;height:30vh;" class="rounded-circle" src="img/offer-deal-1.jpg" alt="">
+                <img style="width: 12rem;height:12rem;" class="rounded-circle mt-2" src="img/offer-deal-1.jpg" alt="">
                 <h3 class="mt-3">Primer servicio</h3>                
                 <p >
                   Si quieres agendar con nosotros y este es el primer servicio tendrás automáticamente un 10% de descuento en tu primera atención, con excepción de los servicios tradicionales.
@@ -18,7 +18,7 @@
           <div class="col-md-4" style="background-color:#faf7ef;">
             <div class="w-75 mx-auto pb-4">
               <center>
-                <img style="width:80%;height:30vh;" class="rounded-circle" src="img/offer-deal-2.jpg" alt="">
+                <img style="width: 12rem;height:12rem;" class="rounded-circle mt-2" src="img/offer-deal-2.jpg" alt="">
                 <h3 class="mt-3">Recomendaciones</h3>
                 <p style="margin-bottom:44px !important;">
                   Premiamos tu fidelidad y recomendación con un 15% por cada persona que recomiendes en todos los servicios con excepción de los servicios tradicionales.
@@ -30,7 +30,7 @@
           <div class="col-md-4">
             <div class="w-75 mx-auto pb-4">
               <center>
-                <img style="width:80%;height:30vh;" class="rounded-circle" src="img/offer-deal-3.jpg" alt="">
+                <img style="width: 12rem;height:12rem;" class="rounded-circle mt-2" src="img/offer-deal-3.jpg" alt="">
                 <h3 class="mt-3">Promoción del mes</h3>
                 <p style="margin-bottom:155px !important;">
                   Próximamente

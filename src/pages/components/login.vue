@@ -11,18 +11,25 @@
                 v-model="user"
                 >
             </fg-input>
+            <div class="row">
+                <fg-input
+                    class="no-border input-lg col-10" id="typePasslogin"
+                    addon-left-icon="now-ui-icons ui-1_lock-circle-open"
+                    placeholder="Contraseña"
+                    type="password"
+                    v-model="password"
+                    >
+                </fg-input>
+                <div class="col-2">
+                    <n-button type="primary" icon round style="margin-top:3px;" v-on:click="typePassChange()">
+                        <i class="fa fa-eye eyesPassword text-white w-100" v-if="typePass == 'pass'"></i>
+                        <i class="fa fa-eye-slash eyesPassword text-white w-100" v-else></i>
+                    </n-button>
+                </div>
+            </div>
 
-            <fg-input
-                class="no-border input-lg"
-                addon-left-icon="now-ui-icons ui-1_lock-circle-open"
-                placeholder="Contraseña"
-                type="password"
-                v-model="password"
-                >
-            </fg-input>
-
-            <template slot="raw-content">
-                <div class="card-footer text-center">
+            <div class="row ml-2">
+                <div class="card-footer text-center col-md-6">
                     <button
                     class="btn btn-primary btn-round btn-block"
                     v-on:click="login"
@@ -30,7 +37,7 @@
                     >
                 </div>
                 <slot name="register"></slot>
-            </template>
+            </div>
         </card>
         <modal :show.sync="modals.alert.show"
              :class="modals.alert.type"
@@ -73,9 +80,19 @@ export default {
                     message: 'Esto es un mensaje de alerta'
                 }
             },
+            typePass: 'pass'
         }
     },
     methods: {
+        typePassChange(){
+            if (this.typePass == 'pass') {
+                document.getElementById('typePasslogin').type = 'text';
+                this.typePass = 'text'
+            }else{
+                document.getElementById('typePasslogin').type = 'password';
+                this.typePass = 'pass'
+            }
+        },
         login(){
             axios.post(endpoints.endpointTarget+'/clients/loginClient', {
                 user: this.user,
@@ -85,14 +102,14 @@ export default {
                 if (res.data.status == 'ok') {
                     this.user = ''
                     this.password = ''
-                    localStorage.setItem('userToken', res.data.token)
-                    this.emitMethod(true)
                     this.modals.alert.type = 'modal-success'
                     this.modals.alert.icon = 'ui-1_check'
                     this.modals.alert.message = 'Ingreso exitoso.'
                     this.modals.alert.show = true
                     setTimeout(() => {
                         this.modals.alert.show = false
+                        localStorage.setItem('userToken', res.data.token)
+                        this.emitMethod(true)
                     }, 2500);
                 }else if(res.data.status == 'pass incorrecto'){
                     this.modals.alert.type = 'modal-danger'

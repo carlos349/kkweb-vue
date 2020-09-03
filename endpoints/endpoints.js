@@ -1,9 +1,8 @@
 const data = {
-    protocol: 'https://',
-    server: 'kkprettynailsback.syswa.net:',
-    port: 4200
+    protocol: 'http://',
+    server: 'localhost:4200',
 }
 const endpoints = {
-    endpointTarget: data.protocol+data.server+data.port
+    endpointTarget: data.protocol+data.server
 }
 module.exports = endpoints

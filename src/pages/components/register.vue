@@ -1,6 +1,6 @@
 <template>
     <div>
-        <card type="login" plain>
+        <card type="login" style="padding: 0px;" plain>
             <div class="w-25 mx-auto mb-4">
                 <img class="w-100" src="img/logokk.png" alt="">
             </div>
@@ -26,7 +26,7 @@
                     >
                 </fg-input>
                 <fg-input
-                    class="no-border input-lg col-md-6"
+                    class="no-border input-lg col-md-12"
                     addon-left-icon="now-ui-icons ui-1_email-85"
                     :class="register.email.validClass" 
                     :value="register.email.validValue" 
@@ -35,7 +35,26 @@
                     v-model="register.email.value"
                     >
                 </fg-input>
-                <fg-input class="no-border input-lg col-md-6" :class="register.datePicker.validClass" 
+                <fg-input
+                    class="no-border input-lg col-md-2 col-3"
+                    v-model="register.code"
+                    readonly
+                    >
+                </fg-input>
+                <fg-input
+                    class="no-border input-lg col-md-5 col-9"
+                    addon-left-icon="now-ui-icons tech_mobile"
+                    placeholder="Número de teléfono"
+                    type="text"
+                    :class="register.phone.validClass" 
+                    :value="register.phone.validValue" 
+                    v-on:keyup="verifyRegister"
+                    v-on:input="changeFormat()"
+                    maxlength="9"
+                    v-model="register.phone.value"
+                    >
+                </fg-input>
+                <fg-input class="no-border input-lg col-md-5 mb-3" :class="register.datePicker.validClass" 
                     :value="register.datePicker.validValue" 
                     >
                     <el-date-picker v-model="register.datePicker.value"
@@ -46,24 +65,7 @@
                     </el-date-picker>
                 </fg-input>
                 <fg-input
-                    class="no-border input-lg col-3"
-                    v-model="register.code"
-                    readonly
-                    >
-                </fg-input>
-                <fg-input
-                    class="no-border input-lg col-9"
-                    addon-left-icon="now-ui-icons tech_mobile"
-                    placeholder="Número de teléfono"
-                    :class="register.phone.validClass" 
-                    :value="register.phone.validValue" 
-                    v-on:keyup="verifyRegister"
-                    type="number"
-                    v-model="register.phone.value"
-                    >
-                </fg-input>
-                <fg-input
-                    class="no-border input-lg col-md-6"
+                    class="no-border input-lg col-md-5" id="typePass" 
                     addon-left-icon="now-ui-icons ui-1_lock-circle-open"
                     :class="register.password.validClass" 
                     :value="register.password.validValue" 
@@ -73,21 +75,29 @@
                     v-model="register.password.value"
                     >
                 </fg-input>
-                <i></i>
-                <fg-input
-                    class="no-border input-lg col-md-6"
-                    addon-left-icon="now-ui-icons ui-1_lock-circle-open"
-                    placeholder="Repita la contraseña"
-                    :class="register.passwordRepite.validClass" 
-                    :value="register.passwordRepite.validValue" 
-                    v-on:keyup="verifyRegister"
-                    type="password"
-                    v-model="register.passwordRepite.value"
-                    >
-                </fg-input>
+                
+                <div class="col-md-7 row">
+                    <fg-input
+                        class="no-border input-lg col-10" id="typePassRe"
+                        addon-left-icon="now-ui-icons ui-1_lock-circle-open"
+                        placeholder="Repita la contraseña"
+                        :class="register.passwordRepite.validClass" 
+                        :value="register.passwordRepite.validValue" 
+                        v-on:keyup="verifyRegister"
+                        type="password"
+                        v-model="register.passwordRepite.value"
+                        >
+                    </fg-input>
+                    <div class="col-2">
+                        <n-button type="primary" icon round style="margin-top:3px;" v-on:click="typePassChange()">
+                            <i class="fa fa-eye eyesPassword text-white w-100" v-if="typePass == 'pass'"></i>
+                            <i class="fa fa-eye-slash eyesPassword text-white w-100" v-else></i>
+                        </n-button>
+                    </div>
+                </div>
             </div>
-            <template slot="raw-content">
-                <div class="card-footer text-center">
+            <div class="row ml-2">
+                <div class="card-footer text-center col-md-6">
                     <button
                     class="btn btn-primary btn-round btn-block"
                     v-on:click="registerClient"
@@ -95,7 +105,7 @@
                     >
                 </div>
                 <slot name="login"></slot>
-            </template>
+            </div>
         </card>
         <modal :show.sync="modals.alert.show"
              :class="modals.alert.type"
@@ -111,6 +121,7 @@
 </template>
 <script>
 import endpoints from '../../../endpoints/endpoints.js'
+import EventBus from './EventBus'
 import axios from 'axios'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -177,13 +188,34 @@ export default {
                     value: ''
                 }
             },
-            
+            typePass: 'pass'
         }
     },
     created () {
         AOS.init()
     },
     methods: {
+        changeFormat(){
+            var number = this.register.phone.value.replace(/[^\d]/g, '')
+            if (number.length == 9) {
+                number = number.replace(/(\d{1})(\d{4})/, "$1-$2-");
+            } else if (number.length == 10) {
+                number = number.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+            }
+            this.register.phone.value = number
+            console.log(number)
+        },
+        typePassChange(){
+            if (this.typePass == 'pass') {
+                document.getElementById('typePass').type = 'text';
+                document.getElementById('typePassRe').type = 'text';
+                this.typePass = 'text'
+            }else{
+                document.getElementById('typePass').type = 'password';
+                document.getElementById('typePassRe').type = 'password';
+                this.typePass = 'pass'
+            }
+        },
         verifyRegister(){
             this.register.name.validClass = this.register.name.value.length > 2 ? 'has-success' : 'has-danger'
             this.register.name.validValue = this.register.name.value.length > 2 ? 'Success' : 'Error'
@@ -201,7 +233,7 @@ export default {
                 }
             }else{
                 this.register.email.validClass = 'has-danger'
-                this.register.email.validValue = 'Success'
+                this.register.email.validValue = 'Error'
             }
             this.register.phone.validClass = this.register.phone.value.length > 4 ? 'has-success' : 'has-danger'
             this.register.phone.validValue = this.register.phone.value.length > 4 ? 'Success' : 'Error'
@@ -212,10 +244,12 @@ export default {
             this.register.password.validClass = this.register.password.value.length > 6 ? 'has-success' : 'has-danger'
             this.register.password.validValue = this.register.password.value.length > 6 ? 'Success' : 'Error'
             this.register.passwordRepite.validClass = this.register.password.value == this.register.passwordRepite.value ? 'has-success' : 'has-danger'
-            this.register.passwordRepite.validValue = this.register.password.value.length == this.register.passwordRepite.value ? 'Success' : 'Error'
+            this.register.passwordRepite.validValue = this.register.password.value == this.register.passwordRepite.value ? 'Success' : 'Error'
         },
         registerClient(){  
-            if (this.register.name == '' || this.register.lastName == '' ||  this.register.email == '' || this.register.name == '' || this.register.phone == '' || this.register.datePicker == '' || this.register.password == '' || this.register.passwordRepite == '') {
+            console.log(this.register.name.validValue +' || '+ this.register.lastName.validValue +' || '+  this.register.email.validValue +' || '+ this.register.phone.validValue +' || '+ this.register.datePicker.validValue +' || '+ this.register.password.validValue +' || '+ this.register.passwordRepite.validValue)
+
+            if (this.register.name.validValue == 'Error' || this.register.lastName.validValue == 'Error' ||  this.register.email.validValue == 'Error' || this.register.phone.validValue == 'Error' || this.register.datePicker.validValue == 'Error' || this.register.password.validValue == 'Error' || this.register.passwordRepite.validValue == 'Error') {
                 this.modals.alert.type = 'modal-danger'
                 this.modals.alert.icon = 'ui-1_simple-remove'
                 this.modals.alert.message = 'Debe completar todo el formulario.'
@@ -237,9 +271,10 @@ export default {
                 })
                 .then(res => {
                     if (res.data.status != 'client already exist') {
+                        
                         this.modals.alert.type = 'modal-success'
                         this.modals.alert.icon = 'ui-1_check'
-                        this.modals.alert.message = 'Registro exitoso.'
+                        this.modals.alert.message = 'Registro exitoso. Bienvenido a KK PRETTY NAILS.'
                         this.modals.alert.show = true
                         this.register.name.value = ''
                         this.register.lastName.value = ''
@@ -258,6 +293,8 @@ export default {
                         this.register.passwordRepite.validClass = 'has-danger'
                         setTimeout(() => {
                             this.modals.alert.show = false
+                            localStorage.setItem('userToken', res.data.token)
+                            this.emitMethod(true)
                         }, 2500);
                         
                     }else{
@@ -272,6 +309,9 @@ export default {
                     }
                 })
             }
+        },
+        emitMethod(status) {
+            EventBus.$emit('loggedin', status)
         }
     }
 }

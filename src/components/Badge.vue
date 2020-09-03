@@ -28,7 +28,9 @@ export default {
           'warning',
           'danger',
           'default',
-          'neutral'
+          'neutral',
+          'purple',
+          'white'
         ];
         return acceptedValues.indexOf(value) !== -1;
       }
