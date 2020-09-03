@@ -58,14 +58,14 @@
       </li>
       <li class="nav-item" v-if="auth">
         <drop-down tag="li" class="nav-item" :title="userName">
-          <b class="dropdown-item" >Panel de control</b>
+          <b class="dropdown-item" v-on:click="modals.modal2 = true">Panel de control</b>
           <b class="dropdown-item" v-on:click="closeSession">Cerrar sesión</b>
         </drop-down>
       </li>
       <li class="nav-item" v-else>
         <a
           class="nav-link"
-          v-on:click="modals.notice = true"
+          v-on:click="modals.modal1 = true"
         >
           <p>Ingresar</p>
         </a>
@@ -170,7 +170,7 @@ export default {
   mounted() {
       EventBus.$on('loggedin', status => {
         this.getToken()
-        this.modals.notice = false
+        this.modals.modal1 = false
       })
     }
 };
