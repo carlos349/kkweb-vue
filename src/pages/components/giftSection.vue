@@ -95,7 +95,7 @@
                <div class="row">
                  <div class="col-sm-6">
                   <template   class="back">
-                    <div class="p-5" style="background-color:#fbf2f6" >
+                    <div class="p-5 mt-3" style="background-color:#fbf2f6" >
                         <h4 style="margin-top:-5px;" class="text-center">{{servicio}} <br> {{servicio2}} <br> {{servicio3}}</h4>
                         <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> {{precio}}</h4>
                     </div>
@@ -105,9 +105,9 @@
               </div>
                  <div class="col-sm-6">
                    <div>
-                     <h5 style="font-weight: bold;">Resumen de tu compra</h5>
+                     <h5 class="mt-3" style="font-weight: bold;">Resumen de tu compra</h5>
                       <span class="mos">Confirma tu orden y completa el pago</span>
-                      <p class="mos2" style="margin-top: -8px;"> , este es el resumen de tu compra:</p>
+                      <p class="mos2" style="margin-top: -5px;"> {{userName}}, este es el resumen de tu compra:</p>
 
                       <div class="row">
                         <div class="col-5 mt-3"> <p class=""> <b>Total:</b> $ {{precio}}</p> </div>
@@ -125,7 +125,7 @@
                       <br><br><br>
                       <div class="cuadritoGift" style="background-color: whitesmoke;padding: 10px;border-radius: 5px;margin-top:-30px;width: 360px;">
                         <h5 style="font-weight: bold;">Tus datos</h5>
-                        <p style="line-height: 25px;"> Nombre: <br> Correo: <br> Número:</p>
+                        <p style="line-height: 25px;"> Nombre: {{userName}} <br> Correo: {{email}} <br> Número: {{number}}</p>
                         <button type="button" style="margin-left:220px"  class="btn btn-primary py-2 px-2  proccessGift"> Procesar </button>
                       </div>
                    </div>
@@ -163,6 +163,7 @@ import VueFlip from 'vue-flip';
 import { Button,Modal } from '@/components';
 import register from './register';
 import login from './login';
+import jwtDecode from 'jwt-decode'
 
 export default {
     components: {
@@ -182,12 +183,32 @@ export default {
           servicio2:'',
           servicio3:'',
           precio:'',
-          typePay:''
+          typePay:'',
+          auth:false,
+          userName:'',
+          number:'',
+          email:''
         }
     },
     created () {
         AOS.init()
-        
+        this.validateLogin()
+    },
+    methods:{
+      validateLogin(){
+        const token = localStorage.userToken
+        if (token) {
+          const decoded = jwtDecode(token)
+          console.log(decoded)
+          this.userName = decoded.name
+          this.auth = true
+          this.number = decoded.phone
+          this.email = decoded.mail
+        }else{
+          this.auth = false
+          this.userName = ''
+        }
+      }
     }
 };
 </script>

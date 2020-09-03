@@ -62,10 +62,10 @@
           <b class="dropdown-item" v-on:click="closeSession">Cerrar sesión</b>
         </drop-down>
       </li>
-      <li class="nav-item" v-else>
+      <li style="cursor:pointer" class="nav-item" v-else>
         <a
           class="nav-link"
-          v-on:click="modals.notice = true"
+          v-on:click="modals.modal1 = true"
         >
           <p>Ingresar</p>
         </a>
