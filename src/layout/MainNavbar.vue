@@ -6,7 +6,7 @@
     type="backwhite"
     :transparent="transparent"
     :color-on-scroll="colorOnScroll"
-    menu-classes="ml-auto"
+    menu-classes="ml-auto mr-2"
     style="height:70px;"
   >
     <template>
@@ -16,8 +16,8 @@
           href="https://www.creative-tim.com/product/vue-now-ui-kit"
           target="_blank"
           >
-          <img style="width:18%;display:inline-block;margin-right:10px;" src="img/logokk.png" alt="">
-          <p style="display:inline-block;color:#605b56;font-family: 'Prata', serif;font-weight:400;font-size:15px;">K&K PRETTY NAILS</p>
+          <img style="width:85px;display:inline-block;margin-right:10px;" src="img/logokk.png" alt="">
+          <p style="display:inline-block;color:#605b56;font-family: 'Prata', serif;font-weight:400;font-size:15px;letter-spacing: .23em;">K&K PRETTY NAILS</p>
         </a>
       </router-link>
     </template>
@@ -56,7 +56,13 @@
           <p>Agendar</p>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" v-if="auth">
+        <drop-down tag="li" class="nav-item" :title="userName">
+          <b class="dropdown-item" >Panel de control</b>
+          <b class="dropdown-item" v-on:click="closeSession">Cerrar sesión</b>
+        </drop-down>
+      </li>
+      <li class="nav-item" v-else>
         <a
           class="nav-link"
           v-on:click="modals.notice = true"
@@ -69,7 +75,6 @@
   <modal :show.sync="modals.notice"
     footer-classes="justify-content-center"
     type="notice">
-    <h5 slot="header" class="modal-title mb-4"></h5>
     <login data-aos="zoom-in-up" data-aos-duration="1000" v-if="showForm == 'login'">
       <template v-slot:register>
         <div class="pull-left">
@@ -97,7 +102,15 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import login from '../pages/components/login'
 import register from '../pages/components/register'
-import { DropDown, Navbar, NavLink, Modal } from '@/components';
+import EventBus from '../pages/components/EventBus'
+import jwtDecode from 'jwt-decode'
+import { 
+  DropDown, 
+  Navbar, 
+  NavLink, 
+  Modal, 
+  Button 
+} from '@/components';
 import { Popover } from 'element-ui';
 export default {
   name: 'main-navbar',
@@ -108,21 +121,49 @@ export default {
   components: {
     Navbar,
     [Popover.name]: Popover,
+    DropDown,
     login,
     Modal,
-    register
+    register,
+    [Button.name]: Button
   },
   data(){
     return{
       modals: {
           notice: false
       },
-      showForm: 'login'
+      showForm: 'login',
+      auth: false,
+      userName: ''
     }
   },
   created () {
     AOS.init()
-  }
+    this.getToken()
+  },
+  methods: {
+    getToken(){
+      const token = localStorage.userToken
+      if (token) {
+        const decoded = jwtDecode(token)
+        this.userName = decoded.name
+        this.auth = true
+      }else{
+        this.auth = false
+        this.userName = ''
+      }
+    },
+    closeSession(){
+      localStorage.removeItem('userToken')
+      this.getToken()
+    }
+  },
+  mounted() {
+      EventBus.$on('loggedin', status => {
+        this.getToken()
+        this.modals.notice = false
+      })
+    }
 };
 </script>
 

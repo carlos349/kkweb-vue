@@ -635,6 +635,15 @@
 .span-register:hover{
     color: #000;
 }
-.modal-dialog{
-    max-width: 400px !important;
+// .modal-dialog{
+//     max-width: 400px !important;
+// }
+.modal.show {
+    background-color:transparent !important;
+}
+.modal-header button{
+    z-index:100;
+}
+.dropdown-item{
+    cursor:pointer;
 }
