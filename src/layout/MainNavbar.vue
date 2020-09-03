@@ -66,7 +66,7 @@
       </li>
     </template>
   </navbar>
-  <modal :show.sync="modals.notice"
+  <modal :show.sync="modals.modal1"
     footer-classes="justify-content-center"
     type="notice">
     <h5 slot="header" class="modal-title mb-4"></h5>
@@ -89,6 +89,12 @@
       </template>
     </register>
   </modal>
+
+  <modal :show.sync="modals.modal2" :show-close="false" headerClasses="p-0" bodyClasses="p-0" modal-classes="modal-xl" footer-classes="p-0 m-0">
+    <panel-user>
+
+    </panel-user>
+  </modal>
 </div>
 </template>
 
@@ -97,6 +103,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import login from '../pages/components/login'
 import register from '../pages/components/register'
+import panelUser from '../pages/components/panelUser'
 import { DropDown, Navbar, NavLink, Modal } from '@/components';
 import { Popover } from 'element-ui';
 export default {
@@ -110,12 +117,14 @@ export default {
     [Popover.name]: Popover,
     login,
     Modal,
-    register
+    register,
+    panelUser
   },
   data(){
     return{
       modals: {
-          notice: false
+          modal1: false,
+          modal2: false
       },
       showForm: 'login'
     }

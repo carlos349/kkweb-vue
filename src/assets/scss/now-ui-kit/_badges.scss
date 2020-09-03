@@ -41,6 +41,12 @@
 .badge-danger{
     @include badge-color($danger-color);
 }
+.badge-purple{
+    @include badge-color($purple-color);
+}
+.badge-white{
+    @include badge-color($white-color);
+}
 .badge-neutral{
     @include badge-color($white-color);
     color: inherit !important;

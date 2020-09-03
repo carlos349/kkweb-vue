@@ -3,9 +3,10 @@
 .nav-tabs {
     border: 0;
     padding: $padding-large-vertical $padding-base-horizontal;
-
+    z-index:1000;
     &:not(.nav-tabs-neutral) > .nav-item > .nav-link.active{
         box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.3);
+        z-index:1000
     }
 
     .card &{
@@ -17,6 +18,7 @@
         > .nav-link{
             color: $default-color;
             margin: 0;
+            z-index:1000;
             margin-right: 5px;
             background-color: $transparent-bg;
             border: 1px solid $transparent-bg;
@@ -107,6 +109,17 @@
             > .nav-link{
                 &.active{
                     background-color: $success-color;
+                }
+            }
+        }
+    }
+
+    &.nav-tabs-purple{
+        > .nav-item{
+            > .nav-link{
+                &.active{
+                    background-color: $purple-color;
+                    z-index: 1000;
                 }
             }
         }

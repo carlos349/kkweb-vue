@@ -635,6 +635,74 @@
 .span-register:hover{
     color: #000;
 }
-.modal-dialog{
-    max-width: 400px !important;
+
+ .bgc1{
+    background-image: url("../../../public/img/T1.png");
+    height: 440px;
+    background-size: cover;
+    font-size: 18px;
+  }
+  
+  .bgc2{
+    background-image: url("../../../public/img/T2.png");
+    height: 440px;
+    background-size: cover;
+    font-size: 18px;
+  }
+  
+  .bgc3{
+    background-image: url("../../../public/img/T3.png");
+    height: 440px;
+    background-size: cover;
+    font-size: 18px;
+  }
+  
+  .bgT{
+    text-align: center;
+    color: white;
+    line-height: 22px;
+    border-radius: 10px;
+  }
+  .card__num {
+    font-size: 120px;
+    text-align: center;
+    margin: 0 8px 0 0;
+    font-weight: 700;
+  }
+  .nav-item {
+      z-index:1000 !important;
+  }
+  .hideReferMobile{
+      display: none;
+  }
+
+  @media screen and (max-width: 768px){
+    .nav-tabs {
+        display: inline-block !important;
+        width: 115% !important;
+        padding-left: 50px !important;
+        padding-right: 100px !important;
+        text-align: center !important;
+    }
+
+    .cardUser{
+        padding-right: 10px !important;
+        padding-left: 35px !important;
+    }
+    .nav-tabs .nav-item{
+        display: inline-block;
+    }
+    .hideRefer{
+        display: none;
+    }
+    .hideReferMobile{
+        display: block;
+    }
+    .heightPalPueblo{
+        height: 85vh;
+        overflow-y: scroll;
+    }
+    .cuadritoGift{
+        width: 320px !important;
+    }
 }
