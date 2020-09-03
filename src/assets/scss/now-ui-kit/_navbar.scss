@@ -16,10 +16,10 @@
     p{
         display: inline-block;
         margin: 0;
-        line-height: 11px;
+        line-height: 16px;
         font-weight: 600;
         font-size: 12px;
-        letter-spacing: .33em;
+        letter-spacing: .23em;
     }
 
     .navbar-nav{
@@ -46,7 +46,8 @@
 
         .nav-link:not(.btn){
             text-transform: uppercase;
-            font-size: $font-size-mini;
+            font-weight: 600;
+            font-size: 12px;
             padding: $padding-base-vertical $padding-base-horizontal;
             line-height: $line-height-nav-link;
 

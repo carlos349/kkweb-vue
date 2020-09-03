@@ -140,7 +140,16 @@
     }
 
     &.modal-danger{
-        @include modal-colors($danger-color, $white-color);
+        .modal-content{
+            background: #ED213A;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #93291E, #ED213A);
+            color: $white-color;
+        }
+    
+        .modal-header .close{
+            color: $white-color;
+        }
     }
 
     &.modal-warning{
@@ -148,7 +157,16 @@
     }
 
     &.modal-success{
-        @include modal-colors($success-color, $white-color);
+        .modal-content{
+            background: #11998e;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #38ef7d, #11998e);
+            color: $white-color;
+        }
+    
+        .modal-header .close{
+            color: $white-color;
+        }
     }
 
     &.modal-info{
