@@ -1,6 +1,6 @@
 const data = {
-    protocol: 'http://',
-    server: 'localhost:',
+    protocol: 'https://',
+    server: 'kkprettynailsback.syswa.net:',
     port: 4200
 }
 const endpoints = {

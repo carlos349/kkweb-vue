@@ -143,7 +143,9 @@ export default {
       },
       showForm: 'login',
       auth: false,
-      userName: ''
+      userName: '',
+      
+
     }
   },
   created () {

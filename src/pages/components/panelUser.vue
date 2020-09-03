@@ -108,6 +108,8 @@
 import {
      Tabs, TabPane, Card,Badge
 } from '@/components'
+import jwtDecode from 'jwt-decode'
+
 export default {
     components: {
         Card,
@@ -132,8 +134,24 @@ export default {
             }
         }
     },
+    created(){
+        this.getToken()
+    },
     methods: {
+        getToken(){
+      const token = localStorage.userToken
+      if (token) {
+        const decoded = jwtDecode(token)
+        this.dataUser.name = decoded.name
         
+        this.dataUser.number = decoded.phone
+        this.dataUser.email = decoded.mail
+        this.dataUser.bornDate = decoded.birthday
+      }else{
+        
+        this.userName = ''
+      }
+    },
     }
 }
 </script>
