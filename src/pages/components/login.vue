@@ -21,7 +21,7 @@
                     >
                 </fg-input>
                 <div class="col-2">
-                    <n-button type="primary" icon round style="margin-top:3px;" v-on:click="typePassChange()">
+                    <n-button type="primary" icon round style="margin-top:3px;margin-right:10px;" v-on:click="typePassChange()">
                         <i class="fa fa-eye eyesPassword text-white w-100" v-if="typePass == 'pass'"></i>
                         <i class="fa fa-eye-slash eyesPassword text-white w-100" v-else></i>
                     </n-button>

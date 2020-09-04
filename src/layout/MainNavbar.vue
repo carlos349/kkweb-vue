@@ -58,7 +58,7 @@
       </li>
       <li class="nav-item" v-if="auth">
         <drop-down tag="li" class="nav-item" :title="userName">
-          <b class="dropdown-item" v-on:click="modals.modal2 = true, emitMethod(true)">Panel de control</b>
+          <b class="dropdown-item" v-on:click="showPanel()">Panel de control</b>
           <b class="dropdown-item" v-on:click="closeSession">Cerrar sesión</b>
         </drop-down>
       </li>
@@ -75,28 +75,29 @@
   <modal :show.sync="modals.modal1"
     footer-classes="justify-content-center"
     type="notice">
-    <login data-aos="zoom-in-up" data-aos-duration="1000" v-if="showForm == 'login'">
-      <template v-slot:register>
-        <div class="col-md-6">
-            <h6 class="alignText">
-                <span class="link footer-link span-register" v-on:click="showForm = 'register'">¿No estás registrado?</span>
-            </h6>
-        </div>
-      </template>
-    </login>
-    <register data-aos="zoom-in-up" data-aos-duration="1000" v-else>
-      <template v-slot:login>
-        <div class="col-md-6">
-            <h6 class="alignText">
-                <span class="link footer-link span-register" v-on:click="showForm = 'login'">¿ya tienes una cuenta?</span>
-            </h6>
-        </div>
-      </template>
-    </register>
+    
+      <login data-aos="zoom-in-up" data-aos-duration="1000" v-if="showForm == 'login'">
+        <template v-slot:register>
+          <div class="col-md-6">
+              <h6 class="alignText">
+                  <span class="link footer-link span-register" v-on:click="showForm = 'register'">¿No estás registrado?</span>
+              </h6>
+          </div>
+        </template>
+      </login>
+      <register data-aos="zoom-in-up" data-aos-duration="1000" v-else>
+        <template v-slot:login>
+          <div class="col-md-6">
+              <h6 class="alignText">
+                  <span class="link footer-link span-register" v-on:click="showForm = 'login'">¿ya tienes una cuenta?</span>
+              </h6>
+          </div>
+        </template>
+      </register>
   </modal>
 
   <modal :show.sync="modals.modal2"  headerClasses="p-0" bodyClasses="p-0" modal-classes="modal-xl" footer-classes="p-0 m-0">
-    <panel-user>
+    <panel-user class="mt-5">
 
     </panel-user>
   </modal>
@@ -110,6 +111,7 @@ import login from '../pages/components/login'
 import register from '../pages/components/register'
 import panelUser from '../pages/components/panelUser'
 import EventBus from '../pages/components/EventBus'
+import vueCustomScrollbar from 'vue-custom-scrollbar'
 import jwtDecode from 'jwt-decode'
 import { 
   DropDown, 
@@ -174,7 +176,12 @@ export default {
       localStorage.removeItem('userToken')
       this.getToken()
     },
+    showPanel(){
+      this.modals.modal2 = true
+      this.emitMethod(true)
+    },
     emitMethod(status) {
+      console.log('aja')
       EventBus.$emit('panShow', status)
     }
   },

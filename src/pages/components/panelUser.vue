@@ -481,37 +481,55 @@ export default {
         changeP(){
             const token = localStorage.userToken
             const decoded = jwtDecode(token)
-            axios.put(endpoints.endpointTarget+'/clients/changePass/'+decoded._id, {
-                lastPass: this.change.password.value,
-                newPass: this.change.passwordNew.value
-            })
-            .then(res => {
-                if (res.data.status == 'bad') {
-                    this.modals.alert.type = 'modal-danger'
-                    this.modals.alert.icon = 'ui-1_simple-remove'
-                    this.modals.alert.message = 'Contraseña incorrecta.'
-                    this.modals.alert.show = true
-                    setTimeout(() => {
-                        this.modals.alert.show = false
-                    }, 2500);
-                }else if(!res.data.status){
-                    this.modals.alert.type = 'modal-success'
-                    this.modals.alert.icon = 'ui-1_check'
-                    this.modals.alert.message = 'Cambio de contraseña exitoso.'
-                    this.modals.alert.show = true
-                    setTimeout(() => {
-                        this.modals.alert.show = false
-                        this.modals.modal2 = false
-                        this.change.password.value = ''
-                        this.change.passwordNew.value = ''
-                        this.change.passwordRep.value = ''
-                    }, 2500);
-                }
-                
-            })
-            .catch(err => {
-                console.log(err)
-            })
+            if (this.change.password.validValue == 'Error' || this.change.passwordNew.validValue == 'Error') {
+                this.modals.alert.type = 'modal-danger'
+                this.modals.alert.icon = 'ui-1_simple-remove'
+                this.modals.alert.message = 'Complete el formulario.'
+                this.modals.alert.show = true
+                setTimeout(() => {
+                    this.modals.alert.show = false
+                }, 2500);
+            }else if(this.change.passwordRep.validValue == 'Error'){
+                this.modals.alert.type = 'modal-danger'
+                this.modals.alert.icon = 'ui-1_simple-remove'
+                this.modals.alert.message = 'Las contraseñas deben coincidir.'
+                this.modals.alert.show = true
+                setTimeout(() => {
+                    this.modals.alert.show = false
+                }, 2500);
+            }else{
+                axios.put(endpoints.endpointTarget+'/clients/changePass/'+decoded._id, {
+                    lastPass: this.change.password.value,
+                    newPass: this.change.passwordNew.value
+                })
+                .then(res => {
+                    if (res.data.status == 'bad') {
+                        this.modals.alert.type = 'modal-danger'
+                        this.modals.alert.icon = 'ui-1_simple-remove'
+                        this.modals.alert.message = 'Contraseña incorrecta.'
+                        this.modals.alert.show = true
+                        setTimeout(() => {
+                            this.modals.alert.show = false
+                        }, 2500);
+                    }else if(!res.data.status){
+                        this.modals.alert.type = 'modal-success'
+                        this.modals.alert.icon = 'ui-1_check'
+                        this.modals.alert.message = 'Cambio de contraseña exitoso.'
+                        this.modals.alert.show = true
+                        setTimeout(() => {
+                            this.modals.alert.show = false
+                            this.modals.modal2 = false
+                            this.change.password.value = ''
+                            this.change.passwordNew.value = ''
+                            this.change.passwordRep.value = ''
+                        }, 2500);
+                    }
+                    
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            }     
         },
         changeD(){
             const token = localStorage.userToken
@@ -531,6 +549,7 @@ export default {
                     this.modals.alert.show = true
                     setTimeout(() => {
                         this.modals.alert.show = false
+                        localStorage.removeItem('userToken')
                         localStorage.setItem('userToken', res.data.token)
                         this.emitMethod(true)
                     }, 2500);
@@ -566,6 +585,7 @@ export default {
     },
     mounted() {
         EventBus.$on('panShow', status => {
+            console.log(status)
             this.getToken()
         })
     }
