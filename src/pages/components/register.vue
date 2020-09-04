@@ -5,79 +5,94 @@
                 <img class="w-100" src="img/logokk.png" alt="">
             </div>
             <div class="row">
-                <fg-input
-                    class="no-border input-lg col-md-6"
-                    addon-left-icon="now-ui-icons users_circle-08"
-                    :class="register.name.validClass" 
-                    :value="register.name.validValue" 
-                    v-on:keyup="verifyRegister"
-                    placeholder="Nombre"
-                    v-model="register.name.value"
-                    >
-                </fg-input>
-                <fg-input
-                    class="no-border input-lg col-md-6"
-                    addon-left-icon="now-ui-icons users_circle-08"
-                    :class="register.lastName.validClass" 
-                    :value="register.lastName.validValue" 
-                    v-on:keyup="verifyRegister"
-                    placeholder="Apellido"
-                    v-model="register.lastName.value"
-                    >
-                </fg-input>
-                <fg-input
-                    class="no-border input-lg col-md-12"
-                    addon-left-icon="now-ui-icons ui-1_email-85"
-                    :class="register.email.validClass" 
-                    :value="register.email.validValue" 
-                    v-on:keyup="verifyRegister"
-                    placeholder="Correo"
-                    v-model="register.email.value"
-                    >
-                </fg-input>
-                <fg-input
-                    class="no-border input-lg col-md-2 col-3"
-                    v-model="register.code"
-                    readonly
-                    >
-                </fg-input>
-                <fg-input
-                    class="no-border input-lg col-md-5 col-9"
-                    addon-left-icon="now-ui-icons tech_mobile"
-                    placeholder="Número de teléfono"
-                    type="text"
-                    :class="register.phone.validClass" 
-                    :value="register.phone.validValue" 
-                    v-on:keyup="verifyRegister"
-                    v-on:input="changeFormat()"
-                    maxlength="9"
-                    v-model="register.phone.value"
-                    >
-                </fg-input>
-                <fg-input class="no-border input-lg col-md-5 mb-3" :class="register.datePicker.validClass" 
-                    :value="register.datePicker.validValue" 
-                    >
-                    <el-date-picker v-model="register.datePicker.value"
-                        popper-class="date-picker-primary"
-                        type="date"
-                        format="dd/MM/yyyy"
-                        placeholder="Fecha de nacimiento"
-                        v-on:change="verifyRegister">
-                    </el-date-picker>
-                </fg-input>
-                <fg-input
-                    class="no-border input-lg col-md-5" id="typePass" 
-                    addon-left-icon="now-ui-icons ui-1_lock-circle-open"
-                    :class="register.password.validClass" 
-                    :value="register.password.validValue" 
-                    v-on:keyup="verifyRegister"
-                    placeholder="Contraseña"
-                    type="password"
-                    v-model="register.password.value"
-                    >
-                </fg-input>
+                <div class="col-md-6 p-1">
+                    <fg-input
+                        class="no-border input-lg w-100"
+                        addon-left-icon="now-ui-icons users_circle-08"
+                        :class="register.name.validClass" 
+                        :value="register.name.validValue" 
+                        v-on:keyup="verifyRegister"
+                        placeholder="Nombre"
+                        v-model="register.name.value"
+                        >
+                    </fg-input>
+                </div>
+                <div class="col-md-6 p-1">
+                    <fg-input
+                        class="no-border input-lg w-100"
+                        addon-left-icon="now-ui-icons users_circle-08"
+                        :class="register.lastName.validClass" 
+                        :value="register.lastName.validValue" 
+                        v-on:keyup="verifyRegister"
+                        placeholder="Apellido"
+                        v-model="register.lastName.value"
+                        >
+                    </fg-input>
+                </div>
+                <div class="col-md-12 p-1">
+                    <fg-input
+                        class="no-border input-lg w-100"
+                        addon-left-icon="now-ui-icons ui-1_email-85"
+                        :class="register.email.validClass" 
+                        :value="register.email.validValue" 
+                        v-on:keyup="verifyRegister"
+                        placeholder="Correo"
+                        v-model="register.email.value"
+                        >
+                    </fg-input>
+                </div>
+                <div class="col-md-2 col-3 p-1">
+                    <fg-input
+                        class="no-border input-lg w-100"
+                        v-model="register.code"
+                        readonly
+                        >
+                    </fg-input>
+                </div>
+                <div class="col-md-5 col-9 p-1">
+                    <fg-input
+                        class="no-border input-lg w-100"
+                        addon-left-icon="now-ui-icons tech_mobile"
+                        placeholder="Número de teléfono"
+                        type="text"
+                        :class="register.phone.validClass" 
+                        :value="register.phone.validValue" 
+                        v-on:keyup="verifyRegister"
+                        v-on:input="changeFormat()"
+                        maxlength="9"
+                        v-model="register.phone.value"
+                        >
+                    </fg-input>
+                </div>
+                <div class="col-md-5 p-1">
+                    <fg-input class="no-border input-lg w-100" :class="register.datePicker.validClass" 
+                        :value="register.datePicker.validValue" 
+                        >
+                        <el-date-picker v-model="register.datePicker.value"
+                            popper-class="date-picker-primary"
+                            type="date"
+                            format="dd/MM/yyyy"
+                            placeholder="Fecha de nacimiento"
+                            v-on:change="verifyRegister">
+                        </el-date-picker>
+                    </fg-input>
+                </div>
+                <div class="col-md-5 p-1">
+                    <fg-input
+                        class="no-border input-lg w-100" id="typePass" 
+                        addon-left-icon="now-ui-icons ui-1_lock-circle-open"
+                        :class="register.password.validClass" 
+                        :value="register.password.validValue" 
+                        v-on:keyup="verifyRegister"
+                        placeholder="Contraseña"
+                        type="password"
+                        v-model="register.password.value"
+                        >
+                    </fg-input>
+                </div>
                 
-                <div class="col-md-7 row">
+                
+                <div class="col-md-7 p-1 row">
                     <fg-input
                         class="no-border input-lg col-10" id="typePassRe"
                         addon-left-icon="now-ui-icons ui-1_lock-circle-open"
@@ -89,8 +104,8 @@
                         v-model="register.passwordRepite.value"
                         >
                     </fg-input>
-                    <div class="col-2">
-                        <n-button type="primary" icon round style="margin-top:3px;" v-on:click="typePassChange()">
+                    <div class="col-2 p-0">
+                        <n-button type="primary" icon round style="margin-top:3px;margin-right:20px" v-on:click="typePassChange()">
                             <i class="fa fa-eye eyesPassword text-white w-100" v-if="typePass == 'pass'"></i>
                             <i class="fa fa-eye-slash eyesPassword text-white w-100" v-else></i>
                         </n-button>
@@ -98,7 +113,7 @@
                 </div>
             </div>
             <div class="row ml-2">
-                <div class="card-footer text-center col-md-6">
+                <div class="card-footer text-center col-5">
                     <button
                     class="btn btn-primary btn-round btn-block"
                     v-on:click="registerClient"
@@ -133,9 +148,9 @@ import {
     Card,
     Modal
 } from '@/components'
-import {DatePicker} from 'element-ui'
 import lang from 'element-ui/lib/locale/lang/es'
 import locale from 'element-ui/lib/locale'
+import {DatePicker} from 'element-ui'
 
 // configure language
 locale.use(lang)
@@ -252,11 +267,11 @@ export default {
             this.register.phone.validValue = this.register.phone.value.length > 9 ? 'Success' : 'Error'
             this.register.password.validClass = this.register.password.value.length >= 8 ? 'has-success' : 'has-danger'
             this.register.password.validValue = this.register.password.value.length >= 8 ? 'Success' : 'Error'
-            this.register.passwordRepite.validClass = this.register.password.value == this.register.passwordRepite.value ? 'has-success' : 'has-danger'
-            this.register.passwordRepite.validValue = this.register.password.value == this.register.passwordRepite.value ? 'Success' : 'Error'
+            this.register.passwordRepite.validClass = this.register.password.value == this.register.passwordRepite.value && this.register.passwordRepite.value.length > 0 ? 'has-success' : 'has-danger'
+            this.register.passwordRepite.validValue = this.register.password.value == this.register.passwordRepite.value && this.register.passwordRepite.value.length > 0 ? 'Success' : 'Error'
         },
         registerClient(){  
-            if (this.register.name.validValue == 'Error' || this.register.lastName.validValue == 'Error' ||  this.register.email.validValue == 'Error' || this.register.phone.validValue == 'Error' || this.register.datePicker.validValue == 'Error' || this.register.password.validValue == 'Error' ) {
+            if (this.register.name.validValue == 'Error' || this.register.lastName.validValue == 'Error' ||  this.register.email.validValue == 'Error' || this.register.phone.validValue == 'Error' || this.register.datePicker.validValue == 'Error') {
                 this.modals.alert.type = 'modal-danger'
                 this.modals.alert.icon = 'ui-1_simple-remove'
                 this.modals.alert.message = 'Debe completar todo el formulario.'
@@ -273,8 +288,15 @@ export default {
                 setTimeout(() => {
                     this.modals.alert.show = false
                 }, 2500);
-            }
-            else{
+            }else if(this.register.password.validValue == 'Error'){
+                this.modals.alert.type = 'modal-danger'
+                this.modals.alert.icon = 'ui-1_simple-remove'
+                this.modals.alert.message = 'Mínimo 8 caracteres.'
+                this.modals.alert.show = true
+                setTimeout(() => {
+                    this.modals.alert.show = false
+                }, 2500);
+            }else{
             
                 console.log(this.$route.query.refer)
                 const refer = this.$route.query.refer ? this.refer : ''

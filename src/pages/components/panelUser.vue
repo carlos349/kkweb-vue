@@ -13,7 +13,10 @@
 
                 <center>
                     <h3 class="m-0 text-center mb-3 titlePanel w-75">Panel de usuario</h3>
-                    <img style="width:10rem;" slot="image" class="img-raised rounded-circle" src="img/person_1.jpg" alt="Card image cap">
+                    <img style="width:10rem;" slot="image" class="img-raised rounded-circle" :src="'img/'+dataUser.img" alt="Card image cap">
+                    <n-button class="positionSetImg" type="primary" icon style="border-radius:50%;" v-on:click="openImgModal">
+                        <i class="now-ui-icons media-1_album"></i>
+                    </n-button>
                 </center>
                 
                 <div class="mt-4 p-2 pt-0" style="background-color: whitesmoke;border-top: 5px solid #afadc2;border-radius: 5px;border-bottom: 15px solid #afadc2;">
@@ -186,7 +189,7 @@
                 >
             </fg-input>
         </div>
-        <div class="row ml-2">
+        <div class="row ml-2 mr-2">
             <div class="card-footer text-center col-md-6">
                 <button
                 class="btn btn-primary btn-round btn-block"
@@ -270,7 +273,19 @@
         </div>
     </card>
   </modal>
-  <modal :show.sync="modals.alert.show"
+    <modal :show.sync="modals.modal3"
+        footer-classes="justify-content-center"
+        type="notice">
+        <card type="login" plain>
+            <div class="row">
+                <div v-for="(check, index) of checked" v-on:click="selectImage(index)" :key="check" class="col-md-3 col-4">
+                    <n-checkbox v-model="check.valid"></n-checkbox>
+                    <img style="width: 5rem;height:5rem;" class="rounded-circle" :src="'img/'+(index+1)+'.png'" alt="">
+                </div>
+            </div>
+        </card>
+    </modal>
+    <modal :show.sync="modals.alert.show"
             :class="modals.alert.type"
             :show-close="false"
             header-classes="justify-content-center"
@@ -295,6 +310,7 @@ import {
      Button,
      Modal,
      FormGroupInput as FgInput,
+     Checkbox
 } from '@/components'
 import jwtDecode from 'jwt-decode'
 import EventBus from './EventBus'
@@ -309,13 +325,15 @@ export default {
         Modal,
         FgInput,
         [Popover.name]: Popover,
-        vueCustomScrollbar
+        vueCustomScrollbar,
+        [Checkbox.name]: Checkbox
     },
     data(){
         return {
             modals: {
                 modal1: false,
                 modal2: false,
+                modal3: false,
                 alert: {
                     show: false,
                     type: 'modal-danger',
@@ -323,6 +341,26 @@ export default {
                     message: 'Esto es un mensaje de alerta'
                 }
             },
+            checked: [
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false}, 
+                {valid: false},
+                {valid: false}
+            ],
             change: {
                 password: {
                     validClass: 'has-danger',
@@ -344,6 +382,7 @@ export default {
                 onlyNumber: 0,
                 dates:[],
                 refers:0,
+                img: '',
                 linkRefer:'',
                 services: [],
                 name:{
@@ -372,6 +411,59 @@ export default {
         this.getToken()
     },
     methods: {
+        openImgModal(){
+            const split = this.dataUser.img.split('.pn')[0]
+            console.log(split)
+            for (let index = 1; index <= this.checked.length; index++) {
+                const element = this.checked[index];
+                if (index == split) {
+                    this.checked[index - 1].valid = true
+                }
+            }
+            this.modals.modal3 = true
+        },
+        selectImage(index){
+            const token = localStorage.userToken
+            const decoded = jwtDecode(token)
+            var value = 0
+            for (let i = 0; i < this.checked.length; i++) {
+                const element = this.checked[i];
+                element.valid = false
+                if (i == index) {
+                    element.valid = true
+                    value = (i + 1)
+                }
+            }
+            axios.put(endpoints.endpointTarget+'/clients/changeImage/'+decoded._id, {
+                img: value
+            })
+            .then(res => {
+                if (res.data.status == 'ok') {
+                    this.modals.alert.type = 'modal-success'
+                    this.modals.alert.icon = 'ui-1_check'
+                    this.modals.alert.message = 'Cambio imagen exitoso.'
+                    this.modals.alert.show = true
+                    setTimeout(() => {
+                        this.modals.alert.show = false
+                        this.modals.modal3 = false
+                        localStorage.removeItem('userToken')
+                        localStorage.setItem('userToken', res.data.token)
+                        this.getToken()
+                        this.emitMethod(true)
+                    }, 2500);
+                }else{
+                    this.modals.alert.type = 'modal-danger'
+                    this.modals.alert.icon = 'ui-1_simple-remove'
+                    this.modals.alert.message = 'Errores técnicos.'
+                    this.modals.alert.show = true
+                    setTimeout(() => {
+                        this.modals.alert.show = false
+                    }, 2500);
+                }
+            }).catch(err => {
+                console.log(res)
+            })
+        },
         getToken(){
             const token = localStorage.userToken
             if (token) {
@@ -381,6 +473,7 @@ export default {
                 this.dataUser.number = decoded.phone
                 this.dataUser.onlyNumber.value = decoded.phone.split('56 ')[1]
                 this.dataUser.email.value = decoded.mail
+                this.dataUser.img = decoded.userImage
                 var date = new Date(decoded.birthday) 
                 this.dataUser.refers = decoded.recomends
                 this.dataUser.linkRefer = decoded._id

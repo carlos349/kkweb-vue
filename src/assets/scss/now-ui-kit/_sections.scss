@@ -678,6 +678,9 @@
   .alignText{
         margin-top:20%;
     }
+    .alignTextGift{
+        margin-top:25%;
+    }
 .responsiveLetterHeader{
     display:inline-block;
     color:#605b56;
@@ -697,7 +700,9 @@
         padding-right: 100px !important;
         text-align: center !important;
     }
-
+    p{
+        font-size:1em;
+    }
     .cardUser{
         padding-right: 10px !important;
         padding-left: 35px !important;
@@ -720,10 +725,13 @@
       font-size: 4vw !important;
     }
     .proccessGift{
-        margin-left: 57% !important;
+        margin-left: 52% !important;
       }
       .alignText{
-          margin-top:0px
+        font-size: 12px;
+      }
+      .alignTextGift{
+        font-size: 11px;
       }
       .responsiveLetterHeader{
         font-size:10px !important;
@@ -774,4 +782,23 @@
 }
 .modal {
   overflow-y:auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+.positionSetImg{
+    position: absolute !important;
+    top: 35%;
+    right: 34%;
+}
+@media screen and (max-width: 768px){
+    .list-services li{
+        font-size: 10px;
+    }
+    .card-collapsable{
+        padding: 5px 8px;
+    }
+    .positionSetImg{
+        position: absolute !important;
+        top: 38%;
+        right: 28%;
+    }
 }

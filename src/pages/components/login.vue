@@ -20,7 +20,7 @@
                     v-model="password"
                     >
                 </fg-input>
-                <div class="col-2">
+                <div class="col-2 p-0">
                     <n-button type="primary" icon round style="margin-top:3px;margin-right:10px;" v-on:click="typePassChange()">
                         <i class="fa fa-eye eyesPassword text-white w-100" v-if="typePass == 'pass'"></i>
                         <i class="fa fa-eye-slash eyesPassword text-white w-100" v-else></i>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="row ml-2">
-                <div class="card-footer text-center col-md-6">
+                <div class="card-footer text-center col-5">
                     <button
                     class="btn btn-primary btn-round btn-block"
                     v-on:click="login"

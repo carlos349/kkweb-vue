@@ -112,7 +112,7 @@
                     <div class="row">
                       <div class="col-5 mt-3"> <p class=""> <b>Total:</b> $ {{precio}}</p> </div>
                       <div class="col-7">
-                        <select class="form-control" v-model="typePay">
+                        <select class="form-control pt-1 pb-1" style="height:70%;" v-model="typePay">
                           <option disabled value="">Tipo de pago</option>
                           <option>Efectivo presencial</option>
                           <option>Crédito presencial</option>
@@ -124,18 +124,18 @@
                     
                     <br><br><br>
                     <center>
-                      <div class="cuadritoGift w-100 text-left" style="background-color: whitesmoke;padding: 10px;border-radius: 5px;margin-top:-30px;width: 360px;">
+                      <div class="cuadritoGift w-100 text-left" style="background-color: whitesmoke;padding: 10px;border-radius: 5px;margin-top:-30px;">
                         <h5 style="font-weight: bold;">Tus datos</h5>
                         <p style="line-height: 25px;"> Nombre: {{userName}} <br> Correo: {{email}} <br> Número: {{number}}</p>
-                        <button type="button" style="margin-left:220px" v-on:click="validateType()" class="btn btn-primary py-2 px-2  proccessGift"> Procesar </button>
+                        <button type="button" style="margin-left:170px" v-on:click="validateType()" class="btn btn-primary py-2 px-2  proccessGift w-50"> Procesar </button>
                       </div>
                     </center>
                     
                   </div>
                   <login data-aos="zoom-in-up" data-aos-duration="1000" v-else-if="showFormGift == 'login'">
                     <template v-slot:register>
-                      <div class="col-md-6">
-                          <h6 class="alignText">
+                      <div class="col-7">
+                          <h6 class="alignTextGift">
                               <span class="link footer-link span-register" v-on:click="showFormGift = 'register'">¿No estás registrado?</span>
                           </h6>
                       </div>
@@ -143,8 +143,8 @@
                   </login>
                   <register data-aos="zoom-in-up" data-aos-duration="1000" v-else>
                     <template v-slot:login>
-                      <div class="col-md-6">
-                          <h6 class="alignText">
+                      <div class="col-7">
+                          <h6 class="alignTextGift">
                               <span class="link footer-link span-register" v-on:click="showFormGift = 'login'">¿ya tienes una cuenta?</span>
                           </h6>
                       </div>
@@ -162,8 +162,8 @@
           <b>Tipo de pago:</b> {{typePay}}
         </p>
         <template slot="footer">
-          <n-button style="background-color:rgb(243, 217, 228);color:#676666" v-on:click="createOrder()">Procesar</n-button>
-          <n-button style="background-color:rgb(245, 245, 245);color:#676666" @click.native="modals.modal2 = false">Cancelar</n-button>
+          <n-button type="success" size="lg" v-on:click="createOrder()">Procesar</n-button>
+          <n-button size="lg" type="danger" @click.native="modals.modal2 = false">Cancelar</n-button>
         </template>
       </modal>
 
