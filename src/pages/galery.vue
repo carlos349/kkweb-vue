@@ -12,10 +12,10 @@
         </div>
         <div class="section" style="margin-top:-120px;">
             <div id="galeria">
-                <article data-aos="fade-up" @click="showMultiple(0)">
+                <article  @click="showMultiple(0)">
                     <img src="img/g1.jpeg" />
                 </article>
-                <article data-aos="fade-up" @click="showMultiple(1)">
+                <article data-aos="fade-up"  @click="showMultiple(1)">
                     <img src="img/g2.jpeg" />
                 </article>
                 <article data-aos="fade-up" @click="showMultiple(2)">
@@ -36,7 +36,7 @@
                 <article data-aos="fade-up" @click="showMultiple(7)">
                     <img src="img/g9.jpeg" />
                 </article>
-                <article data-aos="fade-up" @click="showMultiple(8)">
+                <article  @click="showMultiple(8)">
                     <img src="img/g10.jpeg" />
                 </article>
                 <article data-aos="fade-up" @click="showMultiple(9)">
@@ -60,7 +60,7 @@
                 <article data-aos="fade-up" @click="showMultiple(15)">
                     <img src="img/g17.jpeg" />
                 </article>
-                <article data-aos="fade-up" @click="showMultiple(16)">
+                <article  @click="showMultiple(16)">
                     <img src="img/g20.jpeg" />
                 </article>
                 <article data-aos="fade-up" @click="showMultiple(17)">
@@ -92,6 +92,7 @@
     </div>
 </template>
 <script>
+import endpoints from '../../endpoints/endpoints.js'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import VueEasyLightbox from 'vue-easy-lightbox'
@@ -111,7 +112,7 @@ export default {
     },
     methods: {
         showMultiple(index) {
-            this.imgs = ['http://localhost:8080/img/g1.jpeg', 'http://localhost:8080/img/g2.jpeg', 'http://localhost:8080/img/g3.jpeg', 'http://localhost:8080/img/g5.jpeg','http://localhost:8080/img/g6.jpeg','http://localhost:8080/img/g7.jpeg','http://localhost:8080/img/g8.jpeg','http://localhost:8080/img/g9.jpeg','http://localhost:8080/img/g10.jpeg','http://localhost:8080/img/g11.jpeg','http://localhost:8080/img/g12.jpeg','http://localhost:8080/img/g13.jpeg','http://localhost:8080/img/g14.jpeg','http://localhost:8080/img/g15.jpeg','http://localhost:8080/img/g16.jpeg','http://localhost:8080/img/g17.jpeg', 'http://localhost:8080/img/g20.jpeg', 'http://localhost:8080/img/g21.jpeg', 'http://localhost:8080/img/g22.jpeg', 'http://localhost:8080/img/g23.jpeg', 'http://localhost:8080/img/g24.jpeg', 'http://localhost:8080/img/g25.jpeg', 'http://localhost:8080/img/g26.jpeg']
+            this.imgs = [endpoints.endpointImg+'/img/g1.jpeg', endpoints.endpointImg+'/img/g2.jpeg', endpoints.endpointImg+'/img/g3.jpeg', endpoints.endpointImg+'/img/g5.jpeg',endpoints.endpointImg+'/img/g6.jpeg',endpoints.endpointImg+'/img/g7.jpeg',endpoints.endpointImg+'/img/g8.jpeg',endpoints.endpointImg+'/img/g9.jpeg',endpoints.endpointImg+'/img/g10.jpeg',endpoints.endpointImg+'/img/g11.jpeg',endpoints.endpointImg+'/img/g12.jpeg',endpoints.endpointImg+'/img/g13.jpeg',endpoints.endpointImg+'/img/g14.jpeg',endpoints.endpointImg+'/img/g15.jpeg',endpoints.endpointImg+'/img/g16.jpeg',endpoints.endpointImg+'/img/g17.jpeg', endpoints.endpointImg+'/img/g20.jpeg', endpoints.endpointImg+'/img/g21.jpeg', endpoints.endpointImg+'/img/g22.jpeg', endpoints.endpointImg+'/img/g23.jpeg', endpoints.endpointImg+'/img/g24.jpeg', endpoints.endpointImg+'/img/g25.jpeg', endpoints.endpointImg+'/img/g26.jpeg']
             this.index = index  // index of imgList
             this.show()
         },

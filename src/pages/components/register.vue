@@ -60,6 +60,7 @@
                     <el-date-picker v-model="register.datePicker.value"
                         popper-class="date-picker-primary"
                         type="date"
+                        format="dd/MM/yyyy"
                         placeholder="Fecha de nacimiento"
                         v-on:change="verifyRegister">
                     </el-date-picker>
@@ -132,6 +133,12 @@ import {
     Modal
 } from '@/components'
 import {DatePicker} from 'element-ui'
+import lang from 'element-ui/lib/locale/lang/es'
+import locale from 'element-ui/lib/locale'
+
+// configure language
+locale.use(lang)
+
 export default {
     components: {
         [Button.name]: Button,
@@ -241,15 +248,15 @@ export default {
             this.register.datePicker.validValue = this.register.datePicker.value != '' ? 'Success' : 'Error'
             this.register.phone.validClass = this.register.phone.value.length > 9 ? 'has-success' : 'has-danger'
             this.register.phone.validValue = this.register.phone.value.length > 9 ? 'Success' : 'Error'
-            this.register.password.validClass = this.register.password.value.length > 6 ? 'has-success' : 'has-danger'
-            this.register.password.validValue = this.register.password.value.length > 6 ? 'Success' : 'Error'
+            this.register.password.validClass = this.register.password.value.length >= 8 ? 'has-success' : 'has-danger'
+            this.register.password.validValue = this.register.password.value.length >= 8 ? 'Success' : 'Error'
             this.register.passwordRepite.validClass = this.register.password.value == this.register.passwordRepite.value ? 'has-success' : 'has-danger'
             this.register.passwordRepite.validValue = this.register.password.value == this.register.passwordRepite.value ? 'Success' : 'Error'
         },
         registerClient(){  
             console.log(this.register.name.validValue +' || '+ this.register.lastName.validValue +' || '+  this.register.email.validValue +' || '+ this.register.phone.validValue +' || '+ this.register.datePicker.validValue +' || '+ this.register.password.validValue +' || '+ this.register.passwordRepite.validValue)
 
-            if (this.register.name.validValue == 'Error' || this.register.lastName.validValue == 'Error' ||  this.register.email.validValue == 'Error' || this.register.phone.validValue == 'Error' || this.register.datePicker.validValue == 'Error' || this.register.password.validValue == 'Error' || this.register.passwordRepite.validValue == 'Error') {
+            if (this.register.name.validValue == 'Error' || this.register.lastName.validValue == 'Error' ||  this.register.email.validValue == 'Error' || this.register.phone.validValue == 'Error' || this.register.datePicker.validValue == 'Error' || this.register.password.validValue == 'Error' ) {
                 this.modals.alert.type = 'modal-danger'
                 this.modals.alert.icon = 'ui-1_simple-remove'
                 this.modals.alert.message = 'Debe completar todo el formulario.'
@@ -257,7 +264,17 @@ export default {
                 setTimeout(() => {
                     this.modals.alert.show = false
                 }, 2500);
-            }else{
+            }
+            else if( this.register.passwordRepite.validValue == 'Error'){
+                this.modals.alert.type = 'modal-danger'
+                this.modals.alert.icon = 'ui-1_simple-remove'
+                this.modals.alert.message = 'Las contraseñas deben coincidir.'
+                this.modals.alert.show = true
+                setTimeout(() => {
+                    this.modals.alert.show = false
+                }, 2500);
+            }
+            else{
                 axios.post(endpoints.endpointTarget+'/clients/registerwithpass', {
                     data: {
                         name: this.register.name.value,

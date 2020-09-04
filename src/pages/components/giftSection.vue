@@ -123,11 +123,14 @@
                     </div>
                     
                     <br><br><br>
-                    <div class="cuadritoGift" style="background-color: whitesmoke;padding: 10px;border-radius: 5px;margin-top:-30px;width: 360px;">
-                      <h5 style="font-weight: bold;">Tus datos</h5>
-                      <p style="line-height: 25px;"> Nombre: {{userName}} <br> Correo: {{email}} <br> Número: {{number}}</p>
-                      <button type="button" style="margin-left:220px"  class="btn btn-primary py-2 px-2  proccessGift"> Procesar </button>
-                    </div>
+                    <center>
+                      <div class="cuadritoGift" style="background-color: whitesmoke;padding: 10px;border-radius: 5px;margin-top:-30px;width: 360px;">
+                        <h5 style="font-weight: bold;">Tus datos</h5>
+                        <p style="line-height: 25px;"> Nombre: {{userName}} <br> Correo: {{email}} <br> Número: {{number}}</p>
+                        <button type="button" style="margin-left:220px" v-on:click="validateType()" class="btn btn-primary py-2 px-2  proccessGift"> Procesar </button>
+                      </div>
+                    </center>
+                    
                   </div>
                   <login data-aos="zoom-in-up" data-aos-duration="1000" v-else-if="showFormGift == 'login'">
                     <template v-slot:register>
@@ -150,11 +153,54 @@
                 </div>
               </div>
        </modal>
+
+       <modal :show.sync="modals.modal2" headerClasses="justify-content-center">
+        <h4 slot="header" class="title title-up">Detalles de tu compra</h4>
+        <p> 
+          <b>Gift card:</b> {{servicio}} {{servicio2}} {{servicio3}} <br>
+          <b>Precio:</b>  {{precio}} <br>
+          <b>Tipo de pago:</b> {{typePay}}
+        </p>
+        <template slot="footer">
+          <n-button v-on:click="createOrder()">Procesar</n-button>
+          <n-button type="danger" @click.native="modals.modal2 = false">Cancelar</n-button>
+        </template>
+      </modal>
+
+      <modal :show.sync="modals.modal3"
+             class="modal-danger"
+             :show-close="false"
+             header-classes="justify-content-center"
+             type="mini">
+        <div slot="header" class="modal-profile d-flex justify-content-center align-items-center">
+          <i class="now-ui-icons ui-1_simple-remove"></i>
+        </div>
+        <p>Debe seleccionar un tipo de pago</p>
+        <template slot="footer">
+          <n-button type="primary" @click.native="modals.modal3 = false">Entendido</n-button>
+        </template>
+      </modal>
+
+      <modal :show.sync="modals.modal4"
+             class="modal-success"
+             :show-close="false"
+             header-classes="justify-content-center"
+             type="mini">
+        <div slot="header" class="modal-profile d-flex justify-content-center align-items-center">
+          <i class="now-ui-icons ui-1_check"></i>
+        </div>
+        <p  >¡Listo! <br> Revisa tu correo para seguir los pasos.</p>
+        <template slot="footer">
+          <n-button type="primary" @click.native="modals.modal4 = false,modals.modal2 = false, modals.modal1 = false, modals.modal3= false">Entendido</n-button>
+        </template>
+      </modal>
+      
   </div>
   
 </template>
 <script>
 import AOS from 'aos'
+import endpoints from '../../../endpoints/endpoints.js'
 import 'aos/dist/aos.css'
 import VueFlip from 'vue-flip';
 import { Button,Modal } from '@/components';
@@ -162,6 +208,8 @@ import register from './register';
 import login from './login';
 import jwtDecode from 'jwt-decode'
 import EventBus from './EventBus'
+import axios from 'axios'
+
 export default {
     components: {
         [Button.name]: Button,
@@ -173,7 +221,10 @@ export default {
     data(){
       return{
           modals:{
-            modal1:false
+            modal1:false,
+            modal2:false,
+            modal3:false,
+            modal4:false
           },
           showFormGift: 'login',
           servicio:'',
@@ -203,6 +254,55 @@ export default {
         }else{
           this.showFormGift = 'login'
           this.userName = ''
+        }
+      },
+      createOrder(){
+        console.log("En serio?")
+        axios.post(endpoints.endpointTarget+'/pedidos', { 
+          cliente:this.userName,
+          identidad:this.email,
+          tipoPago:this.typePay,
+          articulo: this.servicio + " " + this.servicio2 + " " +  this.servicio3,
+          total: "$ "+this.precio,
+          number: this.number
+        })
+        .then(res => {
+            if (res.data.status == 'Registrado') {
+                this.modals.modal4 = true
+                axios.post(endpoints.endpointTarget+'/notifications', {
+                    userName:'El cliente: '+ this.userName,
+                    userImage:'',
+                    detail:'Creo un Pedido',
+                    link: 'pedidos'
+                })
+                .then(res => {
+                    var socket = io(endpoints.endpointTarget)
+                    socket.emit('sendNotification', res.data)
+                })
+                var socket1 = io(endpoints.endpointTarget)
+                var sockData = {
+                  userName: '',
+                  userImage: '',
+                  detail: '',
+                  link: '',
+                  date: new Date()
+                }
+                socket1.emit('sendNotification', sockData )
+                
+            }else{
+                
+                console.log(res)
+            }
+        })
+      },
+
+      validateType(){
+        if (this.typePay != '') {
+          this.modals.modal2 = true
+        }
+        else{
+          this.modals.modal3 = true
+          
         }
       }
     },

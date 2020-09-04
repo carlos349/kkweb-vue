@@ -10,7 +10,7 @@
         <div class="content-center brand">
           <img class="n-logo mt-2" src="img/logokk.png" alt="" />
           <hr style="border-top:solid 2px #605B56;">
-          <h3 style="display:inline-block;color:#605B56;font-family: 'Prata', serif;font-weight:600;letter-spacing:.2em;">K&KPRETTYNAILS.COM</h3>
+          <h3 class="indexTitle" style="display:inline-block;color:#605B56;font-family: 'Prata', serif;font-weight:600;letter-spacing:.2em;">K&KPRETTYNAILS.COM</h3>
           <n-button type="primary" size="lg">AGENDAR</n-button><n-button type="primary" size="lg" simple>GALERÍA</n-button>
         </div>
       </div>

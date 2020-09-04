@@ -48,6 +48,7 @@
                 <i class="now-ui-icons" :class="modals.alert.icon" style="font-size:30px;"></i>
             </div>
             <p v-if="modals.alert.show" data-aos="zoom-in-up" data-aos-duration="800" class="font-weight:700;">{{modals.alert.message}}</p>
+            <n-button type="primary" size="sm">¿Se te olvido esa vaina?</n-button>
         </modal>
     </div>
 </template>
@@ -116,9 +117,7 @@ export default {
                     this.modals.alert.icon = 'ui-1_simple-remove'
                     this.modals.alert.message = 'Contraseña incorrecta.'
                     this.modals.alert.show = true
-                    setTimeout(() => {
-                        this.modals.alert.show = false
-                    }, 2500);
+                    
                 }else{
                     this.modals.alert.type = 'modal-danger'
                     this.modals.alert.icon = 'ui-1_simple-remove'

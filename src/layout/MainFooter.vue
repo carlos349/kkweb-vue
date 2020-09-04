@@ -16,12 +16,12 @@
             </a>
           </li>
           <li class="ml-3">
-            <a href="https://www.facebook.com/kkprettynails" target="_blank">
+            <a href="https://www.instagram.com/kkprettynails/?hl=es-la" target="_blank">
               <span style="left: 33%;" class="fab fa-instagram span-socials"></span>
             </a>
           </li>
           <li class="ml-3">
-            <a href="https://www.facebook.com/kkprettynails" target="_blank">
+            <a href="https://www.youtube.com/channel/UCg9tufEPhKadP4JM-GiDNNQ" target="_blank">
               <span style="left: 25%;" class="fab fa-youtube span-socials"></span>
             </a>
           </li>
@@ -34,16 +34,27 @@
         <h5 style="color: black;font-weight:700;">Enlaces rápidos</h5>
         <ul class="list-unstyled fast-links" style="display:block">
           <li class="w-100">
-            <a href="">Nosotros</a>
+            <router-link to="/nosotros">
+              <a href="">Nosotros</a>
+            </router-link>
           </li>
           <li class="w-100">
-            <a href="">Servicios</a>
+            <router-link to="/servicios">
+              <a href="">Servicios</a>
+            </router-link>
+            
           </li>
           <li class="w-100">
-            <a href="">Galería</a>
+            <router-link to="/galeria">
+              <a href="">Galería</a>
+            </router-link>
+            
           </li>
           <li class="w-100">
-            <a href="">Contacto</a>
+            <router-link to="/contacto">
+              <a href="">Contacto</a>
+            </router-link>
+            
           </li>
         </ul>
       </div>
@@ -52,15 +63,15 @@
         <ul class="list-unstyled fast-links" style="display:block">
           <li class="w-100">
             <i class="fa fa-map-marker-alt" style="color:black;font-size:16px;margin-right:10px;"></i>
-            <a href="">Av. Pedro de Valdivia 3474 Caracol Ñuñoa, Local 53-B Ñuñoa, Chile</a>
+            <a href="https://goo.gl/maps/GhvcDBH1ppBDae1KA">Av. Pedro de Valdivia 3474 Caracol Ñuñoa, Local 53-B Ñuñoa, Chile</a>
           </li>
           <li class="w-100">
             <i class="fab fa-whatsapp" style="color:black;font-size:16px;margin-right:10px;"></i>
-            <a href="">+56 9 7262 8949</a>
+            <a href="https://wa.me/56972628949">+56 9 7262 8949</a>
           </li>
           <li class="w-100">
             <i class="fa fa-envelope" style="color:black;font-size:16px;margin-right:10px;"></i>
-            <a href="">kkprettynails@gmail.com</a>
+            <a href="mailto:kkprettynails@gmail.com">kkprettynails@gmail.com</a>
           </li>
         </ul>
       </div>
