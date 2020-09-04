@@ -20,7 +20,7 @@ export default new Router({
       name: 'index',
       components: { default: Index, header: MainNavbar, footer: MainFooter },
       props: {
-        header: { colorOnScroll: 400 },
+        header: { colorOnScroll: 100 },
         footer: { backgroundColor: 'white' }
       }
     },
@@ -29,7 +29,7 @@ export default new Router({
       name: 'about',
       components: { default: About, header: MainNavbar, footer: MainFooter },
       props: {
-        header: { colorOnScroll: 400 },
+        header: { colorOnScroll: 100 },
         footer: { backgroundColor: 'white' }
       }
     },
@@ -38,7 +38,7 @@ export default new Router({
       name: 'Services',
       components: { default: Services, header: MainNavbar, footer: MainFooter },
       props: {
-        header: { colorOnScroll: 400 },
+        header: { colorOnScroll: 100 },
         footer: { backgroundColor: 'white' }
       }
     },
@@ -47,7 +47,7 @@ export default new Router({
       name: 'Galery',
       components: { default: Galery, header: MainNavbar, footer: MainFooter },
       props: {
-        header: { colorOnScroll: 400 },
+        header: { colorOnScroll: 100 },
         footer: { backgroundColor: 'white' }
       }
     },
@@ -56,7 +56,7 @@ export default new Router({
       name: 'Contact',
       components: { default: Contact, header: MainNavbar, footer: MainFooter },
       props: {
-        header: { colorOnScroll: 400 },
+        header: { colorOnScroll: 100 },
         footer: { backgroundColor: 'white' }
       }
     },
@@ -65,7 +65,7 @@ export default new Router({
       name: 'login',
       components: { default: Login, header: MainNavbar },
       props: {
-        header: { colorOnScroll: 400 }
+        header: { colorOnScroll: 100 }
       }
     },
     {
@@ -73,7 +73,7 @@ export default new Router({
       name: 'profile',
       components: { default: Profile, header: MainNavbar, footer: MainFooter },
       props: {
-        header: { colorOnScroll: 400 },
+        header: { colorOnScroll: 100 },
         footer: { backgroundColor: 'black' }
       }
     }

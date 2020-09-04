@@ -123,6 +123,7 @@
 <script>
 import endpoints from '../../../endpoints/endpoints.js'
 import EventBus from './EventBus'
+import jwtDecode from 'jwt-decode'
 import axios from 'axios'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -255,8 +256,6 @@ export default {
             this.register.passwordRepite.validValue = this.register.password.value == this.register.passwordRepite.value ? 'Success' : 'Error'
         },
         registerClient(){  
-            console.log(this.register.name.validValue +' || '+ this.register.lastName.validValue +' || '+  this.register.email.validValue +' || '+ this.register.phone.validValue +' || '+ this.register.datePicker.validValue +' || '+ this.register.password.validValue +' || '+ this.register.passwordRepite.validValue)
-
             if (this.register.name.validValue == 'Error' || this.register.lastName.validValue == 'Error' ||  this.register.email.validValue == 'Error' || this.register.phone.validValue == 'Error' || this.register.datePicker.validValue == 'Error' || this.register.password.validValue == 'Error' ) {
                 this.modals.alert.type = 'modal-danger'
                 this.modals.alert.icon = 'ui-1_simple-remove'
@@ -315,6 +314,8 @@ export default {
                         this.register.passwordRepite.validClass = 'has-danger'
                         setTimeout(() => {
                             this.modals.alert.show = false
+                            const decoded = jwtDecode(res.data.token)
+                            console.log(decoded)
                             localStorage.setItem('userToken', res.data.token)
                             this.emitMethod(true)
                         }, 2500);
@@ -327,7 +328,6 @@ export default {
                         setTimeout(() => {
                             this.modals.alert.show = false
                         }, 2500);
-                        console.log(res)
                     }
                 })
             }
