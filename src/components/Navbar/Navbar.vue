@@ -22,8 +22,8 @@
         id="navigation"
       >
         <slot name="before-menu"></slot>
-        <ul class="navbar-nav" :class="menuClasses">
-          <slot name="navbar-menu" v-bind="slotData"></slot>
+        <ul v-on:click="toggle()" class="navbar-nav" :class="menuClasses">
+          <slot  name="navbar-menu" v-bind="slotData"></slot>
         </ul>
         <slot name="after-menu"></slot>
       </div>

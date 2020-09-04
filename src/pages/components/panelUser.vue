@@ -11,6 +11,7 @@
               <card class="ml-4 col-sm-4" style="width: 20rem;padding:1rem;box-shadow:none">
 
                 <center>
+                    <h3 class="m-0 text-center mb-3">Panel de usuario</h3>
                     <img style="width:10rem;" slot="image" class="img-raised rounded-circle" src="img/person_1.jpg" alt="Card image cap">
                 </center>
                 
@@ -34,11 +35,11 @@
             <div class="col-sm-12 mb-2">
                 <badge href="#" class="p-0 m-0 hideRefer" type="purple">
                     <badge href="#" class="m-0" style="font-size:10px" type="purple"><span class="mt-2"> ¡Invita a un amigo y <br> gana descuento!</span></badge>
-                <badge href="#" style="color:black;font-size:14px;padding:15px;padding-left:30px;padding-right:10px" class="m-0" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/#/servicios?refer={{dataUser.linkRefer}} </span> <i data-clipboard-target="#referidoSys" style="color:#8893f1" class=" ml-5 fas fa-clone"></i></badge> 
+                <badge href="#" style="color:black;font-size:14px;padding:15px;padding-left:30px;padding-right:10px" class="m-0" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/#/servicios?refer={{dataUser.linkRefer}} </span> <i v-clipboard:success="clipboardSuccessHandler" v-clipboard="'https://kkprettynails.cl/inicio?refer='+dataUser.linkRefer" style="color:#8893f1" class=" ml-5 fas fa-clone"></i></badge> 
                 </badge>
 
                 <badge href="#" class="m-0 col-12 hideReferMobile" style="font-size:10px" type="purple">¡Invita a un amigo y gana descuento! </badge>
-                <badge href="#" style="color:black;font-size:10px;padding:15px;" class="m-0 col-12 hideReferMobile" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/inicio?refer={{dataUser.linkRefer}} </span> <i data-clipboard-target="#referidoSys" style="color:#8893f1" class="ml-1 fas fa-clone"></i></badge> 
+                <badge href="#" style="color:black;font-size:10px;padding:15px;" class="m-0 col-12 hideReferMobile" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/inicio?refer={{dataUser.linkRefer}} </span> <i v-clipboard="'https://kkprettynails.cl/inicio?refer='+dataUser.linkRefer" style="color:#8893f1" class="ml-1 fas fa-clone"></i></badge> 
             </div>
             <div class="col-sm-4">
                 <div class="col-sm-12 pt-2 mb-5 bgT bgc1">
@@ -285,6 +286,7 @@ import axios from 'axios'
 import endpoints from '../../../endpoints/endpoints.js'
 import vueCustomScrollbar from 'vue-custom-scrollbar'
 import { Popover } from 'element-ui';
+
 import {
      Tabs, 
      TabPane, 
@@ -295,6 +297,7 @@ import {
 } from '@/components'
 import jwtDecode from 'jwt-decode'
 import EventBus from './EventBus'
+
 export default {
     components: {
         Card,
@@ -541,6 +544,16 @@ export default {
                     }, 2500);
                 }
             })
+        },
+        clipboardSuccessHandler(){
+            this.modals.alert.type = 'modal-success'
+                    this.modals.alert.icon = 'ui-1_check'
+                    this.modals.alert.message = 'Copiado.'
+                    this.modals.alert.show = true
+                    this.modals.modal1 = false
+                    setTimeout(() => {
+                        this.modals.alert.show = false
+                    }, 1500);
         }
     },
     mounted() {

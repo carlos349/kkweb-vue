@@ -1,5 +1,5 @@
 <template>
-  <div class="section" style="background-image: url('img/intro.jpg');margin-top:-170px;">
+  <div class="section estePs" style="background-image: url('img/intro.jpg');margin-top:-170px;">
     <div class="container">
         <div class="row justify-content-end">
           <div class="col-md-6">

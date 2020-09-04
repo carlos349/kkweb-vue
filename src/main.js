@@ -20,9 +20,10 @@ import App from './App.vue';
 import router from './router';
 import NowUiKit from './plugins/now-ui-kit';
 import VueCarousel from 'vue-carousel';
+import Clipboard from 'v-clipboard'
 
 Vue.config.productionTip = false;
-
+Vue.use(Clipboard)
 Vue.use(NowUiKit);
 Vue.use(VueCarousel);
 
