@@ -372,6 +372,7 @@ export default {
             const token = localStorage.userToken
             if (token) {
                 const decoded = jwtDecode(token)
+                console.log(decoded)
                 this.dataUser.name.value = decoded.name
                 this.dataUser.number = decoded.phone
                 this.dataUser.onlyNumber.value = decoded.phone.split('56 ')[1]
@@ -482,7 +483,15 @@ export default {
                 newPass: this.change.passwordNew.value
             })
             .then(res => {
-                if (res.data.status == 'ok') {
+                if (res.data.status == 'bad') {
+                    this.modals.alert.type = 'modal-danger'
+                    this.modals.alert.icon = 'ui-1_simple-remove'
+                    this.modals.alert.message = 'Contraseña incorrecta.'
+                    this.modals.alert.show = true
+                    setTimeout(() => {
+                        this.modals.alert.show = false
+                    }, 2500);
+                }else if(!res.data.status){
                     this.modals.alert.type = 'modal-success'
                     this.modals.alert.icon = 'ui-1_check'
                     this.modals.alert.message = 'Cambio de contraseña exitoso.'
@@ -493,14 +502,6 @@ export default {
                         this.change.password.value = ''
                         this.change.passwordNew.value = ''
                         this.change.passwordRep.value = ''
-                    }, 2500);
-                }else{
-                    this.modals.alert.type = 'modal-danger'
-                    this.modals.alert.icon = 'ui-1_simple-remove'
-                    this.modals.alert.message = 'Contraseña incorrecta.'
-                    this.modals.alert.show = true
-                    setTimeout(() => {
-                        this.modals.alert.show = false
                     }, 2500);
                 }
                 
@@ -530,6 +531,13 @@ export default {
                         localStorage.setItem('userToken', res.data.token)
                         this.emitMethod(true)
                     }, 2500);
+                    axios.get(endpoints.endpointTarget+'/clients/sendMailChange/'+decoded._id)
+                    .then(res => {
+                        console.log(res)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
                 }else{
                     this.modals.alert.type = 'modal-danger'
                     this.modals.alert.icon = 'ui-1_simple-remove'
