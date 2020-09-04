@@ -44,11 +44,18 @@
                                 v-model="subject" 
                                 addon-right-icon="now-ui-icons text_caps-small"
                             ></fg-input>
-                            <fg-input class="col-12 mb-4" 
-                                placeholder="Mensaje" 
-                                v-model="message" 
-                                addon-right-icon="now-ui-icons ui-1_email-85"
-                            ></fg-input>
+                            <div class="col-12">
+                                <textarea name="" 
+                                    class="form-control " 
+                                    id="" 
+                                    cols="30" 
+                                    rows="10"
+                                    placeholder="Mensaje" 
+                                    v-model="message" 
+                                >
+                                </textarea>
+                            </div>
+                            
                             <n-button class="mt-4 ml-3" type="primary" size="lg" v-on:click="contactClient">Contactar</n-button>
                         </div>
                     </div>

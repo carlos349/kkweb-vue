@@ -50,7 +50,7 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          href="https://www.creative-tim.com/product/vue-now-ui-kit"
+          href="https://kkprettynails.syswa.net/#/agendamientoCliente"
           target="_blank"
         >
           <p>Agendar</p>
@@ -78,7 +78,7 @@
     
       <login data-aos="zoom-in-up" data-aos-duration="1000" v-if="showForm == 'login'">
         <template v-slot:register>
-          <div class="col-md-6">
+          <div class="col-7">
               <h6 class="alignText">
                   <span class="link footer-link span-register" v-on:click="showForm = 'register'">¿No estás registrado?</span>
               </h6>
@@ -87,7 +87,7 @@
       </login>
       <register data-aos="zoom-in-up" data-aos-duration="1000" v-else>
         <template v-slot:login>
-          <div class="col-md-6">
+          <div class="col-7">
               <h6 class="alignText">
                   <span class="link footer-link span-register" v-on:click="showForm = 'login'">¿ya tienes una cuenta?</span>
               </h6>
@@ -181,7 +181,6 @@ import login from '../pages/components/login'
 import register from '../pages/components/register'
 import panelUser from '../pages/components/panelUser'
 import EventBus from '../pages/components/EventBus'
-import vueCustomScrollbar from 'vue-custom-scrollbar'
 import jwtDecode from 'jwt-decode'
 import endpoints, { endpointTarget } from '../../endpoints/endpoints.js'
 import axios from 'axios'
