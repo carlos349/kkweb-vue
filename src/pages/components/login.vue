@@ -62,8 +62,8 @@
                     addon-left-icon="now-ui-icons ui-1_email-85">
             </fg-input>
             <template slot="footer">
+            <n-button type="danger" @click.native="modals.modal2 = false">Cerrar</n-button>    
             <n-button v-on:click="rescue()">Recuperar</n-button>
-            <n-button type="danger" @click.native="modals.modal2 = false">Cerrar</n-button>
             </template>
         </modal>
     </div>

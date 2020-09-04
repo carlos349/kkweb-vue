@@ -713,7 +713,8 @@
     }
     .heightPalPueblo{
         height: 85vh;
-        overflow-y: scroll;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
     .cuadritoGift{
         width: 100% !important;
@@ -741,6 +742,12 @@
     .estePs{
         background:none !important;
         margin-top: -12% !important;
+    }
+    .titlePanel{
+        width: 75% !important;
+    }
+    .tit2{
+        width: 100% !important;
     }
 }
 // .modal-dialog{
@@ -774,4 +781,11 @@
 }
 .modal {
   overflow-y:auto !important;
+}
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    
+    overflow-y: auto;
 }

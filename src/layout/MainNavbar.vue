@@ -97,7 +97,7 @@
   </modal>
   
   <modal :show.sync="modals.modal2"  headerClasses="p-0" bodyClasses="p-0" modal-classes="modal-xl" footer-classes="p-0 m-0">
-    <panel-user class="mt-5">
+    <panel-user>
 
     </panel-user>
   </modal>

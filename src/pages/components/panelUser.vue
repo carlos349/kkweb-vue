@@ -12,20 +12,20 @@
               <card class="ml-4 col-sm-4" style="width: 20rem;box-shadow:none">
 
                 <center>
-                    <h3 class="m-0 text-center mb-3 titlePanel w-75">Panel de usuario</h3>
+                    <h3 class="m-0 text-center mb-3 titlePanel tit2 w-75">Panel de usuario</h3>
                     <img style="width:10rem;" slot="image" class="img-raised rounded-circle" src="img/person_1.jpg" alt="Card image cap">
                 </center>
                 
                 <div class="mt-4 p-2 pt-0" style="background-color: whitesmoke;border-top: 5px solid #afadc2;border-radius: 5px;border-bottom: 15px solid #afadc2;">
                     <center>
                         <h6 style="margin-bottom:0px;">Nombre</h6>
-                        <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;" class="col-sm-12">{{dataUser.name.value}}</badge>
+                        <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;font-weight:400" class="col-sm-12">{{dataUser.name.value}}</badge>
                         <h6 style="margin-bottom:0px;">Número de teléfono</h6>
-                        <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;" class="col-sm-12">{{dataUser.number}}</badge>
+                        <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;font-weight:400" class="col-sm-12">{{dataUser.number}}</badge>
                         <h6 style="margin-bottom:0px;">Correo electrónico</h6>
-                        <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;" class="col-sm-12">{{dataUser.email.value}}</badge>
+                        <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;font-weight:400" class="col-sm-12">{{dataUser.email.value}}</badge>
                         <h6 style="margin-bottom:0px;">Fecha de nacimiento</h6>
-                        <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;" class="col-sm-12">{{dataUser.bornDate}}</badge>
+                        <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;font-weight:400" class="col-sm-12">{{dataUser.bornDate}}</badge>
                     </center>
                     
                     <a class="text-left" style="cursor:pointer;" v-on:click="modals.modal1 = true">Cambiar datos</a><a class="float-right"  style="cursor:pointer;" v-on:click="modals.modal2 = true">Cambiar contraseña</a>
@@ -34,13 +34,14 @@
         
         <div style="border-left: 3px solid #afadc2;" class="row col-sm-8 cardUser pl-4 pr-5 pt-0">
             <div class="col-sm-12 mb-2">
+                <span style="position:absolute;color: white;font-size: 12px;left: 4%;text-align: center;top: -7%;" class="mt-2"> ¡Invita a un amigo y <br> gana descuento!</span>
                 <badge href="#" class="p-0 m-0 hideRefer" type="purple">
-                    <badge href="#" class="m-0" style="font-size:10px" type="purple"><span class="mt-2"> ¡Invita a un amigo y <br> gana descuento!</span></badge>
+                    <badge href="#" class="m-0" style="font-size:10px" type="purple"><span style="color:#afadc2" class="mt-2"> ¡Invita a un amigo y <br> gana descuento!</span></badge>
                 <badge href="#" style="color:black;font-size:14px;padding:15px;padding-left:30px;padding-right:10px" class="m-0" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/#/servicios?refer={{dataUser.linkRefer}} </span> <i v-clipboard:success="clipboardSuccessHandler" v-clipboard="'https://kkprettynails.cl/#/servicios?refer='+dataUser.linkRefer" style="color:#8893f1" class=" ml-5 fas fa-clone"></i></badge> 
                 </badge>
 
                 <badge href="#" class="m-0 col-12 hideReferMobile" style="font-size:10px" type="purple">¡Invita a un amigo y gana descuento! </badge>
-                <badge href="#" style="color:black;font-size:10px;padding:15px;" class="m-0 col-12 hideReferMobile" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/#/servicios?refer={{dataUser.linkRefer}} </span> <i v-clipboard="'https://kkprettynails.cl/#/servicios?refer='+dataUser.linkRefer" style="color:#8893f1" class="ml-1 fas fa-clone"></i></badge> 
+                <badge href="#" style="color:black;font-size:10px;padding:15px;padding-left: 0;font-size: 9px;" class="m-0 col-12 hideReferMobile" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/#/servicios?refer={{dataUser.linkRefer}} </span> <i v-clipboard:success="clipboardSuccessHandler" v-clipboard="'https://kkprettynails.cl/#/servicios?refer='+dataUser.linkRefer" style="color:#8893f1" class="ml-1 fas fa-clone"></i></badge> 
             </div>
             <div class="col-sm-4">
                 <div class="col-sm-12 pt-2 mb-5 bgT bgc1">
@@ -116,19 +117,19 @@
                 </thead>
                 <tbody class="bodyCitas">
                     <tr v-for="date of dataUser.dates" :key="date">
-                        <td style="padding-top:25px;">
+                        <td class="py-1" style="">
                             <p>{{formatDate(date.date)}}</p>
                             
                         </td>
-                        <td style="padding-top:25px;">
-                            <span style="font-size: 1.2em;" class="mt-4" v-for="(service, index) of date.services" :key="service.servicio">
+                        <td class="py-1" style="">
+                            <span style="font-size: 1.2em;"  v-for="(service, index) of date.services" :key="service.servicio">
                                 <b v-if="index <= 0">{{service.servicio}}</b> 
                                 <b v-else> - {{service.servicio}}</b> 
                             </span> 
                         </td>
-                        <td style="padding-top:25px;"><p>{{date.employe}}</p></td>
-                        <td>
-                            <n-button type="danger" class="w-50 mx-auto" size="sm" icon round v-on:click="confirmDate(date.confirmationId)" title="confirmar cita">
+                        <td class="py-1" style=";"><p>{{date.employe}}</p></td>
+                        <td class="py-1">
+                            <n-button type="danger" class="w-50 mx-auto my-0" size="sm" icon round v-on:click="confirmDate(date.confirmationId)" title="confirmar cita">
                                 <i class="now-ui-icons ui-1_check"></i>
                             </n-button>
                         </td>
@@ -165,7 +166,7 @@
             <fg-input
                 class="no-border input-lg col-9"
                 addon-left-icon="now-ui-icons users_circle-08"
-                placeholder="Usuario"
+                placeholder="Numero"
                 type="text"
                 v-model="dataUser.onlyNumber.value"
                 v-on:input="changeFormat()"
@@ -341,7 +342,7 @@ export default {
                 },
             },
             dataUser: {
-                onlyNumber: 0,
+                
                 dates:[],
                 refers:0,
                 linkRefer:'',
@@ -380,6 +381,7 @@ export default {
                 this.dataUser.name.value = decoded.name
                 this.dataUser.number = decoded.phone
                 this.dataUser.onlyNumber.value = decoded.phone.split('56 ')[1]
+                console.log(decoded.phone.split('56 ')[1])
                 this.dataUser.email.value = decoded.mail
                 var date = new Date(decoded.birthday) 
                 this.dataUser.refers = decoded.recomends
@@ -455,8 +457,8 @@ export default {
             this.change.password.validValue = this.change.password.value.length > 7 ? 'Success' : 'Error'
             this.change.passwordNew.validClass = this.change.passwordNew.value.length > 7 ? 'has-success' : 'has-danger'
             this.change.passwordNew.validValue = this.change.passwordNew.value.length > 7 ? 'Success' : 'Error'
-            this.change.passwordRep.validClass = this.change.passwordRep.value == this.change.passwordNew.value ? 'has-success' : 'has-danger'
-            this.change.passwordRep.validValue = this.change.passwordRep.value == this.change.passwordNew.value ? 'Success' : 'Error'
+            this.change.passwordRep.validClass = this.change.passwordRep.value == this.change.passwordNew.value && this.change.passwordRep.value.length > 0 ? 'has-success' : 'has-danger'
+            this.change.passwordRep.validValue = this.change.passwordRep.value == this.change.passwordNew.value && this.change.passwordRep.value.length > 0 ? 'Success' : 'Error'
         },
         verifyRegister(){
             this.dataUser.name.validClass = this.dataUser.name.value.length > 2 ? 'has-success' : 'has-danger'
@@ -490,9 +492,22 @@ export default {
         emitMethod(status) {
             EventBus.$emit('loggedin', status)
         },
-        formatDate(date) {
-            let dateFormat = new Date(date)
-			return dateFormat.getDate()+"-"+(dateFormat.getMonth() + 1)+"-"+dateFormat.getFullYear()
+        formatDate(dateF) {
+            let date = new Date(dateF)
+            if (date.getDate() < 10) {
+                var one = "0" + date.getDate()
+            }
+            else {
+                var one = date.getDate()
+            }
+            if (date.getMonth() < 10 ) {
+                var two = "0" + date.getMonth()
+            }
+            else{
+                var two = date.getMonth()
+            }
+            
+			return one+"-"+two+"-"+date.getFullYear()
         },
         changeP(){
             const token = localStorage.userToken
@@ -500,7 +515,7 @@ export default {
             if (this.change.password.validValue == 'Error' || this.change.passwordNew.validValue == 'Error') {
                 this.modals.alert.type = 'modal-danger'
                 this.modals.alert.icon = 'ui-1_simple-remove'
-                this.modals.alert.message = 'Complete el formulario.'
+                this.modals.alert.message = 'Minimo 8 caracteres.'
                 this.modals.alert.show = true
                 setTimeout(() => {
                     this.modals.alert.show = false
@@ -554,7 +569,7 @@ export default {
             axios.put(endpoints.endpointTarget+'/clients/'+decoded._id, {
                 nombreClienteEditar: this.dataUser.name.value,
                 identidadClienteEditar: this.dataUser.email.value,
-                correoClienteEditar: this.dataUser.onlyNumber.value,
+                correoClienteEditar: '+56 ' + this.dataUser.onlyNumber.value,
                 instagramClienteEditar: ''
             })
             .then(res => {
@@ -567,6 +582,7 @@ export default {
                         this.modals.alert.show = false
                         localStorage.removeItem('userToken')
                         localStorage.setItem('userToken', res.data.token)
+                        this.getToken()
                         this.emitMethod(true)
                     }, 2500);
                     axios.get(endpoints.endpointTarget+'/clients/sendMailChange/'+decoded._id)
