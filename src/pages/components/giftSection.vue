@@ -90,12 +90,12 @@
         </div>
       </div>
       <modal :show.sync="modals.modal1"
-              modal-classes="modal-xl" 
+              modal-classes="modal-lg" 
               header-classes="justify-content-center">
                <div class="row">
-                 <div class="col-sm-6">
+                 <div class="col-sm-6 mt-5">
                   <template   class="back">
-                    <div class="p-5 mt-3" style="background-color:#fbf2f6" >
+                    <div class="p-5 mt-5" style="background-color:#fbf2f6" >
                         <h4 style="margin-top:-5px;" class="text-center">{{servicio}} <br> {{servicio2}} <br> {{servicio3}}</h4>
                         <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> {{precio}}</h4>
                     </div>
@@ -124,7 +124,7 @@
                     
                     <br><br><br>
                     <center>
-                      <div class="cuadritoGift" style="background-color: whitesmoke;padding: 10px;border-radius: 5px;margin-top:-30px;width: 360px;">
+                      <div class="cuadritoGift w-100 text-left" style="background-color: whitesmoke;padding: 10px;border-radius: 5px;margin-top:-30px;width: 360px;">
                         <h5 style="font-weight: bold;">Tus datos</h5>
                         <p style="line-height: 25px;"> Nombre: {{userName}} <br> Correo: {{email}} <br> Número: {{number}}</p>
                         <button type="button" style="margin-left:220px" v-on:click="validateType()" class="btn btn-primary py-2 px-2  proccessGift"> Procesar </button>
@@ -162,8 +162,8 @@
           <b>Tipo de pago:</b> {{typePay}}
         </p>
         <template slot="footer">
-          <n-button v-on:click="createOrder()">Procesar</n-button>
-          <n-button type="danger" @click.native="modals.modal2 = false">Cancelar</n-button>
+          <n-button style="background-color:rgb(243, 217, 228);color:#676666" v-on:click="createOrder()">Procesar</n-button>
+          <n-button style="background-color:rgb(245, 245, 245);color:#676666" @click.native="modals.modal2 = false">Cancelar</n-button>
         </template>
       </modal>
 
@@ -177,7 +177,7 @@
         </div>
         <p>Debe seleccionar un tipo de pago</p>
         <template slot="footer">
-          <n-button type="primary" @click.native="modals.modal3 = false">Entendido</n-button>
+          <n-button type="info" @click.native="modals.modal3 = false">Entendido</n-button>
         </template>
       </modal>
 

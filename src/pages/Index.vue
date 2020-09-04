@@ -11,7 +11,7 @@
           <img class="n-logo mt-2" src="img/logokk.png" alt="" />
           <hr style="border-top:solid 2px #605B56;">
           <h3 class="indexTitle" style="display:inline-block;color:#605B56;font-family: 'Prata', serif;font-weight:600;letter-spacing:.2em;">K&KPRETTYNAILS.COM</h3>
-          <n-button type="primary" size="lg">AGENDAR</n-button><n-button type="primary" size="lg" simple>GALERÍA</n-button>
+         <a href="https://kkprettynails.syswa.net/#/agendamientoCliente" target="_blank"><n-button type="primary" size="lg">AGENDAR</n-button></a>  <router-link to="/galeria"><n-button type="primary" size="lg" simple>GALERÍA</n-button></router-link> 
         </div>
       </div>
     </div>
@@ -21,13 +21,13 @@
           <div class="row mt-4">
             <div class="col-md-5">
               <div data-aos="fade-up">
-                <span class="span-numbers">1</span><span class="span-text">Año</span><span class="span-numbers">3</span><span class="span-text">Meses</span><span class="span-numbers">10</span><span class="span-text">Días</span><br>
+                <span class="span-numbers">1 </span><span class="span-text">Año</span><span class="span-numbers"> 3</span><span class="span-text"> Meses</span><span class="span-numbers"> 10</span><span class="span-text"> Días</span><br>
                 <p class="textp-color">Tiempo se servicio</p>
               </div>
             </div>
             <div class="col-md-4">
               <div data-aos="fade-up">
-                <span class="span-numbers">10,644</span><br>
+                <span class="span-numbers">1637</span><br>
                 <p class="textp-color">Seguidores de instagram</p>
               </div>
             </div>
@@ -156,8 +156,31 @@ export default {
     clientsSection,
     [Button.name]: Button
   },
+  data(){
+    return {
+      followers:''
+    }
+  },
   created () {
     AOS.init()
+    this.follows()
+  },
+  methods:{
+    follows(){
+      
+      fetch('https://www.instagram.com/kkprettynails/?__a=1') 
+        .then(function(response) {
+          return response.json();
+        })
+        .catch(error => {
+          console.log(error)
+         
+        })
+        .then(function(myJson) {
+          
+          
+        })
+    }
   }
 };
 </script>

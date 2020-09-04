@@ -63,15 +63,15 @@
         <ul class="list-unstyled fast-links" style="display:block">
           <li class="w-100">
             <i class="fa fa-map-marker-alt" style="color:black;font-size:16px;margin-right:10px;"></i>
-            <a href="https://goo.gl/maps/GhvcDBH1ppBDae1KA">Av. Pedro de Valdivia 3474 Caracol Ñuñoa, Local 53-B Ñuñoa, Chile</a>
+            <a href="https://goo.gl/maps/GhvcDBH1ppBDae1KA" target="_blank">Av. Pedro de Valdivia 3474 Caracol Ñuñoa, Local 53-B Ñuñoa, Chile</a>
           </li>
           <li class="w-100">
             <i class="fab fa-whatsapp" style="color:black;font-size:16px;margin-right:10px;"></i>
-            <a href="https://wa.me/56972628949">+56 9 7262 8949</a>
+            <a href="https://wa.me/56972628949" target="_blank">+56 9 7262 8949</a>
           </li>
           <li class="w-100">
             <i class="fa fa-envelope" style="color:black;font-size:16px;margin-right:10px;"></i>
-            <a href="mailto:kkprettynails@gmail.com">kkprettynails@gmail.com</a>
+            <a href="mailto:kkprettynails@gmail.com" target="_blank">kkprettynails@gmail.com</a>
           </li>
         </ul>
       </div>

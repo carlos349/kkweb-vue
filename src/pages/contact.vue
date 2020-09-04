@@ -16,10 +16,14 @@
                     <div class="col-md-6">
                         <div class="card-information-contact">
                             <h3>Información de contacto</h3>
-                            <p>Direción: Av. Pedro de Valdivia 3474 Caracol Ñuñoa, Local 53-B Ñuñoa, Chile</p><br>
-                            <p>Teléfono: +56 9 7262 8949</p><br>
-                            <p>Correo: kkprettynails@gmail.com</p><br>
-                            <p>Instagram: @kkprettynails</p><br>
+                            <p>Direción: <a href="https://goo.gl/maps/GhvcDBH1ppBDae1KA" target="_blank">Av. Pedro de Valdivia 3474 Caracol Ñuñoa, Local 53-B Ñuñoa, Chile</a></p>
+                            <br>
+                            <p>Teléfono: <a href="https://wa.me/56972628949" target="_blank">+56 9 7262 8949</a></p>
+                            <br>
+                            <p>Correo: <a href="mailto:kkprettynails@gmail.com" target="_blank">kkprettynails@gmail.com</a></p>
+                            <br>
+                            <p>Instagram: <a href="https://www.instagram.com/kkprettynails/?hl=es-la" target="_blank">@kkprettynails</a></p>
+                            <br>
                         </div>
                     </div>
                     <div class="col-md-6">

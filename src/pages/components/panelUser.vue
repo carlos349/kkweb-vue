@@ -7,11 +7,12 @@
             <i class="now-ui-icons users_single-02"></i>
         </span>
       <template>
+          
           <div class="row">
-              <card class="ml-4 col-sm-4" style="width: 20rem;padding:1rem;box-shadow:none">
+              <card class="ml-4 col-sm-4" style="width: 20rem;box-shadow:none">
 
                 <center>
-                    <h3 class="m-0 text-center mb-3">Panel de usuario</h3>
+                    <h3 class="m-0 text-center mb-3 titlePanel w-75">Panel de usuario</h3>
                     <img style="width:10rem;" slot="image" class="img-raised rounded-circle" src="img/person_1.jpg" alt="Card image cap">
                 </center>
                 
@@ -24,7 +25,7 @@
                         <h6 style="margin-bottom:0px;">Correo electrónico</h6>
                         <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;" class="col-sm-12">{{dataUser.email.value}}</badge>
                         <h6 style="margin-bottom:0px;">Fecha de nacimiento</h6>
-                        <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;" class="col-sm-12">{{formatDate(dataUser.bornDate)}}</badge>
+                        <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;" class="col-sm-12">{{dataUser.bornDate}}</badge>
                     </center>
                     
                     <a class="text-left" style="cursor:pointer;" v-on:click="modals.modal1 = true">Cambiar datos</a><a class="float-right"  style="cursor:pointer;" v-on:click="modals.modal2 = true">Cambiar contraseña</a>
@@ -35,11 +36,11 @@
             <div class="col-sm-12 mb-2">
                 <badge href="#" class="p-0 m-0 hideRefer" type="purple">
                     <badge href="#" class="m-0" style="font-size:10px" type="purple"><span class="mt-2"> ¡Invita a un amigo y <br> gana descuento!</span></badge>
-                <badge href="#" style="color:black;font-size:14px;padding:15px;padding-left:30px;padding-right:10px" class="m-0" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/#/servicios?refer={{dataUser.linkRefer}} </span> <i v-clipboard:success="clipboardSuccessHandler" v-clipboard="'https://kkprettynails.cl/inicio?refer='+dataUser.linkRefer" style="color:#8893f1" class=" ml-5 fas fa-clone"></i></badge> 
+                <badge href="#" style="color:black;font-size:14px;padding:15px;padding-left:30px;padding-right:10px" class="m-0" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/#/servicios?refer={{dataUser.linkRefer}} </span> <i v-clipboard:success="clipboardSuccessHandler" v-clipboard="'https://kkprettynails.cl/#/servicios?refer='+dataUser.linkRefer" style="color:#8893f1" class=" ml-5 fas fa-clone"></i></badge> 
                 </badge>
 
                 <badge href="#" class="m-0 col-12 hideReferMobile" style="font-size:10px" type="purple">¡Invita a un amigo y gana descuento! </badge>
-                <badge href="#" style="color:black;font-size:10px;padding:15px;" class="m-0 col-12 hideReferMobile" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/inicio?refer={{dataUser.linkRefer}} </span> <i v-clipboard="'https://kkprettynails.cl/inicio?refer='+dataUser.linkRefer" style="color:#8893f1" class="ml-1 fas fa-clone"></i></badge> 
+                <badge href="#" style="color:black;font-size:10px;padding:15px;" class="m-0 col-12 hideReferMobile" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/#/servicios?refer={{dataUser.linkRefer}} </span> <i v-clipboard="'https://kkprettynails.cl/#/servicios?refer='+dataUser.linkRefer" style="color:#8893f1" class="ml-1 fas fa-clone"></i></badge> 
             </div>
             <div class="col-sm-4">
                 <div class="col-sm-12 pt-2 mb-5 bgT bgc1">
@@ -68,8 +69,8 @@
         <span slot="label">
             <i class="now-ui-icons ui-1_calendar-60"></i>
         </span>
-        <h3 class="text-center">Servicios realizados</h3>
-        <vue-custom-scrollbar style="max-height:55vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
+        <h3 class="text-center titlePanel w-25 mx-auto">Servicios realizados</h3>
+        <vue-custom-scrollbar style="height:55vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
             
             <table style="font-size: 12px;" class="table">
                 <thead class="thead-light">
@@ -102,8 +103,8 @@
         <span slot="label">
             <i class="now-ui-icons ui-1_check"></i>
         </span>
-        <h3 class="text-center">Citas por confirmar</h3>
-        <vue-custom-scrollbar style="max-height:55vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
+        <h3 class="text-center titlePanel w-25 mx-auto">Citas por confirmar</h3>
+        <vue-custom-scrollbar style="height:55vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
             <table style="font-size: 12px;" class="table">
                 <thead class="thead-light">
                     <tr>
@@ -380,12 +381,27 @@ export default {
                 this.dataUser.number = decoded.phone
                 this.dataUser.onlyNumber.value = decoded.phone.split('56 ')[1]
                 this.dataUser.email.value = decoded.mail
-                this.dataUser.bornDate = decoded.birthday
+                var date = new Date(decoded.birthday) 
                 this.dataUser.refers = decoded.recomends
                 this.dataUser.linkRefer = decoded._id
                 this.dataUser.services = decoded.historical
                 this.getDates()
-                console.log(this.dataUser.services)
+
+                if (date.getDate() < 10) {
+                    var one = "0" + date.getDate()
+                }
+                else {
+                    var one = date.getDate()
+                }
+                if (date.getMonth() < 10 ) {
+                    var two = "0" + date.getMonth()
+                }
+                else{
+                    var two = date.getMonth()
+                }
+               
+                this.dataUser.bornDate = one+"-"+two+"-"+date.getFullYear()
+                
             }else{
                 this.emitMethod(false)
             }

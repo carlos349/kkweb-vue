@@ -48,12 +48,28 @@
                 <i class="now-ui-icons" :class="modals.alert.icon" style="font-size:30px;"></i>
             </div>
             <p v-if="modals.alert.show" data-aos="zoom-in-up" data-aos-duration="800" class="font-weight:700;">{{modals.alert.message}}</p>
-            <n-button type="primary" size="sm">¿Se te olvido esa vaina?</n-button>
+            <center>
+                <n-button type="default" class="mx-auto" v-on:click="modals.alert.show = false, forget = false" v-if="forget" size="sm">Volver a intentar</n-button>
+                <n-button type="primary" v-if="forget" size="sm" @click.native="modals.modal2 = true, forget = false,modals.alert.show = false">¿Olvidaste tu contraseña?</n-button>
+            </center>
+        </modal>
+
+        <modal :show.sync="modals.modal2" headerClasses="justify-content-center">
+            <h4 slot="header" class="title title-up">Ingresa tu correo</h4>
+            <fg-input class="no-border form-control-lg"
+                    placeholder="Correo.."
+                    v-model="mailRescue"
+                    addon-left-icon="now-ui-icons ui-1_email-85">
+            </fg-input>
+            <template slot="footer">
+            <n-button v-on:click="rescue()">Recuperar</n-button>
+            <n-button type="danger" @click.native="modals.modal2 = false">Cerrar</n-button>
+            </template>
         </modal>
     </div>
 </template>
 <script>
-import endpoints from '../../../endpoints/endpoints.js'
+import endpoints, { endpointTarget } from '../../../endpoints/endpoints.js'
 import axios from 'axios'
 import EventBus from './EventBus'
 import {
@@ -73,13 +89,16 @@ export default {
         return {
             user: '',
             password: '',
+            forget:false,
+            mailRescue:'',
             modals: {
                 alert: {
                     show: false,
                     type: 'modal-danger',
                     icon: 'ui-1_simple-remove',
                     message: 'Esto es un mensaje de alerta'
-                }
+                },
+                modal2: false
             },
             typePass: 'pass'
         }
@@ -116,6 +135,7 @@ export default {
                     this.modals.alert.type = 'modal-danger'
                     this.modals.alert.icon = 'ui-1_simple-remove'
                     this.modals.alert.message = 'Contraseña incorrecta.'
+                    this.forget = true
                     this.modals.alert.show = true
                     
                 }else{
@@ -135,6 +155,34 @@ export default {
         emitMethod(status) {
             EventBus.$emit('loggedin', status)
         },
+        rescue(){
+            axios.put(endpoints.endpointTarget+'/clients/rescuePass/'+this.mailRescue)
+            .then(res => {
+                if (res.data.status == 'ok') {
+                    this.modals.alert.type = 'modal-success'
+                    this.modals.alert.icon = 'ui-1_check'
+                    this.modals.alert.message = 'Verifica tu correo para cambiar tu contraseña.'
+                    this.modals.modal2 = false
+                    this.modals.alert.show = true
+                    setTimeout(() => {
+                        this.modals.alert.show = false
+                    }, 3000);
+                }else{
+                    this.modals.alert.type = 'modal-danger'
+                    this.modals.alert.icon = 'ui-1_simple-remove'
+                    this.modals.alert.message = 'Correo no registrado.'
+                    this.modals.modal2 = false
+                    this.modals.alert.show = true
+                    setTimeout(() => {
+                        this.modals.alert.show = false
+                        this.modals.modal2 = true
+                    }, 2500);
+                }
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+        }
     }
 }
 </script>

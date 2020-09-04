@@ -764,3 +764,11 @@
 .navbar .navbar-toggler{
     margin-right:5px !important;
 }
+.titlePanel{
+    -webkit-box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.3);
+    background-color: #afadc2;
+    z-index: 1000;
+    border-radius: 15px;
+    color: white;
+}

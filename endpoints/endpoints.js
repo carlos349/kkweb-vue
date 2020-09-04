@@ -1,11 +1,13 @@
 const data = {
-    protocol: 'http://',
-    server: 'localhost:4200',
-    serverImg : 'localhost:8080'
+    protocol: 'https://',
+    protocolQ: 'http://',
+    server: 'kkprettynailsback.syswa.net',
+    serverQ: 'localhost:4200',
+    serverImg : 'kkprettynails.cl'
 }
 const endpoints = {
-    endpointTarget: data.protocol+data.server,
-    endpointImg: data.protocol+data.serverImg
+    endpointTarget: data.protocolQ+data.serverQ,
+    endpointImg: data.protocolQ+data.serverImg
 }
 
 module.exports = endpoints
