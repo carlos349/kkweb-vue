@@ -195,7 +195,8 @@ export default {
                     value: ''
                 }
             },
-            typePass: 'pass'
+            typePass: 'pass',
+            refer: this.$route.query.refer
         }
     },
     created () {
@@ -275,6 +276,9 @@ export default {
                 }, 2500);
             }
             else{
+            
+                console.log(this.$route.query.refer)
+                const refer = this.$route.query.refer ? this.refer : ''
                 axios.post(endpoints.endpointTarget+'/clients/registerwithpass', {
                     data: {
                         name: this.register.name.value,
@@ -283,7 +287,8 @@ export default {
                         code: this.register.code,
                         phone: this.register.phone.value,
                         datePicker: this.register.datePicker.value,
-                        password: this.register.password.value
+                        password: this.register.password.value,
+                        referidoId: refer
                     }
                 })
                 .then(res => {
