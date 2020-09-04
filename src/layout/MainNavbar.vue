@@ -95,7 +95,7 @@
     </register>
   </modal>
 
-  <modal :show.sync="modals.modal2" :show-close="false" headerClasses="p-0" bodyClasses="p-0" modal-classes="modal-xl" footer-classes="p-0 m-0">
+  <modal :show.sync="modals.modal2"  headerClasses="p-0" bodyClasses="p-0" modal-classes="modal-xl" footer-classes="p-0 m-0">
     <panel-user>
 
     </panel-user>
@@ -143,13 +143,13 @@ export default {
       showForm: 'login',
       auth: false,
       userName: '',
-      
-
+      refer: this.$route.query.refer
     }
   },
   created () {
     AOS.init()
     this.getToken()
+    this.getRefer()
   },
   methods: {
     getToken(){
@@ -161,6 +161,13 @@ export default {
       }else{
         this.auth = false
         this.userName = ''
+      }
+    },
+    getRefer(){
+      console.log(this.refer)
+      if (this.refer.length > 5) {
+        this.modals.modal1 = true
+        this.showForm = 'register'
       }
     },
     closeSession(){
