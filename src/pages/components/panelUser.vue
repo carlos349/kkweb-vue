@@ -2,7 +2,7 @@
 <div>
   <tabs tabContentClasses="p-0" type="purple">
      
-    <tab-pane class="heightPalPueblo" label="Profile">
+    <tab-pane style="height:560px" class="heightPalPueblo" label="Profile">
         <span slot="label">
             <i class="now-ui-icons users_single-02"></i>
         </span>
@@ -69,7 +69,7 @@
         
       </template>
     </tab-pane>
-    <tab-pane label="Settings">
+    <tab-pane style="height:560px" label="Settings">
         <span slot="label">
             <i class="now-ui-icons ui-1_calendar-60"></i>
         </span>
@@ -103,7 +103,7 @@
             </table>
         </vue-custom-scrollbar>
     </tab-pane>
-    <tab-pane label="Options">
+    <tab-pane style="height:560px" label="Options">
         <span slot="label">
             <i class="now-ui-icons ui-1_check"></i>
         </span>

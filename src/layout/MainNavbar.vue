@@ -10,16 +10,12 @@
     id="heightResponsive"
   >
     <template>
-      <router-link class="navbar-brand" to="/"> 
-          <a
-          class="nav-link"
-          href="https://www.creative-tim.com/product/vue-now-ui-kit"
-          target="_blank"
-          >
-          <img style="width:85px;display:inline-block;margin-right:10px;" src="img/logokk.png" alt="">
-          <p class="responsiveLetterHeader">K&K PRETTY NAILS</p>
-        </a>
-      </router-link>
+      <a href="https://kkprettynails.cl">
+        <img style="width:85px;display:inline-block;margin-right:10px;" src="img/logokk.png" alt="">
+         <p class="responsiveLetterHeader">K&K PRETTY NAILS</p>
+      </a>
+          
+      
     </template>
     <template slot="navbar-menu">
       <li v-on:click="toggler()" class="nav-item color-a">
@@ -165,10 +161,6 @@
           <i class="now-ui-icons" :class="modals.alert.icon" style="font-size:30px;"></i>
       </div>
       <p v-if="modals.alert.show" data-aos="zoom-in-up" data-aos-duration="800" class="font-weight:700;">{{modals.alert.message}}</p>
-      <center>
-          <n-button type="default" class="mx-auto" v-on:click="modals.alert.show = false, forget = false" v-if="forget" size="sm">Volver a intentar</n-button>
-          <n-button type="primary" v-if="forget" size="sm" @click.native="modals.modal2 = true, forget = false,modals.alert.show = false">¿Olvidaste tu contraseña?</n-button>
-      </center>
   </modal>
 
 </div>

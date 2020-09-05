@@ -27,7 +27,7 @@
                     </n-button>
                 </div>
             </div>
-
+            <span style="position:absolute;left: 21%; bottom: -8%;" v-on:click="modals.modal2 = true"  class="link footer-link span-register text-center ml-5" >¿Olvidaste tu contraseña?</span>
             <div class="row ml-2">
                 <div class="card-footer text-center col-5">
                     <button
@@ -35,9 +35,12 @@
                     v-on:click="login"
                     >Ingresar</button
                     >
+                   
                 </div>
+                
                 <slot name="register"></slot>
             </div>
+             
         </card>
         <modal :show.sync="modals.alert.show"
              :class="modals.alert.type"
@@ -49,8 +52,7 @@
             </div>
             <p v-if="modals.alert.show" data-aos="zoom-in-up" data-aos-duration="800" class="font-weight:700;">{{modals.alert.message}}</p>
             <center>
-                <n-button type="default" class="mx-auto" v-on:click="modals.alert.show = false, forget = false" v-if="forget" size="sm">Volver a intentar</n-button>
-                <n-button type="primary" v-if="forget" size="sm" @click.native="modals.modal2 = true, forget = false,modals.alert.show = false">¿Olvidaste tu contraseña?</n-button>
+                
             </center>
         </modal>
 
@@ -89,7 +91,6 @@ export default {
         return {
             user: '',
             password: '',
-            forget:false,
             mailRescue:'',
             modals: {
                 alert: {
@@ -135,7 +136,7 @@ export default {
                     this.modals.alert.type = 'modal-danger'
                     this.modals.alert.icon = 'ui-1_simple-remove'
                     this.modals.alert.message = 'Contraseña incorrecta.'
-                    this.forget = true
+                    
                     this.modals.alert.show = true
                     
                 }else{

@@ -110,7 +110,7 @@
                     <p class="mos2" style="margin-top: -5px;"> {{userName}}, este es el resumen de tu compra:</p>
 
                     <div class="row">
-                      <div class="col-5 mt-3"> <p class=""> <b>Total:</b> $ {{precio}}</p> </div>
+                      <div class="col-5 mt-3"> <p class=""> <b>Total: $ {{precio}}</b></p> </div>
                       <div class="col-7">
                         <select class="form-control pt-1 pb-1" style="height:70%;" v-model="typePay">
                           <option disabled value="">Tipo de pago</option>
@@ -158,7 +158,7 @@
         <h4 slot="header" class="title title-up">Detalles de tu compra</h4>
         <p> 
           <b>Gift card:</b> {{servicio}} {{servicio2}} {{servicio3}} <br>
-          <b>Precio:</b>  {{precio}} <br>
+          <b>Precio: $ {{precio}}</b>  <br>
           <b>Tipo de pago:</b> {{typePay}}
         </p>
         <template slot="footer">

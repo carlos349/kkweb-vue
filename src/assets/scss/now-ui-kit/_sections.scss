@@ -814,3 +814,10 @@ html{
     overflow: scroll; 
     -webkit-overflow-scrolling: touch;
 }
+
+.nav-link.active{
+    background-color: #605b56;
+    padding: 10px;
+    border-radius: 5px;
+    color: white !important;
+}

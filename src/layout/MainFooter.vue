@@ -78,7 +78,7 @@
     </div>
     <div class="copyright-center w-100 mt-5 mb-4">
       <center>
-        <p style="color:black;width:auto" class="mx-auto">Copyright ©{{ year }} Todos los derechos reservados | Desarrollado por <a href="https://syswa.net" style="color:black;">SYSWA</a></p>.
+        <p style="color:black;width:auto" class="mx-auto">Copyright ©{{ year }} Todos los derechos reservados | Desarrollado por <a href="https://syswa.net" target="_blank" style="color:black;">SYSWA</a></p>.
       </center>
     </div>
   </div>

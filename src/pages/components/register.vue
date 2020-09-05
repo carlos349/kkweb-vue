@@ -65,16 +65,18 @@
                     </fg-input>
                 </div>
                 <div class="col-md-5 p-1">
-                    <fg-input class="no-border input-lg w-100" :class="register.datePicker.validClass" 
+                    
+                    <fg-input class="no-border input-lg w-100"  :class="register.datePicker.validClass" 
                         :value="register.datePicker.validValue" 
                         >
-                        <el-date-picker v-model="register.datePicker.value"
-                            popper-class="date-picker-primary"
-                            type="date"
-                            format="dd/MM/yyyy"
-                            placeholder="Fecha de nacimiento"
-                            v-on:change="verifyRegister">
-                        </el-date-picker>
+                        
+                        <flat-pickr v-model="register.datePicker.value"
+                        placeholder="Fecha de nacimiento"
+                        class="form-control no-border input-lg w-100 input-group"
+                        :config="configDatePicker"
+                        @on-change="verifyRegister"
+                        
+                        ></flat-pickr>
                     </fg-input>
                 </div>
                 <div class="col-md-5 p-1">
@@ -136,6 +138,9 @@
     </div>
 </template>
 <script>
+import flatPickr from 'vue-flatpickr-component';
+import 'flatpickr/dist/flatpickr.css';
+import {Spanish} from 'flatpickr/dist/l10n/es.js';
 import endpoints from '../../../endpoints/endpoints.js'
 import EventBus from './EventBus'
 import jwtDecode from 'jwt-decode'
@@ -146,7 +151,7 @@ import {
     Button, 
     FormGroupInput as FgInput,
     Card,
-    Modal
+    Modal,
 } from '@/components'
 import lang from 'element-ui/lib/locale/lang/es'
 import locale from 'element-ui/lib/locale'
@@ -161,7 +166,8 @@ export default {
         FgInput,
         Card,
         Modal,
-        [DatePicker.name]: DatePicker
+        [DatePicker.name]: DatePicker,
+        flatPickr
     },
     data(){
         return {
@@ -172,6 +178,12 @@ export default {
                     icon: 'ui-1_simple-remove',
                     message: 'Esto es un mensaje de alerta'
                 }
+            },
+            configDatePicker: {
+            allowInput: true,
+            dateFormat: 'd-m-Y',
+            locale: Spanish, // locale for this instance only
+                    
             },
             register: {
                 name: {
@@ -241,6 +253,7 @@ export default {
             }
         },
         verifyRegister(){
+            
             this.register.name.validClass = this.register.name.value.length > 2 ? 'has-success' : 'has-danger'
             this.register.name.validValue = this.register.name.value.length > 2 ? 'Success' : 'Error'
             this.register.lastName.validClass = this.register.lastName.value.length > 2 ? 'has-success' : 'has-danger'
