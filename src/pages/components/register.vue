@@ -41,9 +41,9 @@
                         >
                     </fg-input>
                 </div>
-                <div class="col-md-1 col-3 p-0">
+                <div class="col-md-1 col-3 p-0 pt-1 pb-1">
                     <fg-input
-                        class="no-border input-lg w-100"
+                        class="no-border input-lg p-0 w-100"
                         v-model="register.code"
                         readonly
                         >
@@ -65,7 +65,7 @@
                     </fg-input>
                 </div>
                 <div class="col-md-6 p-1">
-                    <fg-input class="no-border input-lg w-100" :class="register.datePicker.validClass" 
+                    <fg-input style="display:none" class="no-border input-lg w-100" :class="register.datePicker.validClass" 
                         :value="register.datePicker.validValue" 
                         >
                         
@@ -76,6 +76,18 @@
                         @on-change="verifyRegister"
                         
                         ></flat-pickr>
+                    </fg-input>
+                    <fg-input class="no-border input-lg w-100" :class="register.datePicker.validClass" 
+                        :value="register.datePicker.validValue" 
+                        >
+                        <el-date-picker v-model="register.datePicker.value"
+                            popper-class="date-picker-primary"
+                            type="date"
+                            format="dd/MM/yyyy"
+                            placeholder="Fecha de nacimiento"
+                            v-on:change="verifyRegister">
+                        </el-date-picker>
+                        
                     </fg-input>
                 </div>
                 <div class="col-md-6 p-1">
@@ -95,7 +107,7 @@
                     <fg-input
                         class="no-border input-lg col-11" id="typePassRe"
                         addon-left-icon="now-ui-icons ui-1_lock-circle-open"
-                        placeholder="Repita la contraseña"
+                        placeholder="Repetir"
                         :class="register.passwordRepite.validClass" 
                         :value="register.passwordRepite.validValue" 
                         v-on:keyup="verifyRegister"

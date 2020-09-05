@@ -10,7 +10,10 @@
                 <h2 style="display:inline-block;color:#000;font-family: 'Prata', serif;font-weight:600;letter-spacing:.2em;margin-top:100px;">NOSOTROS</h2>
             </div>
         </div>
-        <abouut-section></abouut-section>
+        <div id="nosotros">
+            <abouut-section></abouut-section>
+        </div>
+        
         <clients-section></clients-section>
     </div>
 </template>

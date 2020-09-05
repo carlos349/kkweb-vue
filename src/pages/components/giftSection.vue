@@ -110,9 +110,9 @@
                     <p class="mos2" style="margin-top: -5px;"> {{userName}}, este es el resumen de tu compra:</p>
 
                     <div class="row">
-                      <div class="col-5 mt-3"> <p class=""> <b>Total: $ {{precio}}</b></p> </div>
+                      <div class="col-5 mt-3">  <h5 style="font-weight: bold;">Total: $ {{precio}}</h5> </div>
                       <div class="col-7">
-                        <select class="form-control pt-1 pb-1" style="height:70%;" v-model="typePay">
+                        <select class="form-control pt-1 mt-2 pb-1" style="height:70%;" v-model="typePay">
                           <option disabled value="">Tipo de pago</option>
                           <option>Efectivo presencial</option>
                           <option>Crédito presencial</option>
@@ -177,7 +177,7 @@
         </div>
         <p>Debe seleccionar un tipo de pago</p>
         <template slot="footer">
-          <n-button type="info" @click.native="modals.modal3 = false">Entendido</n-button>
+          
         </template>
       </modal>
 
@@ -302,6 +302,9 @@ export default {
         }
         else{
           this.modals.modal3 = true
+          setTimeout(() => {
+            this.modals.modal3 = false
+          }, 2000);
           
         }
       }

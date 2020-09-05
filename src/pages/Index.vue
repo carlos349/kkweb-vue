@@ -177,7 +177,7 @@ export default {
     getFollows(){
       axios.get('https://www.instagram.com/kkprettynails/?__a=1')
       .then(res => {
-        this.followers = res.data.graphql.user.edge_followed_by.count
+        this.followers = new Intl.NumberFormat().format(res.data.graphql.user.edge_followed_by.count)
       }).catch(err => {
         console.log(err)
       })
