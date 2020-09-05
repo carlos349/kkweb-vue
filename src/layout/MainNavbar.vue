@@ -23,8 +23,8 @@
           <p>Inicio</p>
         </router-link>
       </li>
-      <li v-on:click="toggler()" class="nav-item nav-cell">
-        <router-link to="/nosotros" class="nav-link"> 
+      <li v-on:click="toggler()"  class="nav-item nav-cell">
+        <router-link to="/nosotros" :class="active" id="Nosos" class="nav-link"> 
             <p>Nosotros</p>
         </router-link>
       </li>
@@ -218,6 +218,7 @@ export default {
               message: 'Esto es un mensaje de alerta'
           },
       },
+      active:'',
       showForm: 'login',
       auth: false,
       userName: '',
@@ -257,7 +258,7 @@ export default {
       }
     },
     getRefer(){
-      console.log(this.refer)
+      
       if (this.refer) {
         this.modals.modal1 = true
         this.showForm = 'register'
@@ -353,7 +354,7 @@ export default {
       this.emitMethod(false)
     },
     emitMethod(status) {
-      console.log('aja')
+      
       EventBus.$emit('panShow', status)
     },
     toggler(){
@@ -361,6 +362,15 @@ export default {
     }
   },
   mounted() {
+    EventBus.$on('clickAbout', status => {
+      console.log("este" +status)
+      setTimeout(() => {
+          document.getElementById("Nosos").classList.add("active");
+          
+      }, 200);
+     
+      
+    })
     EventBus.$on('loggedin', status => {
       this.getToken()
       this.showForm = 'login'

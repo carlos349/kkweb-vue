@@ -7,7 +7,7 @@
             <p data-aos="fade-up" class="textparra-color" >
             Lo que comenzó como un hobby se fue convirtiendo en una profesión para la fundadora Katriel Capacho por lo que el 24 de abril de 2019 decidimos llevar esto al siguiente nivel creando un local en el cual nos dedicamos no sólo al embellecimiento de las uñas sino al cuidado de las mismas.
             </p>
-            <router-link to="/nosotros#nosotros"><n-button data-aos="fade-up" type="primary" size="lg">IR A NOSOTROS</n-button></router-link> 
+            <router-link to="/nosotros#nosotros"><n-button data-aos="fade-up" v-on:click="emitMethod(true)" type="primary" size="lg">IR A NOSOTROS</n-button></router-link> 
             <p data-aos="fade-up" class="items-about mt-5"><i class="now-ui-icons ui-1_check" style="margin-right:10px;"></i> Perfeccionismo </p>
             <p data-aos="fade-up" class="items-about"><i class="now-ui-icons ui-1_check" style="margin-right:10px;"></i> Empatía </p>
             <p data-aos="fade-up" class="items-about"><i class="now-ui-icons ui-1_check" style="margin-right:10px;"></i> Amabilidad </p>
@@ -22,6 +22,7 @@
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { Button } from '@/components';
+import EventBus from './EventBus'
 
 export default {
     components: {
@@ -29,6 +30,11 @@ export default {
     },
     created () {
         AOS.init()
+    },
+    methods: {
+        emitMethod(status) {
+            EventBus.$emit('clickAbout', status)
+        },
     }
 };
 </script>

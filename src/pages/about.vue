@@ -22,6 +22,8 @@ import abouutSection from './components/abouutSection';
 import clientsSection from './components/clientsSection';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+
+
 export default {
     components: {
         abouutSection,
@@ -34,6 +36,8 @@ export default {
     },
     created () {
         AOS.init()
-    }
+    },
+    
 }
+  
 </script>
