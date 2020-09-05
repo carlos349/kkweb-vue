@@ -35,6 +35,7 @@
         &.active {
             background-color: $white-color;
             border-color: $btn-color;
+            color:gray;
             cursor: not-allowed;
         }
     }

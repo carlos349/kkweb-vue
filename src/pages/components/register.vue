@@ -6,6 +6,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 p-1">
+                    {{register.datePicker.value}}
                     <fg-input
                         class="no-border input-lg w-100"
                         addon-left-icon="now-ui-icons users_circle-08"
@@ -37,11 +38,12 @@
                         :value="register.email.validValue" 
                         v-on:keyup="verifyRegister"
                         placeholder="Correo"
+                        type="email"
                         v-model="register.email.value"
                         >
                     </fg-input>
                 </div>
-                <div class="col-md-1 col-3 p-0 pt-1 pb-1">
+                <div class="col-md-2 col-3 p-0 pt-1 pb-1">
                     <fg-input
                         class="no-border input-lg p-0 w-100"
                         v-model="register.code"
@@ -49,9 +51,9 @@
                         >
                     </fg-input>
                 </div>
-                <div class="col-md-5 col-9 p-1">
+                <div class="col-md-4 col-9 p-1">
                     <fg-input
-                        class="no-border input-lg w-100"
+                        class="no-border input-lg w-100 pr-0"
                         addon-left-icon="now-ui-icons tech_mobile"
                         placeholder="Teléfono"
                         type="text"
@@ -65,24 +67,13 @@
                     </fg-input>
                 </div>
                 <div class="col-md-6 p-1">
-                    <fg-input style="display:none" class="no-border input-lg w-100" :class="register.datePicker.validClass" 
+                   
+                    <fg-input class="no-border input-lg w-100"  type="text" autocomplete="new-password" :class="register.datePicker.validClass" 
                         :value="register.datePicker.validValue" 
                         >
-                        
-                        <flat-pickr v-model="register.datePicker.value"
-                        placeholder="Fecha de nacimiento"
-                        class="form-control no-border input-lg w-100 input-group"
-                        :config="configDatePicker"
-                        @on-change="verifyRegister"
-                        
-                        ></flat-pickr>
-                    </fg-input>
-                    <fg-input class="no-border input-lg w-100" :class="register.datePicker.validClass" 
-                        :value="register.datePicker.validValue" 
-                        >
-                        <el-date-picker v-model="register.datePicker.value"
+                        <el-date-picker  v-model="register.datePicker.value"
                             popper-class="date-picker-primary"
-                            type="date"
+                            
                             format="dd/MM/yyyy"
                             placeholder="Fecha de nacimiento"
                             v-on:change="verifyRegister">
@@ -125,7 +116,7 @@
             </div>
             <div class="row ml-2">
                 <div class="card-footer text-center col-5">
-                    <button
+                    <button :disabled="validR"
                     class="btn btn-primary btn-round btn-block"
                     v-on:click="registerClient"
                     >Registrarme</button
@@ -147,8 +138,7 @@
     </div>
 </template>
 <script>
-import flatPickr from 'vue-flatpickr-component';
-import 'flatpickr/dist/flatpickr.css';
+
 import {Spanish} from 'flatpickr/dist/l10n/es.js';
 import endpoints from '../../../endpoints/endpoints.js'
 import EventBus from './EventBus'
@@ -162,12 +152,7 @@ import {
     Card,
     Modal,
 } from '@/components'
-import lang from 'element-ui/lib/locale/lang/es'
-import locale from 'element-ui/lib/locale'
 import {DatePicker} from 'element-ui'
-
-// configure language
-locale.use(lang)
 
 export default {
     components: {
@@ -176,7 +161,7 @@ export default {
         Card,
         Modal,
         [DatePicker.name]: DatePicker,
-        flatPickr
+        
     },
     data(){
         return {
@@ -188,12 +173,7 @@ export default {
                     message: 'Esto es un mensaje de alerta'
                 }
             },
-            configDatePicker: {
-            allowInput: true,
-            dateFormat: 'd-m-Y',
-            locale: Spanish, // locale for this instance only
-                    
-            },
+            validR:false,
             register: {
                 name: {
                     validClass: '',
@@ -292,7 +272,8 @@ export default {
             this.register.passwordRepite.validClass = this.register.password.value == this.register.passwordRepite.value && this.register.passwordRepite.value.length > 0 ? 'has-success' : 'has-danger'
             this.register.passwordRepite.validValue = this.register.password.value == this.register.passwordRepite.value && this.register.passwordRepite.value.length > 0 ? 'Success' : 'Error'
         },
-        registerClient(){  
+        registerClient(){ 
+            this.validR = true
             if (this.register.name.validValue == 'Error' || this.register.lastName.validValue == 'Error' ||  this.register.email.validValue == 'Error' || this.register.phone.validValue == 'Error' || this.register.datePicker.validValue == 'Error') {
                 this.modals.alert.type = 'modal-danger'
                 this.modals.alert.icon = 'ui-1_simple-remove'
@@ -355,6 +336,14 @@ export default {
                         this.register.datePicker.validClass = 'has-danger'
                         this.register.password.validClass = 'has-danger'
                         this.register.passwordRepite.validClass = 'has-danger'
+                        
+                        this.register.name.validClass = 'Error'
+                        this.register.lastName.validClass = 'Error'
+                        this.register.email.validClass = 'Error'
+                        this.register.phone.validClass = 'Error'
+                        this.register.datePicker.validClass = 'Error'
+                        this.register.password.validClass = 'Error'
+                        this.register.passwordRepite.validClass = 'Error'
                         setTimeout(() => {
                             this.modals.alert.show = false
                             const decoded = jwtDecode(res.data.token)
@@ -366,6 +355,7 @@ export default {
                             }).catch(err => {
                                 console.log(err)
                             })
+                            this.validR =false
                         }, 2500);
                     }else{
                         this.modals.alert.type = 'modal-danger'

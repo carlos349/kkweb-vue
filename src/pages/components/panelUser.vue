@@ -484,11 +484,11 @@ export default {
                 else {
                     var one = date.getDate()
                 }
-                if (date.getMonth() < 10 ) {
-                    var two = "0" + date.getMonth()
+                if (date.getMonth() < 9 ) {
+                    var two = "0" + (date.getMonth() + 1)
                 }
                 else{
-                    var two = date.getMonth()
+                    var two = (date.getMonth() +1)
                 }
                
                 this.dataUser.bornDate = one+"-"+two+"-"+date.getFullYear()
@@ -580,6 +580,7 @@ export default {
             EventBus.$emit('loggedin', status)
         },
         formatDate(dateF) {
+            console.log("maldito" + dateF)
             let date = new Date(dateF)
             if (date.getDate() < 10) {
                 var one = "0" + date.getDate()
@@ -587,11 +588,11 @@ export default {
             else {
                 var one = date.getDate()
             }
-            if (date.getMonth() < 10 ) {
-                var two = "0" + date.getMonth()
+            if (date.getMonth() < 9 ) { 
+                var two = "0" + (date.getMonth() + 1 )
             }
             else{
-                var two = date.getMonth()
+                var two = (date.getMonth() + 1 )
             }
             
 			return one+"-"+two+"-"+date.getFullYear()
