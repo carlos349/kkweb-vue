@@ -675,12 +675,12 @@
   .hideReferMobile{
       display: none;
   }
-  .alignText{
-        margin-top:20%;
-    }
-    .alignTextGift{
-        margin-top:25%;
-    }
+.alignText{
+    margin-top:20%;
+}
+.alignTextGift{
+    margin-top:25%;
+}
 .responsiveLetterHeader{
     display:inline-block;
     color:#605b56;
@@ -729,10 +729,12 @@
         margin-left: 52% !important;
       }
       .alignText{
+        margin-top:32%;
         font-size: 12px;
       }
       .alignTextGift{
         font-size: 11px;
+        margin-top:30%;
       }
       .responsiveLetterHeader{
         font-size:10px !important;
@@ -805,7 +807,7 @@
     }
     .positionSetImg{
         position: absolute !important;
-        top: 38%;
+        top: 33%;
         right: 28%;
     }
 }

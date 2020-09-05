@@ -349,7 +349,7 @@ export default {
     },   
     showPanel(){
       this.modals.modal2 = true
-      this.emitMethod(true)
+      this.emitMethod(false)
     },
     emitMethod(status) {
       console.log('aja')
@@ -364,6 +364,24 @@ export default {
       this.getToken()
       this.showForm = 'login'
       this.modals.modal1 = false
+      this.modals.modal2 = true
+      this.emitMethod(false)
+    })
+    EventBus.$on('haveRefer', statuas => {
+      const token = localStorage.userToken
+      if (token) {
+        this.modals.modal2 = true
+        this.emitMethod(true)
+      }else{
+        this.modals.alert.type = 'modal-success'
+        this.modals.alert.icon = 'ui-1_check'
+        this.modals.alert.message = 'Debes ingresar para obtener el link.'
+        this.modals.alert.show = true
+        setTimeout(() => {
+            this.modals.alert.show = false
+            this.modals.modal1 = true
+        }, 3000);
+      }
     })
   }
 };

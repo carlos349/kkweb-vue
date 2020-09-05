@@ -23,7 +23,7 @@
                 <p style="margin-bottom:44px !important;">
                   Premiamos tu fidelidad y recomendación con un 15% por cada persona que recomiendes en todos los servicios con excepción de los servicios tradicionales.
                 </p>
-                <n-button data-aos="fade-up" type="default" size="lg" disabled>PRÓXIMAMENTE</n-button>
+                <n-button data-aos="fade-up" type="default" size="lg" v-on:click="emitMethod()">Link de referido</n-button>
               </center>
             </div>
           </div>
@@ -47,13 +47,18 @@
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { Button } from '@/components';
-
+import EventBus from './EventBus'
 export default {
   components: {
     [Button.name]: Button
   },
   created () {
     AOS.init()
+  },
+  methods: {
+    emitMethod(){
+      EventBus.$emit('haveRefer', status)
+    }
   }
 };
 </script>

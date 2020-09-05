@@ -41,7 +41,7 @@
                         >
                     </fg-input>
                 </div>
-                <div class="col-md-2 col-3 p-1">
+                <div class="col-md-1 col-3 p-0">
                     <fg-input
                         class="no-border input-lg w-100"
                         v-model="register.code"
@@ -53,7 +53,7 @@
                     <fg-input
                         class="no-border input-lg w-100"
                         addon-left-icon="now-ui-icons tech_mobile"
-                        placeholder="Número de teléfono"
+                        placeholder="Teléfono"
                         type="text"
                         :class="register.phone.validClass" 
                         :value="register.phone.validValue" 
@@ -64,9 +64,8 @@
                         >
                     </fg-input>
                 </div>
-                <div class="col-md-5 p-1">
-                    
-                    <fg-input class="no-border input-lg w-100"  :class="register.datePicker.validClass" 
+                <div class="col-md-6 p-1">
+                    <fg-input class="no-border input-lg w-100" :class="register.datePicker.validClass" 
                         :value="register.datePicker.validValue" 
                         >
                         
@@ -79,7 +78,7 @@
                         ></flat-pickr>
                     </fg-input>
                 </div>
-                <div class="col-md-5 p-1">
+                <div class="col-md-6 p-1">
                     <fg-input
                         class="no-border input-lg w-100" id="typePass" 
                         addon-left-icon="now-ui-icons ui-1_lock-circle-open"
@@ -92,11 +91,9 @@
                         >
                     </fg-input>
                 </div>
-                
-                
-                <div class="col-md-7 p-1 row">
+                <div class="col-md-6 p-1 row">
                     <fg-input
-                        class="no-border input-lg col-10" id="typePassRe"
+                        class="no-border input-lg col-11" id="typePassRe"
                         addon-left-icon="now-ui-icons ui-1_lock-circle-open"
                         placeholder="Repita la contraseña"
                         :class="register.passwordRepite.validClass" 
@@ -106,8 +103,8 @@
                         v-model="register.passwordRepite.value"
                         >
                     </fg-input>
-                    <div class="col-2 p-0">
-                        <n-button type="primary" icon round style="margin-top:3px;margin-right:20px" v-on:click="typePassChange()">
+                    <div class="col-1 p-0">
+                        <n-button type="primary" icon round style="margin-top:3px;margin-left:-30px:float:left;" v-on:click="typePassChange()">
                             <i class="fa fa-eye eyesPassword text-white w-100" v-if="typePass == 'pass'"></i>
                             <i class="fa fa-eye-slash eyesPassword text-white w-100" v-else></i>
                         </n-button>
@@ -327,7 +324,6 @@ export default {
                 })
                 .then(res => {
                     if (res.data.status != 'client already exist') {
-                        
                         this.modals.alert.type = 'modal-success'
                         this.modals.alert.icon = 'ui-1_check'
                         this.modals.alert.message = 'Registro exitoso. Bienvenido a KK PRETTY NAILS.'
@@ -350,11 +346,15 @@ export default {
                         setTimeout(() => {
                             this.modals.alert.show = false
                             const decoded = jwtDecode(res.data.token)
-                            console.log(decoded)
                             localStorage.setItem('userToken', res.data.token)
                             this.emitMethod(true)
+                            axios.get(endpoints.endpointTarget+'/clients/sendMailRegister/'+decoded._id)
+                            .then(res => {
+                                console.log(res)
+                            }).catch(err => {
+                                console.log(err)
+                            })
                         }, 2500);
-                        
                     }else{
                         this.modals.alert.type = 'modal-danger'
                         this.modals.alert.icon = 'ui-1_simple-remove'

@@ -74,7 +74,7 @@
             <i class="now-ui-icons ui-1_calendar-60"></i>
         </span>
         <h3 class="text-center titlePanel w-25 mx-auto">Servicios realizados</h3>
-        <vue-custom-scrollbar style="height:55vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
+        <vue-custom-scrollbar style="height:75vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
             
             <table style="font-size: 12px;" class="table">
                 <thead class="thead-light">
@@ -108,7 +108,7 @@
             <i class="now-ui-icons ui-1_check"></i>
         </span>
         <h3 class="text-center titlePanel w-25 mx-auto">Citas por confirmar</h3>
-        <vue-custom-scrollbar style="height:55vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
+        <vue-custom-scrollbar style="height:75vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
             <table style="font-size: 12px;" class="table">
                 <thead class="thead-light">
                     <tr>
@@ -216,10 +216,7 @@
                 placeholder="Antigua contraseña"
                 type="password"
                 v-model="change.password.value"
-                v-on:keyup="verifyRegisterChange"
-                :class="change.password.validClass" 
-                :value="change.password.validValue" 
-                >
+            >
             </fg-input>
             <div class="col-2">
                 <n-button type="primary" icon round style="margin-top:3px;" v-on:click="typePassChange()">
@@ -546,8 +543,6 @@ export default {
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
         },
         verifyRegisterChange(){
-            this.change.password.validClass = this.change.password.value.length > 7 ? 'has-success' : 'has-danger'
-            this.change.password.validValue = this.change.password.value.length > 7 ? 'Success' : 'Error'
             this.change.passwordNew.validClass = this.change.passwordNew.value.length > 7 ? 'has-success' : 'has-danger'
             this.change.passwordNew.validValue = this.change.passwordNew.value.length > 7 ? 'Success' : 'Error'
             this.change.passwordRep.validClass = this.change.passwordRep.value == this.change.passwordNew.value && this.change.passwordRep.value.length > 0 ? 'has-success' : 'has-danger'
@@ -605,7 +600,7 @@ export default {
         changeP(){
             const token = localStorage.userToken
             const decoded = jwtDecode(token)
-            if (this.change.password.validValue == 'Error' || this.change.passwordNew.validValue == 'Error') {
+            if (this.change.passwordNew.validValue == 'Error') {
                 this.modals.alert.type = 'modal-danger'
                 this.modals.alert.icon = 'ui-1_simple-remove'
                 this.modals.alert.message = 'Minimo 8 caracteres.'
@@ -700,13 +695,13 @@ export default {
         },
         clipboardSuccessHandler(){
             this.modals.alert.type = 'modal-success'
-                    this.modals.alert.icon = 'ui-1_check'
-                    this.modals.alert.message = 'Copiado.'
-                    this.modals.alert.show = true
-                    this.modals.modal1 = false
-                    setTimeout(() => {
-                        this.modals.alert.show = false
-                    }, 1500);
+            this.modals.alert.icon = 'ui-1_check'
+            this.modals.alert.message = 'Copiado.'
+            this.modals.alert.show = true
+            this.modals.modal1 = false
+            setTimeout(() => {
+                this.modals.alert.show = false
+            }, 1500);
         },
         Copy(){
             this.$clipboard(this.dataUser.linkRefer)
@@ -715,8 +710,10 @@ export default {
     },
     mounted() {
         EventBus.$on('panShow', status => {
-            console.log(status)
             this.getToken()
+            if (status) {
+                this.Copy()
+            }
         })
     }
 }
