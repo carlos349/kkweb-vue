@@ -115,7 +115,7 @@ export default {
         },
         login(){
             axios.post(endpoints.endpointTarget+'/clients/loginClient', {
-                user: this.user,
+                user: this.user.toLowerCase(),
                 pass: this.password
             })
             .then(res => {

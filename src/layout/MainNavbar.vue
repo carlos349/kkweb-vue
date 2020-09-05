@@ -22,32 +22,32 @@
       </router-link>
     </template>
     <template slot="navbar-menu">
-      <li class="nav-item color-a">
+      <li v-on:click="toggler()" class="nav-item color-a">
         <router-link to="/" class="nav-link"> 
           <p>Inicio</p>
         </router-link>
       </li>
-      <li class="nav-item">
+      <li v-on:click="toggler()" class="nav-item nav-cell">
         <router-link to="/nosotros" class="nav-link"> 
             <p>Nosotros</p>
         </router-link>
       </li>
-      <li class="nav-item">
+      <li v-on:click="toggler()" class="nav-item nav-cell">
         <router-link to="/servicios" class="nav-link"> 
             <p>Servicios</p>
         </router-link>
       </li>
-      <li class="nav-item">
+      <li v-on:click="toggler()" class="nav-item nav-cell">
         <router-link to="/galeria" class="nav-link"> 
             <p>Galería</p>
         </router-link>
       </li>
-      <li class="nav-item">
+      <li v-on:click="toggler()" class="nav-item nav-cell">
         <router-link to="/contacto" class="nav-link">
             <p>Contacto</p>
         </router-link>
       </li>
-      <li class="nav-item">
+      <li v-on:click="toggler()" class="nav-item nav-cell">
         <a
           class="nav-link"
           href="https://kkprettynails.syswa.net/#/agendamientoCliente"
@@ -58,7 +58,7 @@
       </li>
       <li class="nav-item" v-if="auth">
         <drop-down tag="li" class="nav-item" :title="userName">
-          <b class="dropdown-item" v-on:click="showPanel()">Panel de control</b>
+          <b class="dropdown-item" v-on:click="showPanel()">Perfil de usuario</b>
           <b class="dropdown-item" v-on:click="closeSession">Cerrar sesión</b>
         </drop-down>
       </li>
@@ -362,6 +362,9 @@ export default {
     emitMethod(status) {
       console.log('aja')
       EventBus.$emit('panShow', status)
+    },
+    toggler(){
+      document.getElementById("toggler").click()
     }
   },
   mounted() {

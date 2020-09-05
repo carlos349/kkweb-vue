@@ -1,6 +1,6 @@
 <template>
     <div>
-        <card type="login" class="heightPalPueblo" style="padding: 0px;" plain>
+        <card type="login"  style="padding: 0px;" plain>
             <div class="w-25 mx-auto mb-4">
                 <img class="w-100" src="img/logokk.png" alt="">
             </div>

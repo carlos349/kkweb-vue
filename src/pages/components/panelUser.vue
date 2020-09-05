@@ -12,7 +12,7 @@
               <card class="ml-4 col-sm-4" style="width: 20rem;box-shadow:none">
 
                 <center>
-                    <h3 class="m-0 text-center mb-3 titlePanel tit2 w-75">Panel de usuario</h3>
+                    <h3 class="m-0 text-center mb-3 titlePanel tit2 w-75">Perfil de usuario</h3>
                     <img style="width:10rem;" slot="image" class="img-raised rounded-circle" :src="'img/'+dataUser.img" alt="Card image cap">
                     <n-button class="positionSetImg" type="primary" icon style="border-radius:50%;" v-on:click="openImgModal">
                         <i class="now-ui-icons media-1_album"></i>
@@ -21,7 +21,7 @@
                 
                 <div class="mt-4 p-2 pt-0" style="background-color: whitesmoke;border-top: 5px solid #afadc2;border-radius: 5px;border-bottom: 15px solid #afadc2;">
                     <center>
-                        <h6 style="margin-bottom:0px;">Nombre y Apellido</h6>
+                        <h6 style="margin-bottom:0px;">Nombre y apellido</h6>
                         <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;font-weight:400" class="col-sm-12">{{dataUser.name.value}}</badge>
                         <h6 style="margin-bottom:0px;">Número de teléfono</h6>
                         <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;font-weight:400" class="col-sm-12">{{dataUser.number}}</badge>
@@ -40,11 +40,11 @@
                 <span style="position:absolute;color: white;font-size: 12px;left: 4%;text-align: center;top: -7%;" class="mt-2"> ¡Invita a un amigo y <br> gana descuento!</span>
                 <badge href="#" class="p-0 m-0 hideRefer" type="purple">
                     <badge href="#" class="m-0" style="font-size:10px" type="purple"><span style="color:#afadc2" class="mt-2"> ¡Invita a un amigo y <br> gana descuento!</span></badge>
-                <badge href="#" style="color:black;font-size:14px;padding:15px;padding-left:30px;padding-right:10px" class="m-0" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/#/servicios?refer={{dataUser.linkRefer}} </span> <i v-clipboard:success="clipboardSuccessHandler" v-clipboard="'https://kkprettynails.cl/#/servicios?refer='+dataUser.linkRefer" style="color:#8893f1" class=" ml-5 fas fa-clone"></i></badge> 
+                <badge href="#" style="color:black;font-size:14px;padding:15px;padding-left:30px;padding-right:10px" class="m-0" type="white"> <span style="text-transform:none" id="referidoSys" >{{dataUser.linkRefer}} </span> <i v-on:click="Copy()" style="color:#8893f1" class=" ml-5 fas fa-clone"></i></badge> 
                 </badge>
 
                 <badge href="#" class="m-0 col-12 hideReferMobile" style="font-size:10px" type="purple">¡Invita a un amigo y gana descuento! </badge>
-                <badge href="#" style="color:black;font-size:10px;padding:15px;padding-left: 0;font-size: 9px;" class="m-0 col-12 hideReferMobile" type="white"> <span style="text-transform:none" id="referidoSys" >https://kkprettynails.cl/#/servicios?refer={{dataUser.linkRefer}} </span> <i v-clipboard:success="clipboardSuccessHandler" v-clipboard="'https://kkprettynails.cl/#/servicios?refer='+dataUser.linkRefer" style="color:#8893f1" class="ml-1 fas fa-clone"></i></badge> 
+                <badge href="#" style="color:black;font-size:10px;padding:15px;padding-left: 0;font-size: 9px;" class="m-0 col-12 hideReferMobile" type="white"> <span style="text-transform:none" id="referidoSys" >{{dataUser.linkRefer}} </span> <i v-on:click="Copy()"  style="color:#8893f1; " class="ml-1 fas fa-clone"></i></badge> 
             </div>
             <div class="col-sm-4">
                 <div class="col-sm-12 pt-2 mb-5 bgT bgc1">
@@ -475,7 +475,7 @@ export default {
                 this.dataUser.img = decoded.userImage
                 var date = new Date(decoded.birthday) 
                 this.dataUser.refers = decoded.recomends
-                this.dataUser.linkRefer = decoded._id
+                this.dataUser.linkRefer = 'https://kkprettynails.cl/#/servicios?refer=' + decoded._id
                 this.dataUser.services = decoded.historical
                 this.getDates()
 
@@ -668,6 +668,7 @@ export default {
                     this.modals.alert.show = true
                     setTimeout(() => {
                         this.modals.alert.show = false
+                        this.modals.modal1 = false
                         localStorage.removeItem('userToken')
                         localStorage.setItem('userToken', res.data.token)
                         this.getToken()
@@ -701,6 +702,10 @@ export default {
             setTimeout(() => {
                 this.modals.alert.show = false
             }, 1500);
+        },
+        Copy(){
+            this.$clipboard(this.dataUser.linkRefer)
+            this.clipboardSuccessHandler()
         }
     },
     mounted() {
