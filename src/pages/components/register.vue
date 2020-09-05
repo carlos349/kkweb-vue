@@ -312,7 +312,6 @@ export default {
                 })
                 .then(res => {
                     if (res.data.status != 'client already exist') {
-                        
                         this.modals.alert.type = 'modal-success'
                         this.modals.alert.icon = 'ui-1_check'
                         this.modals.alert.message = 'Registro exitoso. Bienvenido a KK PRETTY NAILS.'
@@ -335,11 +334,15 @@ export default {
                         setTimeout(() => {
                             this.modals.alert.show = false
                             const decoded = jwtDecode(res.data.token)
-                            console.log(decoded)
                             localStorage.setItem('userToken', res.data.token)
                             this.emitMethod(true)
+                            axios.get(endpoints.endpointTarget+'/clients/sendMailRegister/'+decoded._id)
+                            .then(res => {
+                                console.log(res)
+                            }).catch(err => {
+                                console.log(err)
+                            })
                         }, 2500);
-                        
                     }else{
                         this.modals.alert.type = 'modal-danger'
                         this.modals.alert.icon = 'ui-1_simple-remove'

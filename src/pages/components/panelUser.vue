@@ -74,7 +74,7 @@
             <i class="now-ui-icons ui-1_calendar-60"></i>
         </span>
         <h3 class="text-center titlePanel w-25 mx-auto">Servicios realizados</h3>
-        <vue-custom-scrollbar style="height:55vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
+        <vue-custom-scrollbar style="height:75vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
             
             <table style="font-size: 12px;" class="table">
                 <thead class="thead-light">
@@ -108,7 +108,7 @@
             <i class="now-ui-icons ui-1_check"></i>
         </span>
         <h3 class="text-center titlePanel w-25 mx-auto">Citas por confirmar</h3>
-        <vue-custom-scrollbar style="height:55vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
+        <vue-custom-scrollbar style="height:75vh;overflow:hidden;overflow-x: hidden;overflow-y:scroll;margin-top:-20px;">
             <table style="font-size: 12px;" class="table">
                 <thead class="thead-light">
                     <tr>
@@ -712,7 +712,7 @@ export default {
         EventBus.$on('panShow', status => {
             this.getToken()
             if (status) {
-                
+                this.Copy()
             }
         })
     }

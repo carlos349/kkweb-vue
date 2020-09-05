@@ -52,10 +52,10 @@ $primary-states-color:       lighten($primary-color, 6%) !default;
 $primary-color-opacity:      rgba(96, 91, 86, .3) !default;
 $primary-color-alert:        rgba(96, 91, 86, .8) !default;
 
-$success-color:              #2cd483 !default;
+$success-color:              #79cbca !default;
 $success-states-color:       lighten($success-color, 6%) !default;
-$success-color-opacity:      rgba(24, 206, 15, .3) !default;
-$success-color-alert:        rgba(24, 206, 15, .8) !default;
+$success-color-opacity:      rgba(121, 203, 202, .3) !default;
+$success-color-alert:        rgba(121, 203, 202, .8) !default;
 
 $info-color:                 #2CA8FF !default;
 $info-states-color:          lighten($info-color, 6%) !default;
@@ -67,10 +67,10 @@ $warning-states-color:       lighten($warning-color, 6%) !default;
 $warning-color-opacity:      rgba(255, 178, 54, .3) !default;
 $warning-color-alert:        rgba(255, 178, 54, .8) !default;
 
-$danger-color:               #9b1233 !default;
+$danger-color:               #e684ae !default;
 $danger-states-color:        lighten($danger-color, 6%) !default;
-$danger-color-opacity:       rgba(255, 54, 54, .3) !default;
-$danger-color-alert:         rgba(255, 54, 54, .8) !default;
+$danger-color-opacity:       rgba(230, 132, 174, .3) !default;
+$danger-color-alert:         rgba(230, 132, 174, .8) !default;
 
 $purple-color:               #afadc2 !default;
 

@@ -357,7 +357,7 @@ export default {
     },   
     showPanel(){
       this.modals.modal2 = true
-      this.emitMethod(true)
+      this.emitMethod(false)
     },
     emitMethod(status) {
       console.log('aja')
