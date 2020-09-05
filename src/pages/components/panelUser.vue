@@ -21,7 +21,7 @@
                 
                 <div class="mt-4 p-2 pt-0" style="background-color: whitesmoke;border-top: 5px solid #afadc2;border-radius: 5px;border-bottom: 15px solid #afadc2;">
                     <center>
-                        <h6 style="margin-bottom:0px;">Nombre</h6>
+                        <h6 style="margin-bottom:0px;">Nombre y Apellido</h6>
                         <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;font-weight:400" class="col-sm-12">{{dataUser.name.value}}</badge>
                         <h6 style="margin-bottom:0px;">Número de teléfono</h6>
                         <badge href="#" type="white" style="color:black;font-size:12px;text-transform:none;margin-bottom:10px;font-weight:400" class="col-sm-12">{{dataUser.number}}</badge>
@@ -216,10 +216,7 @@
                 placeholder="Antigua contraseña"
                 type="password"
                 v-model="change.password.value"
-                v-on:keyup="verifyRegisterChange"
-                :class="change.password.validClass" 
-                :value="change.password.validValue" 
-                >
+            >
             </fg-input>
             <div class="col-2">
                 <n-button type="primary" icon round style="margin-top:3px;" v-on:click="typePassChange()">
@@ -546,8 +543,6 @@ export default {
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
         },
         verifyRegisterChange(){
-            this.change.password.validClass = this.change.password.value.length > 7 ? 'has-success' : 'has-danger'
-            this.change.password.validValue = this.change.password.value.length > 7 ? 'Success' : 'Error'
             this.change.passwordNew.validClass = this.change.passwordNew.value.length > 7 ? 'has-success' : 'has-danger'
             this.change.passwordNew.validValue = this.change.passwordNew.value.length > 7 ? 'Success' : 'Error'
             this.change.passwordRep.validClass = this.change.passwordRep.value == this.change.passwordNew.value && this.change.passwordRep.value.length > 0 ? 'has-success' : 'has-danger'
@@ -605,7 +600,7 @@ export default {
         changeP(){
             const token = localStorage.userToken
             const decoded = jwtDecode(token)
-            if (this.change.password.validValue == 'Error' || this.change.passwordNew.validValue == 'Error') {
+            if (this.change.passwordNew.validValue == 'Error') {
                 this.modals.alert.type = 'modal-danger'
                 this.modals.alert.icon = 'ui-1_simple-remove'
                 this.modals.alert.message = 'Minimo 8 caracteres.'
@@ -699,19 +694,21 @@ export default {
         },
         clipboardSuccessHandler(){
             this.modals.alert.type = 'modal-success'
-                    this.modals.alert.icon = 'ui-1_check'
-                    this.modals.alert.message = 'Copiado.'
-                    this.modals.alert.show = true
-                    this.modals.modal1 = false
-                    setTimeout(() => {
-                        this.modals.alert.show = false
-                    }, 1500);
+            this.modals.alert.icon = 'ui-1_check'
+            this.modals.alert.message = 'Copiado.'
+            this.modals.alert.show = true
+            this.modals.modal1 = false
+            setTimeout(() => {
+                this.modals.alert.show = false
+            }, 1500);
         }
     },
     mounted() {
         EventBus.$on('panShow', status => {
-            console.log(status)
             this.getToken()
+            if (status) {
+                
+            }
         })
     }
 }
