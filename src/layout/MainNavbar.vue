@@ -10,10 +10,13 @@
     id="heightResponsive"
   >
     <template>
-      <a href="https://kkprettynails.cl">
-        <img style="width:85px;display:inline-block;margin-right:10px;" src="img/logokk.png" alt="">
-         <p class="responsiveLetterHeader">K&K PRETTY NAILS</p>
-      </a>
+      <router-link to="/">
+        <a>
+          <img style="width:85px;display:inline-block;margin-right:10px;" src="img/logokk.png" alt="">
+          <p class="responsiveLetterHeader">K&K PRETTY NAILS</p>
+        </a>
+      </router-link>
+      
           
       
     </template>
