@@ -1,10 +1,9 @@
 <template>
 <div>
-  <tabs tabContentClasses="p-0" type="purple">
-     
+  <tabs tabContentClasses="p-0" type="purple"> 
     <tab-pane style="height:560px" class="heightPalPueblo" label="Profile">
         <span slot="label">
-            <i class="now-ui-icons users_single-02"></i>
+            <i id="cHere" class="now-ui-icons users_single-02"></i>
         </span>
       <template>
           

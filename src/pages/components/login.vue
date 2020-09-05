@@ -27,7 +27,7 @@
                     </n-button>
                 </div>
             </div>
-            <span style="position:absolute;left: 21%; bottom: -8%;" v-on:click="modals.modal2 = true"  class="link footer-link span-register text-center ml-5" >¿Olvidaste tu contraseña?</span>
+            <span style="position:absolute;left: 21%; bottom: -8%;" v-on:click="modals.modal2 = true"  class="link forgotText footer-link span-register text-center ml-5" >¿Olvidaste tu contraseña?</span>
             <div class="row ml-2">
                 <div class="card-footer text-center col-5">
                     <button
@@ -65,7 +65,7 @@
             </fg-input>
             <template slot="footer">
             <n-button type="danger" @click.native="modals.modal2 = false">Cerrar</n-button>    
-            <n-button v-on:click="rescue()">Recuperar</n-button>
+            <n-button type="success" v-on:click="rescue()">Recuperar</n-button>
             </template>
         </modal>
     </div>
@@ -131,6 +131,7 @@ export default {
                         this.modals.alert.show = false
                         localStorage.setItem('userToken', res.data.token)
                         this.emitMethod(true)
+                        document.getElementById("cHere").click()
                     }, 2500);
                 }else if(res.data.status == 'pass incorrecto'){
                     this.modals.alert.type = 'modal-danger'

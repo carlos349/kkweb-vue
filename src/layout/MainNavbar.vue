@@ -349,6 +349,7 @@ export default {
     },   
     showPanel(){
       this.modals.modal2 = true
+      document.getElementById("cHere").click()
       this.emitMethod(false)
     },
     emitMethod(status) {
