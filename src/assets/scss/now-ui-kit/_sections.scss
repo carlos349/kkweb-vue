@@ -809,3 +809,8 @@
         right: 28%;
     }
 }
+
+html{ 
+    overflow: scroll; 
+    -webkit-overflow-scrolling: touch;
+}

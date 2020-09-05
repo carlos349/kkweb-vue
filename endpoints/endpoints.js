@@ -2,7 +2,7 @@ const data = {
     protocol: 'https://',
     protocolQ: 'http://',
     server: 'kkprettynailsback.syswa.net',
-    serverQ: 'localhost:4200',
+    serverQ: '192.168.1.104:4200',
     serverImg : 'kkprettynails.cl'
 }
 const endpoints = {

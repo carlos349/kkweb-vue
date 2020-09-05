@@ -1,7 +1,7 @@
 <template>
   <nav :class="classes" class="navbar">
     <div class="container-fluid">
-      <div class="navbar-translate">
+      <div id="toggler" class="navbar-translate">
         <slot v-bind="slotData"></slot>
         <navbar-toggle-button
           :toggled="showMenu"
