@@ -59,7 +59,7 @@
         <modal :show.sync="modals.modal2" headerClasses="justify-content-center">
             <h4 slot="header" class="title title-up">Ingresa tu correo</h4>
             <fg-input class="no-border form-control-lg"
-                    placeholder="Correo.."
+                    placeholder="Correo..."
                     v-model="mailRescue"
                     addon-left-icon="now-ui-icons ui-1_email-85">
             </fg-input>
