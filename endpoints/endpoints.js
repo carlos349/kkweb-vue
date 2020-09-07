@@ -6,8 +6,8 @@ const data = {
     serverImg : 'kkprettynails.cl'
 }
 const endpoints = {
-    endpointTarget: data.protocolQ+data.serverQ,
-    endpointImg: data.protocolQ+data.serverImg
+    endpointTarget: data.protocol+data.server,
+    endpointImg: data.protocol+data.serverImg
 }
 
 module.exports = endpoints

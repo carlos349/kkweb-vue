@@ -6,7 +6,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 p-1">
-                    {{register.datePicker.value}}
+                    
                     <fg-input
                         class="no-border input-lg w-100"
                         addon-left-icon="now-ui-icons users_circle-08"
@@ -281,23 +281,26 @@ export default {
                 this.modals.alert.show = true
                 setTimeout(() => {
                     this.modals.alert.show = false
+                    this.validR = false
                 }, 2500);
             }
-            else if( this.register.passwordRepite.validValue == 'Error'){
-                this.modals.alert.type = 'modal-danger'
-                this.modals.alert.icon = 'ui-1_simple-remove'
-                this.modals.alert.message = 'Las contraseñas deben coincidir.'
-                this.modals.alert.show = true
-                setTimeout(() => {
-                    this.modals.alert.show = false
-                }, 2500);
-            }else if(this.register.password.validValue == 'Error'){
+            else if(this.register.password.validValue == 'Error'){
                 this.modals.alert.type = 'modal-danger'
                 this.modals.alert.icon = 'ui-1_simple-remove'
                 this.modals.alert.message = 'Mínimo 8 caracteres.'
                 this.modals.alert.show = true
                 setTimeout(() => {
                     this.modals.alert.show = false
+                    this.validR = false
+                }, 2500);
+            }else if( this.register.passwordRepite.validValue == 'Error'){
+                this.modals.alert.type = 'modal-danger'
+                this.modals.alert.icon = 'ui-1_simple-remove'
+                this.modals.alert.message = 'Las contraseñas deben coincidir.'
+                this.modals.alert.show = true
+                setTimeout(() => {
+                    this.modals.alert.show = false
+                    this.validR = false
                 }, 2500);
             }else{
             
@@ -364,7 +367,9 @@ export default {
                         this.modals.alert.show = true
                         setTimeout(() => {
                             this.modals.alert.show = false
+                            this.validR = false
                         }, 2500);
+                        
                     }
                 })
             }
