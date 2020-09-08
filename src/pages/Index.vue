@@ -22,7 +22,7 @@
             <div class="col-md-5">
               <div data-aos="fade-up">
                 <span class="span-numbers">{{years}} </span><span class="span-text">Año</span><span class="span-numbers"> {{mounths}}</span><span class="span-text"> Meses</span><span class="span-numbers"> {{days}}</span><span class="span-text"> Días</span><br>
-                <p class="textp-color">Tiempo se servicio</p>
+                <p class="textp-color">Tiempo de servicio</p>
               </div>
             </div>
             <div class="col-md-4">
