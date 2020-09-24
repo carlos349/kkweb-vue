@@ -11,7 +11,7 @@
                 <p >
                   Si quieres agendar con nosotros y este es el primer servicio tendrás automáticamente un 10% de descuento en tu primera atención, con excepción de los servicios tradicionales.
                 </p>
-                <a href="https://kkprettynails.syswa.net/#/agendamientoCliente" target="_blank"> <n-button data-aos="fade-up" type="default" size="lg">AGENDA TU SERVICIO</n-button></a>
+                <a href="http://kkprettynails.syswa.net/#/agendamientoCliente" target="_blank"> <n-button data-aos="fade-up" type="default" size="lg">AGENDA TU SERVICIO</n-button></a>
               </center>
             </div>
           </div>

@@ -142,7 +142,7 @@
                                         <li class="d-flex">
                                             <span>Sin tinte</span>
                                             <span>45 min.</span>
-                                            <span>$15.000</span>
+                                            <span>$13.000</span>
                                         </li>
                                         <li class="d-flex">
                                             <span>Con tinte</span>
