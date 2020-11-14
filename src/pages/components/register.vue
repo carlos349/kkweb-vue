@@ -248,9 +248,10 @@ export default {
             this.register.lastName.validClass = this.register.lastName.value.length > 2 ? 'has-success' : 'has-danger'
             this.register.lastName.validValue = this.register.lastName.value.length > 2 ? 'Success' : 'Error'
             var split = this.register.email.value.split('@')
+            console.log(split.length)
             if (split.length == 2) {
                 var splitTwo = split[1].split('.')
-                if (splitTwo.length == 2) {
+                if (splitTwo.length >= 2) {
                     this.register.email.validClass = 'has-success'
                     this.register.email.validValue = 'Success'
                 }else{
