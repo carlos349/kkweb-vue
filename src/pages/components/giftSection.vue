@@ -107,7 +107,7 @@
                   <div v-if="showFormGift == 'giftPay'" >
                     <h5 class="mt-3" style="font-weight: bold;">Resumen de tu compra</h5>
                     <span class="mos">Confirma tu orden y completa el pago</span>
-                    <p class="mos2" style="margin-top: -5px;"> {{userName}}, este es el resumen de tu compra:</p>
+                    <p class="mos2" style="margin-top: -5px;">  Este es el resumen de tu compra:</p>
 
                     <div class="row">
                       <div class="col-5 mt-3">  <h5 style="font-weight: bold;">Total: $ {{precio}}</h5> </div>
@@ -122,11 +122,44 @@
                       </div>
                     </div>
                     
-                    <br><br><br>
+                    <br>
                     <center>
-                      <div class="cuadritoGift w-100 text-left" style="background-color: whitesmoke;padding: 10px;border-radius: 5px;margin-top:-30px;">
+                      <div class="cuadritoGift w-100 text-left px-2 py-1" style="background-color: whitesmoke;border-radius: 5px;margin-top:-30px;">
                         <h5 style="font-weight: bold;">Tus datos</h5>
-                        <p style="line-height: 25px;"> Nombre: {{userName}} <br> Correo: {{email}} <br> Número: {{number}}</p>
+                        <label class="mt-0 pt-0" for="name">Nombre</label>
+                        <fg-input
+                          class="no-border input-md w-100 mb-0"
+                          addon-left-icon="now-ui-icons users_circle-08"
+                          :class="register.name.validClass" 
+                          :value="register.name.validValue" 
+                          v-on:keyup="verifyRegister"
+                          placeholder="Nombre"
+                          v-model="register.name.value">
+                        </fg-input>
+                        <label class="mt-0 pt-0" for="name">Correo</label>
+                        <fg-input
+                          class="no-border input-md w-100 mb-0"
+                          addon-left-icon="now-ui-icons ui-1_email-85"
+                          :class="register.email.validClass" 
+                          :value="register.email.validValue" 
+                          v-on:keyup="verifyRegister"
+                          placeholder="Correo"
+                          type="email"
+                          v-model="register.email.value">
+                        </fg-input>
+                        <label class="mt-0 pt-0" for="name">Teléfono</label>
+                        <fg-input
+                          class="no-border input-md w-100 mb-0"
+                          addon-left-icon="now-ui-icons tech_mobile"
+                          placeholder="Teléfono"
+                          type="text"
+                          :class="register.phone.validClass" 
+                          :value="register.phone.validValue" 
+                          v-on:keyup="verifyRegister"
+                          v-on:input="changeFormat()"
+                          maxlength="9"
+                          v-model="register.phone.value">
+                        </fg-input>
                         <button type="button" style="margin-left:170px" v-on:click="validateType()" class="btn btn-primary py-2 px-2  proccessGift w-50"> Procesar </button>
                       </div>
                     </center>
@@ -175,7 +208,7 @@
         <div slot="header" class="modal-profile d-flex justify-content-center align-items-center">
           <i class="now-ui-icons ui-1_simple-remove"></i>
         </div>
-        <p>Debe seleccionar un tipo de pago</p>
+        <p>{{message}}</p>
         <template slot="footer">
           
         </template>
@@ -203,7 +236,7 @@ import AOS from 'aos'
 import endpoints from '../../../endpoints/endpoints.js'
 import 'aos/dist/aos.css'
 import VueFlip from 'vue-flip';
-import { Button,Modal } from '@/components';
+import { Button,Modal,FormGroupInput as FgInput, } from '@/components';
 import register from './register';
 import login from './login';
 import jwtDecode from 'jwt-decode'
@@ -214,6 +247,7 @@ export default {
     components: {
         [Button.name]: Button,
         'vue-flip': VueFlip,
+        FgInput,
         Modal,
         register,
         login
@@ -234,7 +268,26 @@ export default {
           typePay:'',
           userName:'',
           number:'',
-          email:''
+          email:'',
+          message: "Debe seleccionar un tipo de pago",
+          register: {
+            name: {
+              validClass: '',
+              validValue: '',
+              value: ''
+            },
+            email: {
+              validClass: '',
+              validValue: '',
+              value: ''
+            },
+            code:'+56',
+            phone: {
+              validClass: '',
+              validValue: '',
+              value: ''
+            }
+          },
         }
     },
     created () {
@@ -247,65 +300,90 @@ export default {
         if (token) {
           this.showFormGift = 'giftPay'
           const decoded = jwtDecode(token)
-          console.log(decoded)
           this.userName = decoded.name
           this.number = decoded.phone
           this.email = decoded.mail
         }else{
-          this.showFormGift = 'login'
+          this.showFormGift = 'giftPay'
           this.userName = ''
         }
       },
       createOrder(){
-        console.log("En serio?")
-        axios.post(endpoints.endpointTarget+'/pedidos', { 
-          cliente:this.userName,
-          identidad:this.email,
-          tipoPago:this.typePay,
-          articulo: this.servicio + " " + this.servicio2 + " " +  this.servicio3,
-          total: "$ "+this.precio,
-          number: this.number
+        let dateFormat = new Date()
+        const dataDate = dateFormat.getDate()+"-"+(dateFormat.getMonth() + 1)+"-"+dateFormat.getFullYear()
+        axios.post(endpoints.endpointTarget+'/mails/mailGiftCardKK', { 
+          email: this.register.email.value,
+          name: this.register.name.value,
+          services: this.servicio + " " + this.servicio2 + " " +  this.servicio3,
+          amount: this.precio,
+          phone: this.register.phone.value,
+          date: dataDate
         })
         .then(res => {
-            if (res.data.status == 'Registrado') {
-                this.modals.modal4 = true
-                axios.post(endpoints.endpointTarget+'/notifications', {
-                    userName:'El cliente: '+ this.userName,
-                    userImage:'',
-                    detail:'Creo un Pedido',
-                    link: 'pedidos'
-                })
-                .then(res => {
-                    var socket = io(endpoints.endpointTarget)
-                    socket.emit('sendNotification', res.data)
-                })
-                var socket1 = io(endpoints.endpointTarget)
-                var sockData = {
-                  userName: '',
-                  userImage: '',
-                  detail: '',
-                  link: '',
-                  date: new Date()
-                }
-                socket1.emit('sendNotification', sockData )
-                
-            }else{
-                
-                console.log(res)
-            }
+          if (res.data.status == 'ok') {
+              this.modals.modal4 = true
+              axios.post(endpoints.endpointTarget+'/notifications', {
+                userName:'El cliente: '+ this.register.name.value + ' Corre: '+this.register.email.value,
+                userImage: '',
+                detail: 'Creo un pedido de Gift Card',
+                branch: '',
+                link: 'pedidos'
+              })
+              .then(res => {
+                var socket = io(endpoints.endpointTarget)
+                socket.emit('sendNotification', res.data.data)
+              })          
+          }else{
+            console.log(res)
+          }
         })
       },
-
-      validateType(){
-        if (this.typePay != '') {
-          this.modals.modal2 = true
+      changeFormat(){
+        var number = this.register.phone.value.replace(/[^\d]/g, '')
+        if (number.length == 9) {
+          number = number.replace(/(\d{1})(\d{4})/, "$1-$2-");
+        } else if (number.length == 10) {
+          number = number.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
         }
-        else{
+        this.register.phone.value = number
+      },
+      verifyRegister(){
+        this.register.name.validClass = this.register.name.value.length > 2 ? 'has-success' : 'has-danger'
+        this.register.name.validValue = this.register.name.value.length > 2 ? 'Success' : 'Error'
+        var split = this.register.email.value.split('@')
+        if (split.length == 2) {
+            var splitTwo = split[1].split('.')
+            if (splitTwo.length >= 2) {
+                this.register.email.validClass = 'has-success'
+                this.register.email.validValue = 'Success'
+            }else{
+                this.register.email.validClass = 'has-danger'
+                this.register.email.validValue = 'Error'
+            }
+        }else{
+            this.register.email.validClass = 'has-danger'
+            this.register.email.validValue = 'Error'
+        }
+        this.register.phone.validClass = this.register.phone.value.length > 9 ? 'has-success' : 'has-danger'
+        this.register.phone.validValue = this.register.phone.value.length > 9 ? 'Success' : 'Error'
+      },
+      validateType(){
+        if(this.register.email.validValue != "Success" || this.register.name.validValue != "Success" || this.register.phone.validValue != "Success"){
+          this.message = "Datos incorrectos, revise que este correcto el formulario."
           this.modals.modal3 = true
           setTimeout(() => {
             this.modals.modal3 = false
           }, 2000);
-          
+        }else{
+          if (this.typePay != '') {
+            this.modals.modal2 = true
+          }else{
+            this.message = "Debe seleccionar un tipo de pago"
+            this.modals.modal3 = true
+            setTimeout(() => {
+              this.modals.modal3 = false
+            }, 2000);
+          }
         }
       }
     },

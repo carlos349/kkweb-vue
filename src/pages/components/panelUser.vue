@@ -410,7 +410,6 @@ export default {
     methods: {
         openImgModal(){
             const split = this.dataUser.img.split('.pn')[0]
-            console.log(split)
             for (let index = 1; index <= this.checked.length; index++) {
                 const element = this.checked[index];
                 if (index == split) {
@@ -458,18 +457,16 @@ export default {
                     }, 2500);
                 }
             }).catch(err => {
-                console.log(res)
+                
             })
         },
         getToken(){
             const token = localStorage.userToken
             if (token) {
                 const decoded = jwtDecode(token)
-                console.log(decoded)
                 this.dataUser.name.value = decoded.name
-                this.dataUser.number = decoded.phone
-                this.dataUser.onlyNumber.value = decoded.phone.split('56 ')[1]
-                console.log(decoded.phone.split('56 ')[1])
+                this.dataUser.number = decoded.phone ? decoded.phone : ''
+                this.dataUser.onlyNumber.value = decoded.phone ? decoded.phone.split('56 ')[1] : ''
                 this.dataUser.email.value = decoded.mail
                 this.dataUser.img = decoded.userImage
                 var date = new Date(decoded.birthday) 
@@ -503,13 +500,11 @@ export default {
                     client: this.dataUser.email.value
                 })
                 this.dataUser.dates = dates.data
-                console.log(this.dataUser.dates)
             }catch(err){
-                console.log(err)
+
             }
         },
         confirmDate(id){
-            console.log(id)
             axios.get(endpoints.endpointTarget+'/citas/confirmDate/'+id)
             .then(res => {
                 this.modals.alert.type = 'modal-success'
@@ -521,7 +516,7 @@ export default {
                     this.modals.alert.show = false
                 }, 2500);
             }).catch(err => {
-                console.log(err)
+                
             })
         },
         typePassChange(){
@@ -580,7 +575,6 @@ export default {
             EventBus.$emit('loggedin', status)
         },
         formatDate(dateF) {
-            console.log("maldito" + dateF)
             let date = new Date(dateF)
             if (date.getDate() < 10) {
                 var one = "0" + date.getDate()
@@ -646,7 +640,7 @@ export default {
                     
                 })
                 .catch(err => {
-                    console.log(err)
+                    
                 })
             }     
         },
@@ -676,10 +670,10 @@ export default {
                     }, 2500);
                     axios.get(endpoints.endpointTarget+'/clients/sendMailChange/'+decoded._id)
                     .then(res => {
-                        console.log(res)
+                        
                     })
                     .catch(err => {
-                        console.log(err)
+                        
                     })
                 }else{
                     this.modals.alert.type = 'modal-danger'

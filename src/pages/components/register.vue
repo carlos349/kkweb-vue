@@ -213,7 +213,12 @@ export default {
                 }
             },
             typePass: 'pass',
-            refer: this.$route.query.refer
+            refer: this.$route.query.refer,
+            configHeader: {
+                headers:{
+                "x-database-connect": endpoints.database
+                }
+            }
         }
     },
     created () {
@@ -304,23 +309,34 @@ export default {
                     this.validR = false
                 }, 2500);
             }else{
-            
-                console.log(this.$route.query.refer)
                 const refer = this.$route.query.refer ? this.refer : ''
-                axios.post(endpoints.endpointTarget+'/clients/registerwithpass', {
+                axios.post(endpoints.endpointTarget+'/clients', {
                     data: {
-                        name: this.register.name.value,
+                        firstName: this.register.name.value,
                         lastName: this.register.lastName.value,
                         email: this.register.email.value,
                         code: this.register.code,
-                        phone: this.register.phone.value,
-                        datePicker: this.register.datePicker.value,
+                        phone: {
+                            "countryCode": "CL",
+                            "isValid": true,
+                            "phoneNumber": this.register.phone.value.split('-').join(' '),
+                            "countryCallingCode": "56",
+                            "formattedNumber": "+56"+this.register.phone.value.split('-').join(''),
+                            "nationalNumber": this.register.phone.value.split('-').join(' '),
+                            "formatInternational": "+56 "+this.register.phone.value.split('-').join(' '),
+                            "formatNational": this.register.phone.value.split('-').join(' '),
+                            "uri": "tel:+56"+this.register.phone.value.split('-').join(''),
+                            "e164": "+56"+this.register.phone.value.split('-').join('')
+                        },
+                        birthday: this.register.datePicker.value,
                         password: this.register.password.value,
-                        referidoId: refer
+                        instagram: '',
+                        idRecommender: refer,
+                        recommender: 'Ninguno'
                     }
-                })
+                }, this.configHeader)
                 .then(res => {
-                    if (res.data.status != 'client already exist') {
+                    if (res.data.status != 'client exist') {
                         this.modals.alert.type = 'modal-success'
                         this.modals.alert.icon = 'ui-1_check'
                         this.modals.alert.message = 'Registro exitoso. Bienvenido a KK PRETTY NAILS.'
@@ -348,19 +364,19 @@ export default {
                         this.register.datePicker.validClass = 'Error'
                         this.register.password.validClass = 'Error'
                         this.register.passwordRepite.validClass = 'Error'
-                        setTimeout(() => {
-                            this.modals.alert.show = false
-                            const decoded = jwtDecode(res.data.token)
-                            localStorage.setItem('userToken', res.data.token)
-                            this.emitMethod(true)
-                            axios.get(endpoints.endpointTarget+'/clients/sendMailRegister/'+decoded._id)
-                            .then(res => {
-                                console.log(res)
-                            }).catch(err => {
-                                console.log(err)
-                            })
-                            this.validR =false
-                        }, 2500);
+                        // setTimeout(() => {
+                        //     this.modals.alert.show = false
+                        //     const decoded = jwtDecode(res.data.token)
+                        //     localStorage.setItem('userToken', res.data.token)
+                        //     this.emitMethod(true)
+                        //     axios.get(endpoints.endpointTarget+'/clients/sendMailRegister/'+decoded._id)
+                        //     .then(res => {
+                        //         console.log(res)
+                        //     }).catch(err => {
+                        //         console.log(err)
+                        //     })
+                        //     this.validR =false
+                        // }, 2500);
                     }else{
                         this.modals.alert.type = 'modal-danger'
                         this.modals.alert.icon = 'ui-1_simple-remove'

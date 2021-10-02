@@ -67,7 +67,7 @@
           <div class="card-review">
             <div>
               <div class="text-review pl-5">
-                <p style="font-size: 12px;">Chicas kkprettynails, les deseo todo el éxito del mundo. Dios las bendiga y las colme de vida y salud para que sigan realizando un excelente trabajo. Siempre las recomiendo no solo por su trabajo, sino también por su calidad humana, su atención cuando voy a realizarme manicure. </p>
+                <p style="font-size: 12px;">Chicas KKSPA, les deseo todo el éxito del mundo. Dios las bendiga y las colme de vida y salud para que sigan realizando un excelente trabajo. Siempre las recomiendo no solo por su trabajo, sino también por su calidad humana, su atención cuando voy a realizarme manicure. </p>
                 <span class="span-quote d-flex align-items-center justify-content-center">
                   <i class="fa fa-quote-left"></i>
                 </span>

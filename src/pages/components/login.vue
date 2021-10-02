@@ -8,8 +8,7 @@
                 class="no-border input-lg"
                 addon-left-icon="now-ui-icons users_circle-08"
                 placeholder="Usuario"
-                v-model="user"
-                >
+                v-model="user">
             </fg-input>
             <div class="row">
                 <fg-input
@@ -17,8 +16,7 @@
                     addon-left-icon="now-ui-icons ui-1_lock-circle-open"
                     placeholder="Contraseña"
                     type="password"
-                    v-model="password"
-                    >
+                    v-model="password">
                 </fg-input>
                 <div class="col-2 p-0">
                     <n-button type="primary" icon round style="margin-top:3px;margin-right:10px;" v-on:click="typePassChange()">
@@ -33,8 +31,7 @@
                     <button
                     class="btn btn-primary btn-round btn-block"
                     v-on:click="login"
-                    >Ingresar</button
-                    >
+                    >Ingresar</button>
                    
                 </div>
                 

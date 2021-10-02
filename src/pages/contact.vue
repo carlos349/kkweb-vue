@@ -22,7 +22,7 @@
                             <br>
                             <p>Correo: <a href="mailto:kkprettynails@gmail.com" target="_blank">kkprettynails@gmail.com</a></p>
                             <br>
-                            <p>Instagram: <a href="https://www.instagram.com/kkprettynails/?hl=es-la" target="_blank">@kkprettynails</a></p>
+                            <p>Instagram: <a href="https://www.instagram.com/kykspa/?hl=es-la" target="_blank">@kkprettynails</a></p>
                             <br>
                         </div>
                     </div>

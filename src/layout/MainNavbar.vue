@@ -55,20 +55,20 @@
           <p>Agendar</p>
         </a>
       </li>
-      <li class="nav-item" v-if="auth">
+      <!-- <li class="nav-item" v-if="auth">
         <drop-down tag="li" class="nav-item" :title="userName">
           <b class="dropdown-item" v-on:click="showPanel()">Perfil de usuario</b>
           <b class="dropdown-item" v-on:click="closeSession">Cerrar sesión</b>
         </drop-down>
-      </li>
-      <li style="cursor:pointer" class="nav-item" v-else>
+      </li> -->
+      <!-- <li style="cursor:pointer" class="nav-item" v-else>
         <a
           class="nav-link"
           v-on:click="modals.modal1 = true"
         >
           <p>Ingresar</p>
         </a>
-      </li>
+      </li> -->
     </template>
   </navbar>
   <modal :show.sync="modals.modal1"
@@ -180,8 +180,7 @@ import jwtDecode from 'jwt-decode'
 import endpoints, { endpointTarget } from '../../endpoints/endpoints.js'
 import axios from 'axios'
 
-import { 
-  DropDown, 
+import {
   Navbar, 
   NavLink, 
   Modal, 
@@ -199,7 +198,6 @@ export default {
   components: {
     Navbar,
     [Popover.name]: Popover,
-    DropDown,
     login,
     Modal,
     register,
@@ -374,13 +372,13 @@ export default {
      
       
     })
-    EventBus.$on('loggedin', status => {
-      this.getToken()
-      this.showForm = 'login'
-      this.modals.modal1 = false
-      this.modals.modal2 = true
-      this.emitMethod(false)
-    })
+    // EventBus.$on('loggedin', status => {
+    //   this.getToken()
+    //   this.showForm = 'login'
+    //   this.modals.modal1 = false
+    //   this.modals.modal2 = true
+    //   this.emitMethod(false)
+    // })
     EventBus.$on('haveRefer', statuas => {
       const token = localStorage.userToken
       if (token) {

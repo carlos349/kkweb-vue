@@ -16,7 +16,7 @@
             </a>
           </li>
           <li class="ml-3">
-            <a href="https://www.instagram.com/kkprettynails/?hl=es-la" target="_blank">
+            <a href="https://www.instagram.com/kykspa/?hl=es-la" target="_blank">
               <span style="left: 33%;" class="fab fa-instagram span-socials"></span>
             </a>
           </li>
@@ -63,7 +63,7 @@
         <ul class="list-unstyled fast-links" style="display:block">
           <li class="w-100">
             <i class="fa fa-map-marker-alt" style="color:black;font-size:16px;margin-right:10px;"></i>
-            <a href="https://goo.gl/maps/GhvcDBH1ppBDae1KA" target="_blank">Av. Pedro de Valdivia 3474 Caracol Ñuñoa, Local 53-B Ñuñoa, Chile</a>
+            <a href="https://goo.gl/maps/GhvcDBH1ppBDae1KA" target="_blank">Av. Pedro de Valdivia 3474 Caracol Ñuñoa, Local 25-B Ñuñoa, Chile</a>
           </li>
           <li class="w-100">
             <i class="fab fa-whatsapp" style="color:black;font-size:16px;margin-right:10px;"></i>

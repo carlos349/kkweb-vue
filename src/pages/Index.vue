@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-4">
               <div data-aos="fade-up">
-                <span class="span-numbers">{{followers}}</span><br>
+                <span class="span-numbers">11.400</span><br>
                 <p class="textp-color">Seguidores de instagram</p>
               </div>
             </div>
@@ -134,7 +134,7 @@
   </div>
 </template>
 <script>
-import endpoints, { endpointTarget } from '../../endpoints/endpoints.js'
+import endpoints from '../../endpoints/endpoints.js'
 import axios from 'axios'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -164,28 +164,33 @@ export default {
       years: '',
       mounths: '',
       days: '',
-      clients: ''
+      clients: '',
+      configHeader: {
+        headers:{
+          "x-database-connect": endpoints.database
+        }
+      }
     }
   },
   created () {
     AOS.init()
-    this.getFollows()
+    // this.getFollows()
     this.getDays()
     this.getClients()
   },
   methods:{
-    getFollows(){
-      axios.get('https://www.instagram.com/kkprettynails/?__a=1')
-      .then(res => {
-        this.followers = new Intl.NumberFormat().format(res.data.graphql.user.edge_followed_by.count)
-      }).catch(err => {
-        console.log(err)
-      })
-    },
+    // getFollows(){
+    //   axios.get('https://www.instagram.com/kkprettynails/?__a=1')
+    //   .then(res => {
+    //     this.followers = new Intl.NumberFormat().format(res.data.graphql.user.edge_followed_by.count)
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
+    // },
     getClients(){
-      axios.get(endpoints.endpointTarget+'/clients/countClient')
+      axios.get(endpoints.endpointTarget+'/clients/countClientsKK', this.configHeader)
       .then(res => {
-        this.clients = res.data
+        this.clients = res.data.data
       }).catch(err => {
         console.log(err)
       })
@@ -228,4 +233,3 @@ export default {
   }
 };
 </script>
-<style></style>
