@@ -49,7 +49,7 @@
       <li v-on:click="toggler()" class="nav-item nav-cell">
         <a
           class="nav-link"
-          href="http://kkprettynails.syswa.net/#/agendamientoCliente"
+          href="http://kkspa.syswa.net/#/agendamientoCliente"
           target="_blank"
         >
           <p>Agendar</p>
