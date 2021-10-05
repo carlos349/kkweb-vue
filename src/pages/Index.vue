@@ -10,7 +10,7 @@
         <div class="content-center brand">
           <img class="n-logo mt-2" src="img/logokk.png" alt="" />
           <hr style="border-top:solid 2px #605B56;">
-          <h3 class="indexTitle" style="display:inline-block;color:#605B56;font-family: 'Prata', serif;font-weight:600;letter-spacing:.2em;">K&KPRETTYNAILS.COM</h3>
+          <h3 class="indexTitle" style="display:inline-block;color:#605B56;font-family: 'Prata', serif;font-weight:600;letter-spacing:.2em;">KKSPA.CL</h3>
          <a href="http://kkprettynails.syswa.net/#/agendamientoCliente" target="_blank"><n-button type="primary" size="lg">AGENDAR</n-button></a>  <router-link to="/galeria"><n-button type="primary" size="lg" simple>GALERÍA</n-button></router-link> 
         </div>
       </div>
@@ -82,7 +82,7 @@
     <clients-section></clients-section>
     <div class="section" style="background-color:#fafafa;">
       <div class="container">
-        <h2 data-aos="fade-up" class="titlesPrada mt-3 text-center">KKPRETTYNAILS EN YOUTUBE</h2>
+        <h2 data-aos="fade-up" class="titlesPrada mt-3 text-center">KKSPA EN YOUTUBE</h2>
         <div class="row">
           <div class="col-md-6 px-5 py-2">
             <iframe data-aos="fade-up" width="100%" height="315" src="https://www.youtube.com/embed/BNQVe-EgD9w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

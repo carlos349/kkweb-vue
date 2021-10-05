@@ -471,7 +471,7 @@ export default {
                 this.dataUser.img = decoded.userImage
                 var date = new Date(decoded.birthday) 
                 this.dataUser.refers = decoded.recomends
-                this.dataUser.linkRefer = 'https://kkprettynails.cl/#/servicios?refer=' + decoded._id
+                this.dataUser.linkRefer = 'https://kkspa.cl/#/servicios?refer=' + decoded._id
                 this.dataUser.services = decoded.historical
                 this.getDates()
 

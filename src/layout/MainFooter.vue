@@ -7,7 +7,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <h5 style="color: black;font-weight:700;">K&K Pretty Nails</h5>
+        <h5 style="color: black;font-weight:700;">KK SPA</h5>
         <p style="color:black">Simplemente un spa hecho a tu medida.</p>
         <ul class="ftco-footer-social float-lft list-unstyled">
           <li>

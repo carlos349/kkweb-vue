@@ -3,7 +3,7 @@ const data = {
     protocolQ: 'http://',
     server: 'kkprettynailsback.syswa.net',
     serverQ: 'localhost:3200',
-    serverImg : 'kkprettynails.cl',
+    serverImg : 'kkspa.cl',
     database: 'kkprettynails-syswa'
 }
 const endpoints = {

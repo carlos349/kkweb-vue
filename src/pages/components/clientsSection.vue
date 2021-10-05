@@ -7,7 +7,7 @@
           <div class="card-review">
             <div>
               <div class="text-review pl-5">
-                <p style="font-size: 12px;">Las extraño con todo mi ser, las espero, no he engañado a K&K por nada del mundo, prefiero esperar que hacerme las uñas con quien no confío.</p>
+                <p style="font-size: 12px;">Las extraño con todo mi ser, las espero, no he engañado a KK SPA por nada del mundo, prefiero esperar que hacerme las uñas con quien no confío.</p>
                 <span class="span-quote d-flex align-items-center justify-content-center">
                   <i class="fa fa-quote-left"></i>
                 </span>
