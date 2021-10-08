@@ -1,5 +1,5 @@
 const data = {
-    protocol: 'https://',
+    protocol: 'http://',
     protocolQ: 'http://',
     server: '52.67.12.97:4200',
     serverQ: 'localhost:3200',

@@ -10,7 +10,7 @@
         <div class="content-center brand">
           <img class="n-logo mt-2" src="img/logokk.png" alt="" />
           <hr style="border-top:solid 2px #605B56;">
-          <h3 class="indexTitle" style="display:inline-block;color:#605B56;font-family: 'Prata', serif;font-weight:600;letter-spacing:.2em;">KKSPA.CL</h3>
+          <h3 class="indexTitle w-100" style="display:inline-block;color:#605B56;font-family: 'Prata', serif;font-weight:600;letter-spacing:.2em;">KKSPA.CL</h3>
          <a href="http://kkspa.syswa.net/#/agendamientoCliente" target="_blank"><n-button type="primary" size="lg">AGENDAR</n-button></a>  <router-link to="/galeria"><n-button type="primary" size="lg" simple>GALERÍA</n-button></router-link> 
         </div>
       </div>
