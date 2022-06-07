@@ -9,10 +9,10 @@
                 <p style="color:transparent;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et omnis delectus a natus eos magni velit nobis eveniet, earum voluptate! Animi doloremque voluptatem ut voluptatum atque a architecto quidem! Inventore?</p>
               </template>
               <template v-slot:back class="back">
-                <h4 style="margin-top:-5px;" class="text-center">Manicure tradicional <br>+<br>Pedicure tradicional</h4>
-                <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> 15.000</h4>
+                <h4 style="margin-top:-5px;" class="text-center">Baño de gel largo 1-2 <br>+ <br> Esmaltado permanente</h4>
+                <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> 17.500</h4>
                 <center>
-                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Manicure tradicional', servicio2=' +',servicio3='Pedicure tradicional',precio='15.000', validateLogin()">REGALAR</n-button>
+                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Baño de gel largo 1-2', servicio2=' +',servicio3='Esmaltado permanente',precio='17.500', validateLogin()">REGALAR</n-button>
                 </center>
               </template>
             </vue-flip>
@@ -23,10 +23,10 @@
                 <p style="color:transparent;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et omnis delectus a natus eos magni velit nobis eveniet, earum voluptate! Animi doloremque voluptatem ut voluptatum atque a architecto quidem! Inventore?</p>
               </template>
               <template v-slot:back class="back">
-                <h4 style="margin-top:-5px;" class="text-center">Manicure permanente <br>+<br>Ondulación de pestañas</h4>
-                <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> 26.500</h4>
+                <h4 style="margin-top:-5px;" class="text-center">Manicure permanente <br>+<br>Parafina</h4>
+                <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> 16.000</h4>
                 <center>
-                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Manicure permanente', servicio2=' +',servicio3='Ondulación de pestañas',precio='26.500', validateLogin()">REGALAR</n-button>
+                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Manicure permanente', servicio2=' +',servicio3='Parafina',precio='16.000', validateLogin()">REGALAR</n-button>
                 </center>
               </template>
             </vue-flip>
@@ -38,9 +38,9 @@
               </template>
               <template v-slot:back class="back">
                 <h4 style="margin-top:-5px;" class="text-center">Manicure permanente <br>+<br>Pedicure permanente</h4>
-                <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> 27.000</h4>
+                <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> 27.500</h4>
                 <center>
-                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Manicure permanente', servicio2=' +',servicio3='Pedicure permanente',precio='27.000', validateLogin()">REGALAR</n-button>
+                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Manicure permanente', servicio2=' +',servicio3='Pedicure permanente',precio='27.500', validateLogin()">REGALAR</n-button>
                 </center>
               </template>
             </vue-flip>
@@ -52,9 +52,9 @@
               </template>
               <template v-slot:back class="back">
                 <h4 style="margin-top:20px;" class="text-center">Manicure permanente</h4>
-                <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> 12.000</h4>
+                <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> 12.500</h4>
                 <center>
-                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Manicure permanente', servicio2='',servicio3='',precio='12.000', validateLogin()">REGALAR</n-button>
+                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Manicure permanente', servicio2='',servicio3='',precio='12.500', validateLogin()">REGALAR</n-button>
                 </center>
               </template>
             </vue-flip>
@@ -65,10 +65,10 @@
                 <p style="color:transparent;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et omnis delectus a natus eos magni velit nobis eveniet, earum voluptate! Animi doloremque voluptatem ut voluptatum atque a architecto quidem! Inventore?</p>
               </template>
               <template v-slot:back class="back">
-                <h4 style="margin-top:20px;" class="text-center">Ondulación con tinte</h4>
+                <h4 style="margin-top:20px;" class="text-center">Pedicure permanente</h4>
                 <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> 15.000</h4>
                 <center>
-                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Ondulación con tinte', servicio2='',servicio3='',precio='15.000', validateLogin()">REGALAR</n-button>
+                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Pedicure permanente', servicio2='',servicio3='',precio='15.000', validateLogin()">REGALAR</n-button>
                 </center>
               </template>
             </vue-flip>
@@ -79,10 +79,10 @@
                 <p style="color:transparent;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et omnis delectus a natus eos magni velit nobis eveniet, earum voluptate! Animi doloremque voluptatem ut voluptatum atque a architecto quidem! Inventore?</p>
               </template>
               <template v-slot:back class="back">
-                <h4 style="margin-top:20px;" class="text-center">Ondulación sin tinte</h4>
-                <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> 13.000</h4>
+                <h4 style="margin-top:20px;" class="text-center">Esculpido de gel largo 1-2</h4>
+                <h4 style="margin-top:-5px;font-weight:700;color:#000;" class="text-center"><i class="now-ui-icons business_money-coins" style="color:#77a464;"></i> 25.500</h4>
                 <center>
-                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Ondulación sin tinte', servicio2='', servicio3='', precio='13.000', validateLogin()">REGALAR</n-button>
+                  <n-button type="default" size="lg" @click="modals.modal1 = true, servicio ='Esculpido de gel largo 1-2', servicio2='', servicio3='', precio='25.500', validateLogin()">REGALAR</n-button>
                 </center>
               </template>
             </vue-flip>
@@ -396,7 +396,7 @@ export default {
 </script>
 <style>
 .front{
-  background-image:url('../../../public/img/gift.jpg');
+  background-image:url('../../../public/img/gif.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

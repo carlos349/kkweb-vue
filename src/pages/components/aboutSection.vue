@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row justify-content-end">
           <div class="col-md-6">
-            <h2 data-aos="fade-up" class="opacity-cero titlesPrada mt-3">KK SPA</h2>
+            <h2 data-aos="fade-up" class="opacity-cero titlesPrada mt-3">K&K SPA</h2>
             <p data-aos="fade-up" class="textparra-color" >
             Lo que comenzó como un hobby se fue convirtiendo en una profesión para la fundadora Katriel Capacho por lo que el 24 de abril de 2019 decidimos llevar esto al siguiente nivel creando un local en el cual nos dedicamos no sólo al embellecimiento de las uñas sino al cuidado de las mismas.
             </p>

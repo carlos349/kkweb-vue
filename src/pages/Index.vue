@@ -10,7 +10,7 @@
         <div class="content-center brand">
           <img class="n-logo mt-2" src="img/logokk.png" alt="" />
           <hr style="border-top:solid 2px #605B56;">
-          <h3 class="indexTitle w-100" style="display:inline-block;color:#605B56;font-family: 'Prata', serif;font-weight:600;letter-spacing:.2em;">KKSPA.CL</h3>
+          <h3 class="indexTitle w-100" style="display:inline-block;color:#605B56;font-family: 'Prata', serif;font-weight:600;letter-spacing:.2em;">K&K SPA</h3>
          <a href="http://kkspa.syswa.net/#/agendamientoCliente" target="_blank"><n-button type="primary" size="lg">AGENDAR</n-button></a>  <router-link to="/galeria"><n-button type="primary" size="lg" simple>GALERÍA</n-button></router-link> 
         </div>
       </div>
@@ -21,7 +21,7 @@
           <div class="row mt-4">
             <div class="col-md-5">
               <div data-aos="fade-up">
-                <span class="span-numbers">{{years}} </span><span class="span-text">Año</span><span class="span-numbers"> {{mounths}}</span><span class="span-text"> Meses</span><span class="span-numbers"> {{days}}</span><span class="span-text"> Días</span><br>
+                <span class="span-numbers">2 </span><span class="span-text">Año</span><span class="span-numbers"> 9</span><span class="span-text"> Meses</span><span class="span-numbers"> 1</span><span class="span-text"> Día(s)</span><br>
                 <p class="textp-color">Tiempo de servicio</p>
               </div>
             </div>
@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-3">
               <div data-aos="fade-up">
-                <span class="span-numbers">{{clients}}</span><br>
+                <span class="span-numbers">1.400</span><br>
                 <p class="textp-color">Clientes</p>
               </div>
             </div>
@@ -69,10 +69,10 @@
           </div>
           <div class="col-md-3" data-aos="fade-up">
               <center>
-                <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised mx-auto" src="img/ibx.jpeg" alt="">
+                <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised mx-auto" src="img/gelX.jpg" alt="">
               </center>
-              <h5 class="mt-3 text-center">IBX</h5>
-              <p class="text-center" style="font-size:12px;">Tratamiento para endurecer tus uñas.</p>
+              <h5 class="mt-3 text-center">Gel X</h5>
+              <p class="text-center" style="font-size:12px;">Proximamente.</p>
           </div>
         </div>
       </div>
@@ -187,23 +187,27 @@ export default {
     //     console.log(err)
     //   })
     // },
-    getClients(){
-      axios.get(endpoints.endpointTarget+'/clients/countClientsKK', this.configHeader)
-      .then(res => {
-        this.clients = res.data.data
-      }).catch(err => {
-        console.log(err)
-      })
-    },
+    // getClients(){
+    //   axios.get(endpoints.endpointTarget+'/clients/countClientsKK', this.configHeader)
+    //   .then(res => {
+    //     this.clients = res.data.data
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
+    // },
     getDays(){
       const f1 = '10/01/2019';
       const f2 = this.formatDate(new Date())
       const countDays = this.restaFechas(f1, f2)
       const count = (countDays / 30) / 12
       const string = count.toString()
+      console.log("Streing")
+      console.log(countDays)
       this.years = string.split('.')[0]
       this.mounths = string.split('.')[1][0]
       this.days = string.split('.')[1][1]
+      console.log("mes")
+      console.log(mounths)
     },
     restaFechas(f1, f2){
       var aFecha1 = f1.split('/');

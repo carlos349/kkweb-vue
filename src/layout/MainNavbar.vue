@@ -13,7 +13,7 @@
       <router-link to="/">
         <a>
           <img style="width:85px;display:inline-block;margin-right:10px;" src="img/logokk.png" alt="">
-          <p class="responsiveLetterHeader">KK SPA</p>
+          <!-- <p class="responsiveLetterHeader">K&K SPA</p> -->
         </a>
       </router-link>
       

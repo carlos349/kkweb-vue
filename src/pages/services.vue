@@ -37,30 +37,21 @@
                                 <div>
                                     <ul class="list-services">
                                         <li class="d-flex">
-                                            <span>Traicional</span>
-                                            <span>30 min.</span>
-                                            <span>$5.000</span>
+                                            <span>Hombres</span>
+                                            <span>30 min</span>
+                                            <span>$4.500</span>
                                         </li>
                                         <li class="d-flex">
-                                            <span>Para hombres</span>
-                                            <span>30 min.</span>
-                                            <span>$4.000</span>
-                                        </li>
-                                        <li class="d-flex">
-                                            <span>Para niñas</span>
-                                            <span>15 min.</span>
-                                            <span>$3.000</span>
+                                            <span>Tradicional niñas</span>
+                                            <span>30 min</span>
+                                            <span>$4.500</span>
                                         </li>
                                         <li class="d-flex">
                                             <span>Permanente</span>
-                                            <span>60 min.</span>
-                                            <span>$12.000</span>
+                                            <span>60 min</span>
+                                            <span>$12.500</span>
                                         </li>
-                                        <li class="d-flex">
-                                            <span>Degradé</span>
-                                            <span>60 min.</span>
-                                            <span>$14.000</span>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </collapse-item>
@@ -68,49 +59,45 @@
                                 <div>
                                     <ul class="list-services">
                                         <li class="d-flex">
-                                            <span>Tradicional largo 1 ó 2</span>
-                                            <span>120 min.</span>
-                                            <span>$17.000</span>
+                                            <span>Permanente largo 1-2</span>
+                                            <span>150 min</span>
+                                            <span>$25.500</span>
                                         </li>
                                         <li class="d-flex">
-                                            <span>Tradicional largo 3 ó 4</span>
-                                            <span>120 min.</span>
-                                            <span>$22.000</span>
+                                            <span>Permanente largo 3-4</span>
+                                            <span>180 min</span>
+                                            <span>$29.500</span>
                                         </li>
                                         <li class="d-flex">
-                                            <span>Tradicional largo 5 ó +</span>
-                                            <span>150 min.</span>
-                                            <span>$26.000</span>
+                                            <span>Permanente largo 5 ó más</span>
+                                            <span>180 min</span>
+                                            <span>$34.500</span>
                                         </li>
                                         <li class="d-flex">
-                                            <span>Permanente largo 1 ó 2</span>
-                                            <span>120 min.</span>
-                                            <span>$23.000</span>
+                                            <span>Relleno permanente largo 1-2</span>
+                                            <span>120 min</span>
+                                            <span>$19.500</span>
                                         </li>
                                         <li class="d-flex">
-                                            <span>Permanente largo 3 ó 4</span>
-                                            <span>150 min.</span>
-                                            <span>$27.000</span>
+                                            <span>Relleno permanente largo 3-4</span>
+                                            <span>150 min</span>
+                                            <span>$23.500</span>
                                         </li>
                                         <li class="d-flex">
-                                            <span>Permanente largo 5 ó +</span>
-                                            <span>180 min.</span>
-                                            <span>$32.000</span>
+                                            <span>Relleno permanente largo 5+</span>
+                                            <span>180 min</span>
+                                            <span>$29.500</span>
+                                        </li>
+                                        
+                                        <li class="d-flex">
+                                            <span>Baño de gel largo 1-2</span>
+                                            <span>90 min</span>
+                                            <span>$17.500</span>
                                         </li>
                                         <li class="d-flex">
-                                            <span>Relleno tradicional</span>
-                                            <span>30 min.</span>
-                                            <span>$15.000</span>
-                                        </li>
-                                        <li class="d-flex">
-                                            <span>Relleno permanente</span>
-                                            <span>120 min.</span>
-                                            <span>$17.000</span>
-                                        </li>
-                                        <li class="d-flex">
-                                            <span>Baño de gel</span>
-                                            <span>90 min.</span>
-                                            <span>$15.000</span>
+                                            <span>Baño de gel largo 3-4</span>
+                                            <span>120 min</span>
+                                            <span>$21.500</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -119,56 +106,76 @@
                                 <div>
                                     <ul class="list-services">
                                         <li class="d-flex">
-                                            <span>Sólo pedicure</span>
-                                            <span>45 min.</span>
-                                            <span>$8.000</span>
-                                        </li>
-                                        <li class="d-flex">
-                                            <span>Tradicional</span>
-                                            <span>60 min.</span>
+                                            <span>Básico</span>
+                                            <span>45 min</span>
                                             <span>$10.000</span>
                                         </li>
                                         <li class="d-flex">
+                                            <span>Tradicional</span>
+                                            <span>60 min</span>
+                                            <span>$12.000</span>
+                                        </li>
+                                        <li class="d-flex">
                                             <span>Permanente</span>
-                                            <span>60 min.</span>
+                                            <span>75 min</span>
                                             <span>$15.000</span>
                                         </li>
                                     </ul>
                                 </div>
                             </collapse-item>
-                            <collapse-item title="Ondulación/Lifting De Pestañas" name="3">
+                            <collapse-item title="Retiros" name="3">
                                 <div>
                                     <ul class="list-services">
                                         <li class="d-flex">
-                                            <span>Sin tinte</span>
-                                            <span>45 min.</span>
-                                            <span>$13.000</span>
+                                            <span>De gel</span>
+                                            <span>30 min</span>
+                                            <span>$4.000</span>
                                         </li>
                                         <li class="d-flex">
-                                            <span>Con tinte</span>
-                                            <span>60 min.</span>
-                                            <span>$15.000</span>
+                                            <span>Acrílico</span>
+                                            <span>60 min</span>
+                                            <span>$8.000</span>
+                                        </li>
+                                        <li class="d-flex">
+                                            <span>Permanente</span>
+                                            <span>15 min</span>
+                                            <span>$2.000</span>
                                         </li>
                                     </ul>
                                 </div>
                             </collapse-item>
-                            <collapse-item title="Otros" name="3">
+                            <collapse-item title="Adicionales" name="3">
                                 <div>
                                     <ul class="list-services">
                                         <li class="d-flex">
                                             <span>Parche</span>
-                                            <span>15 min.</span>
+                                            <span>15 min</span>
                                             <span>$1.000</span>
                                         </li>
                                         <li class="d-flex">
                                             <span>Uña esculpida</span>
-                                            <span>15 min.</span>
+                                            <span>15 min</span>
                                             <span>$2.000</span>
                                         </li>
                                         <li class="d-flex">
-                                            <span>Tratamiento IBX</span>
-                                            <span>30 min.</span>
-                                            <span>$5.000</span>
+                                            <span>Parafina</span>
+                                            <span>0 min</span>
+                                            <span>$3.500</span>
+                                        </li>
+                                        <li class="d-flex">
+                                            <span>Francesa</span>
+                                            <span>15 min</span>
+                                            <span>$2.000</span>
+                                        </li>
+                                        <li class="d-flex">
+                                            <span>Degradé</span>
+                                            <span>0 min</span>
+                                            <span>$2.000</span>
+                                        </li>
+                                        <li class="d-flex">
+                                            <span>Encapsulado</span>
+                                            <span>15 min</span>
+                                            <span>$2.000</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -186,10 +193,10 @@
                     </div>
                     <div class="card-service-cat mt-2">
                         <center>
-                            <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised mx-auto" src="img/ibx.jpeg" alt="">
+                            <img style="width: 10rem;height:10rem;" class="rounded-circle img-raised mx-auto" src="img/gelX.jpg" alt="">
                         </center>
-                        <h5 class="mt-3 text-center">IBX</h5>
-                        <p class="text-center" style="font-size:12px;">Tratamiento para endurecer tus uñas.</p>
+                        <h5 class="mt-3 text-center">Gel X</h5>
+                        <p class="text-center" style="font-size:12px;">Próximamente.</p>
                     </div>
                 </div>
             </div>
