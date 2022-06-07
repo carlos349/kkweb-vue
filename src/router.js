@@ -9,6 +9,7 @@ import Login from './pages/Login.vue';
 import Profile from './pages/Profile.vue';
 import MainNavbar from './layout/MainNavbar.vue';
 import MainFooter from './layout/MainFooter.vue';
+import Flyer from './pages/flyer.vue';
 
 Vue.use(Router);
 
@@ -22,6 +23,15 @@ export default new Router({
       props: {
         header: { colorOnScroll: 100 },
         footer: { backgroundColor: 'white' }
+      }
+    },
+    {
+      path: '/flyer',
+      name: 'flyer',
+      components: { default: Flyer },
+      props: {
+        header: { colorOnScroll: 100 },
+        footer: { backgroundColor: 'black' }
       }
     },
     {
